@@ -1,0 +1,24 @@
+
+.link-effect {
+  position: relative;
+
+  &:before {
+    opacity: 0;
+    @include absoluteCenter();
+    width: 100%;
+    filter: blur(0px);
+    content: attr(data-text);
+  }
+  &_blue:before {
+    color: $main-blue-color;
+  }
+  &_red:before {
+    color: $main-red-color-1;
+  }
+  &.animated:before {
+    animation: linkEffect .3s linear;
+  }
+}
+
+
+

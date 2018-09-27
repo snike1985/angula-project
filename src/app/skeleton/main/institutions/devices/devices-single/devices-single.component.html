@@ -1,0 +1,185 @@
+<div class="main__scroll" perfect-scrollbar [@FadeInOut]="">
+
+  <div class="devices" *ngIf="currentItem">
+
+    <a class="main__back-link"
+       [routerLink]="'/institutions/devices'"
+       [activeEffect]="'blue'">
+      {{ texts[ 'backBtn' ] }}
+    </a>
+
+    <h1 class="main__title">
+
+      <i class="main__title-icon">
+        <svg width="31px" height="30px" viewBox="0 0 31 30">
+          <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+            <g fill="#CBCFDA">
+              <path d="M2,2.99124431 C2,1.89151044 2.89989752,1 3.99124431,1 L28.0087557,1 C29.1084896,1 30,1.89989752 30,2.99124431 L30,27.0087557 C30,28.1084896 29.1001025,29 28.0087557,29 L3.99124431,29 C2.89151044,29 2,28.1001025 2,27.0087557 L2,2.99124431 Z M2,11.8888889 L2,15 L30,15 L30,11.8888889 L2,11.8888889 Z M6.66666667,22.7777778 C6.66666667,23.6428769 7.36140259,24.3333333 8.21840278,24.3333333 L19.1149306,24.3333333 C19.9724045,24.3333333 20.6666667,23.6368874 20.6666667,22.7777778 C20.6666667,21.9126786 19.9719307,21.2222222 19.1149306,21.2222222 L8.21840278,21.2222222 C7.36092884,21.2222222 6.66666667,21.9186682 6.66666667,22.7777778 Z M7.44444444,8.77777778 C8.73310886,8.77777778 9.77777778,7.73310886 9.77777778,6.44444444 C9.77777778,5.15578003 8.73310886,4.11111111 7.44444444,4.11111111 C6.15578003,4.11111111 5.11111111,5.15578003 5.11111111,6.44444444 C5.11111111,7.73310886 6.15578003,8.77777778 7.44444444,8.77777778 Z" id="Combined-Shape"></path>
+            </g>
+          </g>
+        </svg>
+      </i>
+
+      <span>{{ currentItem[ 'type' ][ 'name' ] }}</span>
+
+      <span class="main__title-label main__title-label_active" *ngIf="status === 1">
+                 {{ texts[ 'status' ][ status ] }}
+            </span>
+
+      <span class="main__title-label main__title-label_disabled" *ngIf="status === 0">
+               {{ texts[ 'status' ][ status ] }}
+            </span>
+
+      <span class="main__title-label main__title-label_inactive" *ngIf="status === 2">
+                {{ texts[ 'status' ][ status ] }}
+            </span>
+
+    </h1>
+
+    <div class="main__links">
+
+      <a [routerLink]="'edit'"
+         [activeEffect]="'blue'">
+
+        {{ texts[ 'editBtn' ] }}
+
+      </a>
+
+      <button
+              [activeEffect]="'blue'"
+              *ngIf="status === 0"
+              (click)="updateStatus()">
+
+        {{ texts[ 'enableBtn' ] }}
+
+      </button>
+
+      <button
+              [activeEffect]="'blue'"
+              *ngIf="status === 1"
+              (click)="updateStatus()">
+
+        {{ texts[ 'disableBtn' ] }}
+
+      </button>
+
+      <button class="main__delete-btn"
+              [activeEffect]="'red'"
+              (click)="askToDelete( $event )">
+
+        {{ texts[ 'deleteBtn' ] }}
+
+      </button>
+
+    </div>
+
+    <div class="main__info">
+
+      <div class="main__info-wrap">
+
+        <h2 class="main__info-title">
+
+          <i class="main__info-title-icon">
+            <svg width="24px" height="24px" viewBox="0 0 24 24">
+              <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                <g id="general-info" fill="#CBCFDA">
+                  <path d="M2,6 C2,4.8954305 2.88772964,4 4,4 C5.1045695,4 6,4.88772964 6,6 C6,7.1045695 5.11227036,8 4,8 C2.8954305,8 2,7.11227036 2,6 Z M8,6 C8,5.44771525 8.44994876,5 9.00684547,5 L20.9931545,5 C21.5492199,5 22,5.44386482 22,6 C22,6.55228475 21.5500512,7 20.9931545,7 L9.00684547,7 C8.45078007,7 8,6.55613518 8,6 Z M2,12 C2,10.8954305 2.88772964,10 4,10 C5.1045695,10 6,10.8877296 6,12 C6,13.1045695 5.11227036,14 4,14 C2.8954305,14 2,13.1122704 2,12 Z M8,12 C8,11.4477153 8.44994876,11 9.00684547,11 L20.9931545,11 C21.5492199,11 22,11.4438648 22,12 C22,12.5522847 21.5500512,13 20.9931545,13 L9.00684547,13 C8.45078007,13 8,12.5561352 8,12 Z M2,18 C2,16.8954305 2.88772964,16 4,16 C5.1045695,16 6,16.8877296 6,18 C6,19.1045695 5.11227036,20 4,20 C2.8954305,20 2,19.1122704 2,18 Z M8,18 C8,17.4477153 8.44994876,17 9.00684547,17 L20.9931545,17 C21.5492199,17 22,17.4438648 22,18 C22,18.5522847 21.5500512,19 20.9931545,19 L9.00684547,19 C8.45078007,19 8,18.5561352 8,18 Z" id="Combined-Shape"></path>
+                </g>
+              </g>
+            </svg>
+          </i>
+
+          {{ texts[ 'infoTitles' ][ 'generalInfo' ] }}
+
+        </h2>
+
+        <div class="main__info-inner">
+
+          <div class="main__info-section">
+
+            <div class="main__info-item">
+
+              <div class="main__info-label">
+                {{ texts[ 'labels' ][ 'activeSince' ] }}
+              </div>
+
+              <div class="main__info-info main__info-info_mark">
+                {{ currentItem[ 'activateOn' ] | date: 'dd MMM yyyy hh:mm:ss a' }}
+
+              </div>
+
+            </div>
+
+            <div class="main__info-item">
+
+              <div class="main__info-label">
+                {{ texts[ 'labels' ][ 'activeTo' ] }}
+              </div>
+
+              <div class="main__info-info main__info-info_mark">
+                {{ currentItem[ 'expiryOn' ] | date: 'dd MMM yyyy hh:mm:ss a' }}
+
+              </div>
+
+            </div>
+
+          </div>
+
+          <div class="main__info-item">
+
+            <div class="main__info-label">
+              {{ texts[ 'labels' ][ 'code' ] }}
+            </div>
+
+            <div class="main__info-info">
+              {{ currentItem[ 'code' ] }}
+            </div>
+
+          </div>
+
+          <div class="main__info-item">
+
+            <div class="main__info-label">
+              {{ texts[ 'labels' ][ 'location' ] }}
+            </div>
+
+            <div class="main__info-info main__info-info_mark">
+              <a routerLink="/institutions/locations/{{ currentItem[ 'location' ][ 'id' ] }}">{{ currentItem[ 'location' ][ 'name' ] }}</a>
+            </div>
+
+          </div>
+
+          <div class="main__info-item">
+
+            <div class="main__info-label">
+              {{ texts[ 'labels' ][ 'merchant' ] }}
+            </div>
+
+            <div class="main__info-info main__info-info_mark">
+              <a routerLink="/institutions/merchants/{{ currentItem[ 'merchant' ][ 'id' ] }}">{{ currentItem[ 'merchant' ][ 'name' ] }}</a>
+            </div>
+
+          </div>
+
+          <div class="main__info-item">
+
+            <div class="main__info-label">
+              {{ texts[ 'labels' ][ 'institution' ] }}
+            </div>
+
+            <div class="main__info-info main__info-info_mark">
+              <a routerLink="/institutions/{{ currentItem[ 'institution' ][ 'id' ] }}">{{ currentItem[ 'institution' ][ 'name' ] }}</a>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>

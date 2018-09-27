@@ -1,0 +1,202 @@
+$placeholder-color: #e4e8ec;
+$placeholder-hover-color: #212c3d;
+$field-hover-color: #212c3d;
+$field-color: #e5e8ed;
+$field-border-color: #e8ebf1;
+
+.main-form {
+  margin-bottom: 50px;
+
+  &__double-field {
+    margin-bottom: 20px;
+
+    fieldset {
+      margin-bottom: 0;
+    }
+  }
+  fieldset {
+    margin-bottom: 20px;
+  }
+  &__title {
+    margin-bottom: 10px;
+    font-size: 16px;
+    line-height: 1.25;
+    color: $field-hover-color;
+  }
+  &__row {
+
+    &.nice-radio {
+      display: block;
+    }
+  }
+  &__btns {
+    text-align: center;
+    padding-top: 10px;
+
+    * {
+      display: inline-block;
+    }
+    .btn {
+      width: 100%;
+      margin-bottom: 30px;
+    }
+  }
+  &__group {
+    margin-bottom: 19px;
+    padding-bottom:8px;
+    border-bottom: 2px solid #f4f6f9;
+  }
+  &__link {
+    padding: 0;
+    background: transparent;
+    border: none;
+    font-size: 16px;
+    font-weight: $bold;
+    line-height: 1.25;
+    color: $main-blue-color;
+    @include transition( color, $animation-time, 0 );
+
+    &:hover {
+      color: $main-blue-color-2;
+    }
+  }
+  &__failure {
+    position: relative;
+    margin-top: 0;
+    margin-bottom: 0;
+    height: 0;
+    @include transition( all, $animation-time, 0 );
+    -webkit-transition-delay: $animation-time + s;
+    transition-delay: $animation-time + s;
+
+    > div {
+      overflow: hidden;
+      opacity: 0;
+      visibility: hidden;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      max-width: 100%;
+      border-radius: 4px;
+      padding: 8px 10px 7px;
+      background: $main-red-color-1;
+      font-size: 14px;
+      line-height: 1.43;
+      font-weight: $bold;
+      color: $main-white-color;
+      text-overflow: ellipsis;
+      -webkit-transform: translateY(10px);
+      transform: translateY(10px);
+      @include transition( all, $animation-time, 0 );
+    }
+
+  }
+  &.failure {
+
+    input.ng-invalid,
+    textarea.ng-invalid {
+      border-color: $main-red-color-1;
+      box-shadow: 0 3px 10px 0 rgba(24, 40, 65, 0.15);
+
+      & + label {
+        border-color: $main-red-color-1;
+
+        svg path {
+          fill: $main-red-color-1;
+        }
+      }
+    }
+    .main-form__failure {
+      height: 35px;
+      margin-top: 30px;
+      margin-bottom: 20px;
+      -webkit-transition-delay: 0s;
+      transition-delay: 0s;
+
+      > div {
+        opacity: 1;
+        visibility: visible;
+        -webkit-transform: translateY(0);
+        transform: translateY(0);
+        -webkit-transition-delay: $animation-time + s;
+        transition-delay: $animation-time + s;
+      }
+    }
+  }
+}
+
+@media (min-width: $desktop) {
+
+  .main-form {
+
+    &__double-field {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+
+      > fieldset.main-field {
+        width: 47.1%;
+
+        input {
+
+          &.ng-touched.ng-invalid {
+
+            & + .main-field__invalid{
+              -webkit-transform: translate(0, 0);
+              transform: translate(0, 0);
+            }
+          }
+        }
+      }
+      .main-field__invalid {
+        position: relative;
+        width: 100%;
+        height: 0;
+        margin-top: 0;
+        padding-top: 0;
+        -webkit-transform: translate( 0, 0);
+        transform: translate( 0, 0);
+        @include transition(height, .15, .15);
+
+        div {
+          position: absolute;
+          -webkit-transform: translateY(10px);
+          transform: translateY(10px);
+
+          &:before {
+            top: -5px;
+            left: auto;
+            border-width: 0 4px 5px 4px;
+            border-color: transparent transparent $main-red-color-1 transparent;
+          }
+        }
+      }
+    }
+    &__btns {
+      padding-top: 10px;
+      text-align: left;
+
+      * {
+        vertical-align: middle;
+        margin-bottom: 0;
+      }
+      .btn {
+        width: auto;
+        margin-right: 37px;
+        margin-bottom: 0;
+      }
+    }
+    &__link {
+      font-size: 16px;
+      font-weight: $bold;
+      line-height: 1.25;
+      color: $main-blue-color;
+      @include transition( color, $animation-time, 0 );
+
+      &:hover {
+        color: $main-blue-color-2;
+      }
+    }
+  }
+}
+

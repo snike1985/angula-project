@@ -1,0 +1,321 @@
+
+$placeholder-color: #e4e8ec;
+$placeholder-hover-color: #212c3d;
+$field-color: #212c3d;
+$field-border-color: #e8ebf1;
+
+
+.login {
+  position: relative;
+  margin-bottom: 30px;
+
+  .access__title {
+    margin-bottom: 30px;
+    line-height: 1.25;
+  }
+  &__form {
+
+    fieldset {
+      position: relative;
+      margin-bottom: 20px;
+    }
+    input {
+      height: 50px;
+      width: 100%;
+      border-radius: 4px;
+      background-color: $main-white-color;
+      border: solid 2px $field-border-color;
+      padding-left: 71px;
+      padding-right: 15px;
+      font-size: 16px;
+      line-height: 1.25;
+      color: $field-color;
+      font-family: 'Lato', sans-serif;
+      font-weight: $bold;
+      @include transition( all, $animation-time, 0 );
+
+      &::-webkit-input-placeholder {
+        color: $placeholder-color;
+        @include transition( color, $animation-time, 0)
+      }
+      &::-moz-placeholder          {
+        color: $placeholder-color;
+        @include transition( color, $animation-time, 0)
+      }
+      &:-moz-placeholder           {
+        color: $placeholder-color;
+        @include transition( color, $animation-time, 0)
+      }
+      &:-ms-input-placeholder      {
+        color: $placeholder-color;
+        @include transition( color, $animation-time, 0)
+      }
+
+      &:focus {
+        box-shadow: inset 0 3px 4px 0 rgba(78, 158, 248, 0.2);
+        border-color: $main-blue-color;
+
+        &::-webkit-input-placeholder {color: transparent;}
+        &::-moz-placeholder          {color: transparent;}
+        &:-moz-placeholder           {color: transparent;}
+        &:-ms-input-placeholder      {color: transparent;}
+
+        & + label {
+          border-color: $main-blue-color;
+
+          svg {
+
+            path {
+              fill: $main-blue-color;
+            }
+          }
+        }
+
+        &:hover {
+          &::-webkit-input-placeholder {color: transparent;}
+          &::-moz-placeholder          {color: transparent;}
+          &:-moz-placeholder           {color: transparent;}
+          &:-ms-input-placeholder      {color: transparent;}
+        }
+      }
+
+      &.ng-touched.ng-invalid {
+        border-color: $main-red-color-1;
+        box-shadow: 0 3px 10px 0 rgba(24, 40, 65, 0.15);
+
+        & + label {
+          border-color: $main-red-color-1;
+
+          svg path {
+            fill: $main-red-color-1;
+          }
+        }
+        & + label + .login__form-invalid {
+          margin-top: 1px;
+          padding-top: 5px;
+          height: 49px;
+          -webkit-transition-delay: 0s;
+          transition-delay: 0s;
+
+          div {
+            opacity: 1;
+            visibility: visible;
+            -webkit-transform: translateY(0);
+            transform: translateY(0);
+            -webkit-transition-delay: .15s;
+            transition-delay: .15s;
+          }
+        }
+      }
+    }
+    label {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 51px;
+      height: 50px;
+      border-right: solid 2px $field-border-color;
+      @include transition( border-color, $animation-time, 0 );
+
+      svg {
+        @include absoluteCenter();
+
+        path {
+          @include transition( all, $animation-time, 0 )
+        }
+      }
+    }
+
+    &.failure {
+
+      input {
+        border-color: $main-red-color-1;
+        box-shadow: 0 3px 10px 0 rgba(24, 40, 65, 0.15);
+
+        & + label {
+          border-color: $main-red-color-1;
+
+          svg path {
+            fill: $main-red-color-1;
+          }
+        }
+      }
+      .login__form-failure {
+        height: 35px;
+        margin-top: 30px;
+        margin-bottom: 20px;
+        -webkit-transition-delay: 0s;
+        transition-delay: 0s;
+
+        > div {
+          opacity: 1;
+          visibility: visible;
+          -webkit-transform: translateY(0);
+          transform: translateY(0);
+          -webkit-transition-delay: $animation-time + s;
+          transition-delay: $animation-time + s;
+        }
+      }
+    }
+  }
+  &__form-invalid {
+    position: relative;
+    width: 100%;
+    height: 0;
+    margin-top: 0;
+    padding-top: 0;
+    @include transition( all, .15, 0 );
+    -webkit-transition-delay: .15s;
+    transition-delay: .15s;
+
+    div {
+      opacity: 0;
+      visibility: hidden;
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      max-width: 100%;
+      padding: 7px 10px;
+      border-radius: 5px;
+      background-color: $main-red-color-1;
+      font-size: 14px;
+      line-height: 1.43;
+      font-weight: $bold;
+      text-overflow: ellipsis;
+      color: $main-white-color;
+      -webkit-transform: translateY(10px);
+      transform: translateY(10px);
+      @include transition( all, .15, 0 );
+
+      &:before {
+        position: absolute;
+        top: -5px;
+        width: 0;
+        height: 0;
+        border-style: solid;
+        border-width: 0 4px 5px 4px;
+        border-color: transparent transparent $main-red-color-1 transparent;
+        content: '';
+      }
+    }
+  }
+  &__form-failure {
+    position: relative;
+    margin-top: 0;
+    margin-bottom: 0;
+    height: 0;
+    @include transition( all, $animation-time, 0 );
+    -webkit-transition-delay: $animation-time + s;
+    transition-delay: $animation-time + s;
+
+    > div {
+      overflow: hidden;
+      opacity: 0;
+      visibility: hidden;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      max-width: 100%;
+      border-radius: 4px;
+      padding: 8px 10px 7px;
+      background: $main-red-color-1;
+      font-size: 14px;
+      line-height: 1.43;
+      font-weight: $bold;
+      color: $main-white-color;
+      text-overflow: ellipsis;
+      -webkit-transform: translateY(10px);
+      transform: translateY(10px);
+      @include transition( all, $animation-time, 0 );
+    }
+  }
+}
+
+@media (min-width: $tablet-portrait) {
+
+  .login {
+
+    &__form {
+
+      input {
+
+        &:hover {
+          box-shadow: inset 0 3px 4px 0 rgba(78, 158, 248, 0.2);
+          border-color: $main-blue-color;
+
+          &::-webkit-input-placeholder {
+            color: $placeholder-hover-color;
+          }
+          &::-moz-placeholder {
+            color: $placeholder-hover-color;
+          }
+          &:-moz-placeholder {
+            color: $placeholder-hover-color;
+          }
+          &:-ms-input-placeholder {
+            color: $placeholder-hover-color;
+          }
+
+          & + label {
+            border-color: $main-blue-color;
+          }
+
+          &.ng-touched.ng-invalid {
+
+            &:hover {
+              border-color: $main-red-color-1;
+              box-shadow: 0 3px 10px 0 rgba(24, 40, 65, 0.15);
+
+              & + label {
+                border-color: $main-red-color-1;
+
+                svg path {
+                  fill: $main-red-color-1;
+                }
+              }
+              & + label + .login__form-invalid {
+                margin-top: 1px;
+                padding-top: 5px;
+                height: 49px;
+                -webkit-transition-delay: 0s;
+                transition-delay: 0s;
+
+                div {
+                  opacity: 1;
+                  visibility: visible;
+                  -webkit-transform: translateY(0);
+                  transform: translateY(0);
+                  -webkit-transition-delay: .15s;
+                  transition-delay: .15s;
+                }
+              }
+            }
+          }
+        }
+      }
+      &.failure {
+
+        input:hover {
+          border-color: $main-red-color-1;
+          box-shadow: 0 3px 10px 0 rgba(24, 40, 65, 0.15);
+
+          & + label {
+            border-color: $main-red-color-1;
+
+            svg path {
+              fill: $main-red-color-1;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+@media (min-width: $tablet-landscape) {
+
+
+}
+@media (min-width: $desktop) {
+
+}
+

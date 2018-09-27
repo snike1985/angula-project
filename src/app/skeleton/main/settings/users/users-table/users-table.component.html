@@ -1,0 +1,62 @@
+<section class="custom-table UsersComponent">
+
+  <header #stickHead
+          *ngIf="viewSize >= 3 && !empty"
+          class="custom-table__header">
+
+    <div class="custom-table__header-inner">
+
+      <span class="custom-table__header-item"
+            *ngFor="let column of tableConf"
+            [class.order]="column[ 'orderName' ]"
+            [class.down]="checkDownClass( column )"
+            [class.up]="checkUpClass( column )"
+            (click)="order( column )">{{ column[ 'title' ][ language ] }}</span>
+
+    </div>
+
+  </header>
+
+  <div class="custom-table__body">
+
+    <div *ngFor="let row of tableData">
+
+      <user-row
+              [columns]="tableConf"
+              [language]="language"
+              [role]="getUserRole( row[ 'roleId' ] )"
+              [data]="row"></user-row>
+
+    </div>
+
+  </div>
+
+  <div class="spinner spinner_inner" *ngIf="loading">
+
+    <p class="spinner__text">Loading…</p>
+
+  </div>
+
+  <div class="empty" *ngIf="empty">
+
+    <!--empty__icon-->
+    <div class="empty__icon">
+
+      <svg viewBox="0 0 24 24">
+        <g id="UI-Kit" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+          <g>
+            <path d="M7.18630005,12.0821764 C5.36735093,12.456869 4,14.0685723 4,16 L4,18.0018986 C4,19.1132936 4.8927712,20 5.99406028,20 L18.0059397,20 C19.1054862,20 20,19.1054196 20,18.0018986 L20,16 C20,14.072473 18.6323547,12.4578079 16.8135214,12.0823456 C15.5589631,13.2709472 13.8646212,14 12,14 C10.1352903,14 8.44087622,13.270878 7.18630005,12.0821764 Z M12,12 C14.209139,12 16,10.209139 16,8 C16,5.790861 14.209139,4 12,4 C9.790861,4 8,5.790861 8,8 C8,10.209139 9.790861,12 12,12 Z"/>
+          </g>
+        </g>
+      </svg>
+
+    </div>
+    <!--/empty__icon-->
+
+    <div>{{ texts[ 'empty' ] }}</div>
+
+  </div>
+
+</section>
+
+

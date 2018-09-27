@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 43.2 (39069) - http://www.bohemiancoding.com/sketch -->
+    <title>view as list copy</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="UI-Kit" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="view-as-list-copy" fill="#4E9FF8">
+            <path d="M10,14 L10,15.9914698 C10,17.0980496 10.7484629,17.5010247 11.6717387,16.8855076 L17.3282613,13.1144924 C18.248145,12.5012366 18.2515371,11.5010247 17.3282613,10.8855076 L11.6717387,7.11449245 C10.751855,6.50123665 10,6.8992496 10,8.0085302 L10,10 L2,10 L2,14 L10,14 Z M2,5.99922997 C2,3.79051625 3.79246765,2 5.99922997,2 L18.00077,2 C20.2094838,2 22,3.79246765 22,5.99922997 L22,18.00077 C22,20.2094838 20.2075324,22 18.00077,22 L5.99922997,22 C3.79051625,22 2,20.2075324 2,18.00077 L2,5.99922997 Z" id="import" transform="translate(12.000000, 12.000000) rotate(-90.000000) translate(-12.000000, -12.000000) "></path>
+        </g>
+    </g>
+</svg>

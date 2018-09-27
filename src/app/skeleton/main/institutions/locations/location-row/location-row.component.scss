@@ -1,0 +1,154 @@
+@import "../../../../../scss/main-app";
+@import "../../../../../scss/edits";
+@import "../../../../../scss/custom-table";
+
+.location-row {
+	min-height: 110px;
+	border-bottom: 2px solid #f4f6f9;
+	@include main-font();
+
+	&:hover {
+		box-shadow: 0 3px 10px 0 rgba(24, 40, 65, 0.15);
+		border-color: transparent;
+
+		.edits {
+			opacity: 1;
+			visibility: visible;
+		}
+	}
+	>div {
+		padding: 19px 10px 15px 75px;
+
+		&:nth-child(1) {
+
+			&:before {
+				position: absolute;
+				top: 0;
+				left: 0;
+				height: 100%;
+				width: 75px;
+				background-image: url(../../../../../../assets/img/icon-location.svg);
+				background-position: calc(50% + 5px) 20px;
+				background-size: 38px 20px;
+				background-repeat: no-repeat;
+				content: '';
+			}
+
+		}
+
+	}
+	&__name {
+		position: relative;
+
+		h2 {
+			margin: 0 0 12px;
+			font-weight: 400;
+			font-size: 18px;
+			line-height: 20px;
+			color: #212c3d;
+		}
+
+	}
+	&__items {
+		font-size: 14px;
+		line-height: 16px;
+		color: #9ba1b9;
+
+		>div {
+			margin-bottom: 5px;
+		}
+
+		a {
+			opacity: 1;
+			display: inline-block;
+			vertical-align: top;
+			font-size: 14px;
+			line-height: 16px;
+			color: #4e9ff8;
+			transition: opacity 0.15s linear 0s;
+
+			&:hover {
+				opacity: .8;
+			}
+
+		}
+		span {
+			display: block;
+			overflow: hidden;
+			margin: 0 0 4px;
+			white-space: nowrap;
+			max-width: 100%;
+			text-overflow: ellipsis;
+
+			> span {
+				display: inline;
+			}
+			a {
+				display: inline;
+			}
+
+		}
+
+	}
+	.edits {
+		width: 80px;
+		right: 2.1%;
+		padding-top: 18px !important;
+
+		&__btn {
+			margin-bottom: 2px;
+		}
+	}
+	.datepicker-control {
+		margin: -9px 0 0 -12px;
+	}
+}
+
+@media (min-width: $desktop) {
+
+	.location-row {
+		display: flex;
+		flex-direction: row;
+		justify-content: flex-start;
+		align-items: stretch;
+
+		>div {
+			padding: 19px 10px 21px;
+
+			&:nth-child(1) {
+				width: 48.3%;
+				padding-left: 75px;
+			}
+			&:nth-child(2) {
+				width: 10%;
+			}
+			&:nth-child(3) {
+				width: 12.3%;
+			}
+			&:nth-child(4) {
+				width: 29.4%;
+			}
+
+		}
+		&__items {
+			display: flex;
+			flex-direction: row;
+			justify-content: flex-start;
+			align-items: stretch;
+			flex-wrap: wrap;
+
+			>div {
+				width: 58%;
+				margin-bottom: 0;
+
+				&:first-child {
+					width: 40%;
+				}
+
+			}
+
+		}
+
+	}
+
+}

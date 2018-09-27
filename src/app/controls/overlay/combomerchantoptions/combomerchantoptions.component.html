@@ -1,0 +1,43 @@
+<div class="simple-dropdown main-form combo-multi-select" perfect-scrollbar [formGroup]="fg" (submit)="submit( fg )">
+
+  <div class="combo-multi-select__header" *ngIf="!checkIfThisGlobalValue(options[0])">
+    <switch-control
+            [disabledState]="true"
+            [formControl]="anyControl"
+            [niceCheckbox]="true"
+            [label]="options[0]['options'][0]['text']">
+    </switch-control>
+
+  </div>
+
+
+  <div class="combo-multi-select__content">
+
+    <ng-template ngFor let-service [ngForOf]="options">
+
+      <div class="combo-multi-select__row" *ngIf="checkIfThisGlobalValue(service)">
+
+      <div  *ngIf="service['label']" class="combo-multi-select__label">{{ service['label'] }}</div>
+
+      <div  *ngFor="let option of service['options']; let i = index" class="combo-multi-select__switch">
+
+        <switch-control [disabledState]="false"
+                        [formControlName]="option['value']"
+                        [niceCheckbox]="true"
+                        [label]="option['text']">
+        </switch-control>
+
+      </div>
+
+    </div>
+
+    </ng-template>
+
+  </div>
+
+  <div class="main-forms__btns">
+    <button class="btn" type="button" (click)="submit( fg )">Apply Filter</button>
+    <button class="main-form__link" type="button" (click)="closeDropDown()" >Cancel</button>
+  </div>
+
+</div>

@@ -1,0 +1,37 @@
+
+.count {
+  text-align: center;
+
+  &__item {
+    display: inline-block;
+    vertical-align: top;
+    //margin: 0 30px;
+    width: 32%;
+  }
+  &__value {
+    overflow: hidden;
+    margin-bottom: 10px;
+    font-size: 50px;
+    font-weight: $light;
+    text-align: center;
+    color: #525a77;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  &__text {
+    font-size: 16px;
+    color: #9aa1b9;
+    text-align: center;
+  }
+}
+
+@media (min-width: $tablet-portrait) {
+
+}
+@media (min-width: $tablet-landscape) {
+
+}
+@media (min-width: $desktop) {
+
+}
+

@@ -1,0 +1,57 @@
+<div class="main__scroll" #mainscroll *ngIf="viewSize" perfect-scrollbar [@FadeInOut]="">
+
+  <div>
+
+    <div class="main__head">
+
+      <h2 class="main__title">{{ texts[ 'title' ] }}</h2>
+
+      <div class="main__head-btns">
+
+        <a class="btn"
+           routerLink="create">
+
+          {{ texts[ 'createBtn' ] }}
+
+        </a>
+
+      </div>
+
+    </div>
+
+    <div class="main__controls" *ngIf="!totalRecords">
+
+      <schedule-filter [filterConf]="filterConf"
+                    *ngIf="filterConf"
+                    [lang]="language"
+                    [viewSize]="viewSize"></schedule-filter>
+
+      <div class="main__controls-wrap">
+
+        <span class="main__controls-title">{{ totalStr }}</span>
+
+      </div>
+
+      <schedule-search
+              *ngIf="config[ 'search' ]"
+              [placeholderText]="texts[ 'searchPlaceholder' ]"></schedule-search>
+
+    </div>
+
+    <schedule-table *ngIf="!totalRecords"
+                  [tableConf]="tableConf"
+                  [tableData]="tableData"
+                  [viewSize]="viewSize"
+                  [loading]="loading"
+                  [language]="language"
+                  [empty]="empty"
+                  [texts]="texts">
+    </schedule-table>
+
+    <div class="empty" *ngIf="totalRecords">
+      <div>{{ texts[ 'emptyTotal' ] }}</div>
+    </div>
+
+  </div>
+
+</div>

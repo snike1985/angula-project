@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 43.2 (39069) - http://www.bohemiancoding.com/sketch -->
+    <title>сountry state</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="UI-Kit" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="сountry-state" fill-rule="nonzero" fill="#CBCFDA">
+            <path d="M16,8.40370085 L16,6 L20.3286655,3.114223 C21.2517181,2.49885463 22,2.89451376 22,3.99406028 L22,16.0059397 C22,17.1072288 21.2522274,18.4985151 20.3286655,19.114223 L16,22 L16,19.5962991 L19.2192651,17.4501224 C19.5874361,17.2046751 20,16.4373011 20,16.0059397 L20,5.73703418 L16,8.40370085 Z M16,6 L16,22 L8,18 L8,2 L16,6 Z M4,18.2629658 L8,15.5962991 L8,18 L3.67133451,20.885777 C2.74828195,21.5011454 2,21.1054862 2,20.0059397 L2,7.99406028 C2,6.8927712 2.7477726,5.50148493 3.67133451,4.885777 L8,2 L8,4.40370085 L4.7807349,6.54987759 C4.41256389,6.79532492 4,7.56269894 4,7.99406028 L4,18.2629658 Z" id="Combined-Shape"></path>
+        </g>
+    </g>
+</svg>

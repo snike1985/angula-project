@@ -1,0 +1,107 @@
+<div class="popup-layout popup-layout_import">
+
+  <header>
+
+    <h1 class="popup-layout__title">{{ texts[ 'title' ] }} {{ status }}</h1>
+
+  </header>
+
+  <div class="popup-layout__content">
+
+    <div class="audit-log">
+
+      <div class="audit-log__row">
+
+        <div class="audit-log__item">
+
+          <h2>{{ texts[ 'labels' ][ 'date' ] }}:</h2>
+
+          <div class="audit-log__date">
+
+            <span>{{ currentItem[ 'date' ] | date: "dd MMM yyyy" }}</span>
+            {{ currentItem[ 'date' ] | date: "hh:mm:ss a" }}
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="audit-log__row">
+
+        <div class="audit-log__item">
+
+          <h2>{{ texts[ 'labels' ][ 'objectType' ] }}:</h2>
+
+          <div class="audit-log__object-type">
+
+            {{ currentItem[ 'object' ][ 'type' ][ 'name' ] }}
+
+          </div>
+
+        </div>
+        <div class="audit-log__item">
+
+          <h2>{{ texts[ 'labels' ][ 'objectName' ] }}:</h2>
+
+          <div class="audit-log__object-name">
+
+            {{ currentItem[ 'object' ][ 'text' ] }}
+
+          </div>
+
+        </div>
+        <div class="audit-log__item">
+
+          <h2>{{ texts[ 'labels' ][ 'action' ] }}:</h2>
+
+          <div class="audit-log__action">
+
+            <span class="{{ currentItem[ 'action' ] }}">{{ currentItem[ 'action' ] }}</span>
+
+            {{ status }}
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="audit-log__row">
+
+        <div class="audit-log__item">
+
+          <h2>{{ texts[ 'labels' ][ 'user' ] }}:</h2>
+
+          <div class="audit-log__user">
+
+            <a class="audit-log__user-name">{{ currentItem[ 'user' ][ 'name' ] }}</a>
+            {{ currentItem[ 'user' ][ 'role' ][ 'name' ] }}
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="audit-log__row">
+
+        <div class="audit-log__item">
+
+          <h2>{{ texts[ 'labels' ][ 'description' ] }}:</h2>
+
+          <div class="audit-log__discription">
+
+            {{ currentItem[ 'description' ] }}
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>

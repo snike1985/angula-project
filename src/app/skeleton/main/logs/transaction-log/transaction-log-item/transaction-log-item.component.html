@@ -1,0 +1,129 @@
+<div class="transaction-log-item">
+
+  <header>
+
+    <h3>{{ currentItem[ 'name' ] }}</h3>
+
+    <span class="transaction-log-item__state">
+      <span class="type_{{ currentItem[ 'status' ][ 'type' ] }}">{{ currentItem[ 'status' ][ 'text' ] }}</span>
+    </span>
+
+    <button (click)="opened = !opened">
+      <svg *ngIf="!opened" width="23px" height="24px" viewBox="0 0 23 24">
+        <g id="UI-Kit" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+          <g id="plus">
+            <g id="+" transform="translate(2.000000, 2.000000)">
+              <rect id="bg-copy-2" fill="#CBCFDA" x="0" y="0" width="20" height="20" rx="3"></rect>
+              <path d="M8.5,9 L5.49554521,9 C4.67955446,9 4,9.67157288 4,10.5 C4,11.3342028 4.6695784,12 5.49554521,12 L8.5,12 L8.5,15.0044548 C8.5,15.8204455 9.17157288,16.5 10,16.5 C10.8342028,16.5 11.5,15.8304216 11.5,15.0044548 L11.5,12 L14.5044548,12 C15.3204455,12 16,11.3284271 16,10.5 C16,9.66579723 15.3304216,9 14.5044548,9 L11.5,9 L11.5,5.99554521 C11.5,5.17955446 10.8284271,4.5 10,4.5 C9.16579723,4.5 8.5,5.1695784 8.5,5.99554521 L8.5,9 Z" id="Combined-Shape" fill="#FFFFFF"></path>
+            </g>
+          </g>
+        </g>
+      </svg>
+      <svg *ngIf="opened" width="23px" height="24px" viewBox="0 0 23 24">
+        <g id="UI-Kit" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+          <g id="minus">
+            <g id="-" transform="translate(2.000000, 2.000000)">
+              <rect id="bg" fill="#CBCFDA" x="0" y="0" width="20" height="20" rx="3"></rect>
+              <rect id="Rectangle-2" fill="#FFFFFF" x="4" y="9" width="12" height="3" rx="1.5"></rect>
+            </g>
+          </g>
+        </g>
+      </svg>
+    </button>
+
+  </header>
+
+  <div class="transaction-log-item__body" *ngIf="opened">
+
+    <div class="transaction-log-item__layout">
+      <h4>
+        <svg width="24px" height="24px" viewBox="0 0 24 24">
+          <g id="Assets" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+            <g id="request" fill="#CBCFDA">
+              <path d="M16.3713203,10.3713203 L19,13 L19,5 L11,5 L13.5428932,7.54289322 L9.52512627,11.5606602 L12.3535534,14.3890873 L16.3713203,10.3713203 Z M11,22 L11,18.0023695 C11,15.7918218 9.20622683,14 6.99349548,14 L2,14 L2,5.99922997 C2,3.79051625 3.79246765,2 5.99922997,2 L18.00077,2 C20.2094838,2 22,3.79246765 22,5.99922997 L22,18.00077 C22,20.2094838 20.2075324,22 18.00077,22 L11,22 Z M9,22 L3,16 L7.00208688,16 C8.10550383,16 9,16.8982606 9,17.9979131 L9,22 Z" id="Combined-Shape"></path>
+            </g>
+          </g>
+        </svg>
+        {{ texts[ 'titles' ][ 'request' ] }}
+      </h4>
+
+      <div class="transaction-log-item__row">
+
+        <div class="transaction-log-item__column">
+
+          <dl>
+
+            <ng-container *ngFor="let item of currentItem[ 'request' ][ 'first_column' ]">
+              <dt>{{ item[ 'key' ] }}:</dt>
+              <dd>{{ item[ 'value' ] }}</dd>
+            </ng-container>
+
+          </dl>
+
+        </div>
+
+        <div class="transaction-log-item__column">
+
+          <dl>
+
+            <ng-container *ngFor="let item of currentItem[ 'request' ][ 'second_column' ]">
+              <dt>{{ item[ 'key' ] }}:</dt>
+              <dd>{{ item[ 'value' ] }}</dd>
+            </ng-container>
+
+          </dl>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="transaction-log-item__layout">
+      <h4>
+        <svg width="24px" height="24px" viewBox="0 0 24 24">
+          <g id="Assets" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+            <g id="response" fill="#CBCFDA">
+              <path d="M12.5428932,8.54289322 L10,6 L10,14 L18,14 L15.3713203,11.3713203 L20.3033009,6.43933983 L17.4748737,3.6109127 L12.5428932,8.54289322 Z M11,22 L11,18.0023695 C11,15.7918218 9.20622683,14 6.99349548,14 L2,14 L2,5.99922997 C2,3.79051625 3.79246765,2 5.99922997,2 L18.00077,2 C20.2094838,2 22,3.79246765 22,5.99922997 L22,18.00077 C22,20.2094838 20.2075324,22 18.00077,22 L11,22 Z M9,22 L3,16 L7.00208688,16 C8.10550383,16 9,16.8982606 9,17.9979131 L9,22 Z" id="Combined-Shape"></path>
+            </g>
+          </g>
+        </svg>
+        {{ texts[ 'titles' ][ 'response' ] }}
+      </h4>
+
+      <div class="transaction-log-item__row">
+
+        <div class="transaction-log-item__column">
+
+          <dl>
+
+            <ng-container *ngFor="let item of currentItem[ 'response' ][ 'first_column' ]">
+              <dt>{{ item[ 'key' ] }}:</dt>
+              <dd>{{ item[ 'value' ] }}</dd>
+            </ng-container>
+
+          </dl>
+
+        </div>
+
+        <div class="transaction-log-item__column">
+
+          <dl>
+
+            <ng-container *ngFor="let item of currentItem[ 'response' ][ 'second_column' ]">
+              <dt>{{ item[ 'key' ] }}:</dt>
+              <dd>{{ item[ 'value' ] }}</dd>
+            </ng-container>
+
+          </dl>
+
+        </div>
+
+      </div>
+
+
+    </div>
+
+  </div>
+
+</div>

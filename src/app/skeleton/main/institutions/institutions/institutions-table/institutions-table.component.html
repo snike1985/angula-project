@@ -1,0 +1,59 @@
+<section class="custom-table InstitutionsComponent">
+
+  <header #stickHead
+          *ngIf="viewSize >= 3 && !empty"
+          class="custom-table__header">
+
+    <div class="custom-table__header-inner">
+
+      <span class="custom-table__header-item"
+            *ngFor="let column of tableConf"
+            [class.order]="column[ 'orderName' ]"
+            [class.down]="checkDownClass( column )"
+            [class.up]="checkUpClass( column )"
+            (click)="order( column )">{{ column[ 'title' ][ language ] }}</span>
+    </div>
+
+  </header>
+
+  <div class="custom-table__body">
+
+    <div *ngFor="let row of tableData">
+
+      <institutions-row
+              [columns]="tableConf"
+              [language]="language"
+              [data]="row">
+      </institutions-row>
+
+    </div>
+
+  </div>
+
+  <div class="spinner spinner_inner" *ngIf="loading">
+
+    <p class="spinner__text">Loading…</p>
+
+  </div>
+
+  <div class="empty" *ngIf="empty">
+
+    <!--empty__icon-->
+    <div class="empty__icon">
+
+      <svg viewBox="0 0 18 18">
+        <g id="UI-Kit">
+            <g id="institutions">
+                <path id="Institutions" class="st0" d="M10,8h6c1.1,0,2,0.9,2,2v6c0,1.1-0.9,2-2,2H7.5H2c-1.1,0-2-0.9-2-2V2c0-1.1,0.9-2,2-2h6    c1.1,0,2,0.9,2,2V8z M2,2v2h2V2H2z M6,2v2h2V2H6z M2,6v2h2V6H2z M6,6v2h2V6H6z M2,10v2h2v-2H2z M6,10v2h2v-2H6z M10,10v2h2v-2H10z     M10,14v2h2v-2H10z M6,14v4h2v-4H6z M2,14v2h2v-2H2z M14,14v2h2v-2H14z M14,10v2h2v-2H14z"/>
+            </g>
+        </g>
+      </svg>
+
+    </div>
+    <!--/empty__icon-->
+
+    <div>{{ texts[ 'empty' ] }}</div>
+
+  </div>
+
+</section>

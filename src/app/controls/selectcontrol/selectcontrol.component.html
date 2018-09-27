@@ -1,0 +1,12 @@
+
+  <div class="select-control" (click)="openDropDown($event)"  [ngClass]="className" [class.no-label]="label === ''" [class.select-control_any]="selectedSomeValue" [class.active]="activeSelectName==controlName">
+
+    <span class="select-control-label" *ngIf="label !== ''">{{ label }}</span>
+
+    <div class="select-control-wrap" [dropEffect]="'rgba(78, 159, 248, 0.2)'">
+
+      <div class="selected">{{ selectedValue }}</div>
+
+    </div>
+
+  </div>

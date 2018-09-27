@@ -1,0 +1,51 @@
+.logo {
+  display: block;
+  margin: 0 auto;
+  min-width: 136px;
+
+  svg {
+    display: inline-block;
+    vertical-align: middle;
+    width: 30px;
+    height: 30px;
+    margin-right: 7px;
+  }
+  h1 {
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 14px;
+    line-height: 0.71;
+    color: #525a77;
+    font-weight: $regular;
+    text-align: left;
+
+    span {
+      display: block;
+      font-size: 18px;
+      font-weight: 900;
+      line-height: 1.11;
+    }
+  }
+}
+
+@media (min-width: $tablet-portrait) {
+
+  .logo {
+    min-width: 194px;
+
+    svg {
+      width: 50px;
+      height: 50px;
+      margin-right: 22px;
+    }
+    h1 {
+      font-size: 18px;
+      line-height: 1.11;
+
+      span {
+        font-size: 24px;
+        line-height: 1.33;
+      }
+    }
+  }
+}

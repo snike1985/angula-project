@@ -1,0 +1,16 @@
+<div class="functions">
+  <button class="functions__title" (click)="toggleList()" [activeEffect]="'blue'">{{ functions.length }} {{ title }}</button>
+  <button class="functions__hide" (click)="toggleList()" [@flyInOut] *ngIf="hiddenList" [activeEffect]="'blue'">{{ texts[ 'hideBtn' ] }}</button>
+
+  <ul class="functions__list" *ngIf="hiddenList" [@shrinkOut]>
+    <li *ngFor="let func of functions">
+      {{ func[ 'function' ][ 'code' ] }}
+      <div class="functions__list-status">
+        <span class="functions__create" [class.active]="func[ 'canCreate' ]">C</span>
+        <span class="functions__read" [class.active]="func[ 'canView' ]">R</span>
+        <span class="functions__update" [class.active]="func[ 'canModify' ]">U</span>
+        <span class="functions__delete" [class.active]="func[ 'canDelete' ]">D</span>
+      </div>
+    </li>
+  </ul>
+</div>

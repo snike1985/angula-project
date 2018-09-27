@@ -1,0 +1,138 @@
+@import "../../../../../scss/main-app";
+@import "../../../../../scss/edits";
+@import "../../../../../scss/custom-table";
+
+.institutions-row {
+  @include main-font();
+  min-height: 110px;
+  border-bottom: 2px solid #f4f6f9;
+  box-shadow: 0 3px 10px 0 rgba(24, 40, 65, 0);
+  transition-property: border-color, box-shadow;
+  -webkit-transition: $animation-time+s ease-in-out;
+  transition: $animation-time+s ease-in-out;
+
+  &:hover {
+    box-shadow: 0 3px 10px 0 rgba(24, 40, 65, 0.15);
+    border-color: transparent;
+
+    .edits {
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+  >div {
+    padding: 19px 10px 15px 75px;
+
+    &:nth-child(1) {
+
+      &:before {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 75px;
+        background-image: url(../../../../../../assets/img/icon-institutions.svg);
+        background-size: calc(50% - 19px) 18px;
+        background-position: 35px 19px;
+        background-repeat: no-repeat;
+        content: '';
+      }
+
+    }
+  }
+  &__name {
+    position: relative;
+
+    h2 {
+      margin: 0 0 12px;
+      font-weight: 400;
+      font-size: 18px;
+      line-height: 20px;
+      color: #212c3d;
+    }
+    &-code {
+      display: block;
+      margin: 0 0 4px;
+      font-size: 14px;
+      line-height: 16px;
+      color: #9ba1b9;
+    }
+
+  }
+  &__links {
+
+    a {
+      display: inline-block;
+      vertical-align: top;
+      margin: 0 10px 10px 0;
+      font-size: 14px;
+      line-height: 16px;
+      color: #4e9ff8;
+      transition: color 0.15s linear 0s;
+
+      &:hover {
+        color: #212c3d;
+      }
+
+    }
+
+  }
+  .edits {
+    width: 80px;
+    right: 2.1%;
+    padding-top: 18px !important;
+
+    &__btn {
+      margin-bottom: 2px;
+    }
+  }
+  .datepicker-control {
+    margin: -9px 0 0 -12px;
+  }
+
+}
+
+@media (min-width: $desktop) {
+
+  .institutions-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: stretch;
+
+    >div {
+      padding: 19px 10px 15px;
+
+      &:nth-child(1) {
+        width: 48.3%;
+        padding-left: 75px;
+      }
+      &:nth-child(2) {
+        width: 10%;
+      }
+      &:nth-child(3) {
+        width: 12.3%;
+      }
+      &:nth-child(4) {
+        width: 29.4%;
+      }
+
+    }
+    &__links {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: stretch;
+      flex-wrap: wrap;
+      padding-right: 29px;
+      max-width: 388px;
+
+      a {
+        margin: 0 5px 5px 0;
+      }
+
+    }
+
+  }
+
+}

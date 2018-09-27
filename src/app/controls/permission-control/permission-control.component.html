@@ -1,0 +1,28 @@
+<div class="permission__row">
+
+  <span class="permission__row-title">{{ functionData['text'] }}</span>
+
+  <div class="permission__row-items" [formGroup]="permissionFormGroup">
+
+      <span class="nice-checkbox" *ngFor="let functionItem of permissions">
+
+          <!--<input type="checkbox" formControlName="{{ functionItem }}" (click)="choosePermission(functionItem)">-->
+
+          <switch-control
+                  formControlName="{{ functionItem }}"
+                  [disabledState]="false"
+                  [niceCheckbox]="true"
+                  [withoutLabel]="true">
+          </switch-control>
+
+      </span>
+
+    <button class="permission__row-delete"
+            (click)="deleteItem()"
+            [activeEffect]="'red'">
+      {{ texts['texts'][language]['deleteBtnText'] }}
+    </button>
+
+  </div>
+
+</div>

@@ -1,0 +1,110 @@
+@import "../../../../../scss/main-app";
+@import "../../../../../scss/main";
+@import "../../../../../scss/popup-layout";
+
+.popup-layout__subtitle {
+	padding-top: 10px;
+	font-family: Lato;
+	font-size: 16px;
+	line-height: 1.25;
+	text-align: left;
+	font-weight: 400;
+	color: #9ba1b9;
+
+	span {
+		color: #212c3d;
+		font-weight: 700;
+
+		span {
+			font-weight: 400;
+			color: #9ba1b9;
+		}
+
+	}
+}
+
+.workflow-new {
+	padding: 30px 35px 30px;
+
+
+	&__services-title {
+		font-family: Lato;
+		font-size: 18px;
+		line-height: 1.11;
+		text-align: left;
+		font-weight: normal;
+		color: #212c3d;
+		margin-bottom: 20px;
+	}
+
+	&__services {
+		position: relative;
+		padding-bottom: 31px;
+
+		&:after {
+			content: '';
+			position: absolute;
+			bottom: 0;
+			left: -30px;
+			right: -30px;
+			height: 1px;
+			background: #e8ebf1;
+		}
+	}
+
+	&__options {
+		padding-top: 29px;
+
+	}
+
+	&__options-title {
+		margin-bottom: 20px;
+		font-family: Lato;
+		font-size: 18px;
+		line-height: 1.11;
+		text-align: left;
+		color: #212c3d;
+		font-weight: 400;
+	}
+
+	&__options-control {
+		margin-bottom: 10px;
+	}
+
+	&__btns {
+		padding-top: 20px;
+	}
+
+	&__services-wrap {
+		overflow: hidden;
+		margin-bottom: 10px;
+	}
+
+	&__error {
+		margin-top: 20px;
+		border-radius: 5px;
+		display: inline-block;
+		padding: 0 10px;
+		background-color: #ee7e85;
+		position: relative;
+		font-family: Lato;
+		font-size: 14px;
+		font-weight: bold;
+		line-height: 35px;
+		height: 35px;
+		text-align: left;
+		color: #ffffff;
+	}
+
+	&__cancel {
+		font-family: Lato;
+		font-size: 16px;
+		font-weight: bold;
+		text-align: left;
+		color: #4e9ff8;
+		background: none;
+		border: none;
+		padding: 0;
+	}
+
+}

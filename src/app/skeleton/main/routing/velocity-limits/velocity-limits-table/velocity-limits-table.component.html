@@ -1,0 +1,63 @@
+<section class="custom-table VelocityLimitsComponent">
+
+  <header #stickHead
+          *ngIf="viewSize >= 3 && !empty"
+          class="custom-table__header">
+
+    <div class="custom-table__header-inner">
+
+      <span class="custom-table__header-item"
+            *ngFor="let column of tableConf"
+            [class.order]="column[ 'orderName' ]"
+            [class.down]="checkDownClass( column )"
+            [class.up]="checkUpClass( column )"
+            (click)="order( column )">{{ column[ 'title' ][ language ] }}
+      </span>
+
+    </div>
+
+  </header>
+
+  <div class="custom-table__body" [ngSwitch]="componentName">
+
+    <div>
+
+      <div class="custom-table__row">
+
+        <div class="schedule-row">
+          there is data
+        </div>
+
+      </div>
+
+    </div>
+
+    <!--<div *ngFor="let row of tableData">-->
+
+    <!--<velocity-limits-row-->
+    <!--[columns]="tableConf"-->
+    <!--[language]="language"-->
+    <!--[data]="row">-->
+    <!--</velocity-limits-row>-->
+
+    <!--</div>-->
+
+  </div>
+
+  <div class="spinner spinner_inner" *ngIf="loading">
+
+    <p class="spinner__text">Loading…</p>
+
+  </div>
+
+  <div class="empty" *ngIf="empty">
+
+    <div class="empty__icon"></div>
+
+    {{ texts[ 'empty' ] }}
+
+  </div>
+
+</section>
+
+

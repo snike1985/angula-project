@@ -1,0 +1,197 @@
+<div class="popup-layout popup-layout_import">
+
+    <header>
+
+        <h1 class="popup-layout__title">{{ texts[ 'title' ] }}</h1>
+
+        <button class="institution-import__other" (click)="step = 1" *ngIf="step === 3 || step === 4">{{ texts['uploadBtn' ] }}</button>
+
+    </header>
+
+    <div class="popup-layout__content" [perfect-scrollbar]="{ suppressScrollX: true }" [style.maxHeight.px]="maxHeight">
+
+        <div class="institution-import" [ngSwitch]="step">
+
+            <div class="institution-import__step" *ngSwitchCase="1">
+
+                <div class="institution-import__description">
+                    {{ texts[ 'description' ] }}
+                    <a href="{{ config[ 'templateSrc' ] }}">{{ texts[ 'templateBtn' ] }}</a>
+                </div>
+
+                <div class="institution-import__drop"
+                     ng2FileDrop
+                     [ngClass]="{'institution-import_drag': dragClass, 'institution-import_drop-rejected': dragClassRejected}"
+                     [ng2FileDropDisableStyles]="true"
+                     [ng2FileDropSupportedFileTypes]="supportedFileTypes"
+                     (ng2FileDropFileRejected)="dragFileRejected($event)"
+                     (ng2FileDropFileAccepted)="dragFileAccepted($event)"
+                     (ng2FileDropHoverEnd)="dragFileOverEnd()"
+                     (ng2FileDropHoverStart)="dragFileOverStart()">
+
+                    <div class="institution-import__icon" *ngIf="fileName">
+                        {{ fileName }}
+                    </div>
+
+                    <div class="institution-import__icon-clip" *ngIf="!fileName"></div>
+
+                    <div class="institution-import__drop-hint">
+
+                        {{ texts[ 'dropHint' ] }}
+
+                        <label>
+
+                            {{ texts[ 'selectBtn' ] }}
+
+                            <input type="file" accept="text/csv" (change)="onFileChange($event)">
+
+                        </label>
+
+                    </div>
+
+                </div>
+
+                <div class="main__btns">
+
+                    <button class="btn"
+                            (click)="validate()"
+                            [disabled]="!fileName">{{ texts[ 'btnNext' ] }}
+                    </button>
+
+                    <button class="main__btns-link" (click)="close()">{{ texts[ 'btnCancel' ] }}</button>
+
+                </div>
+
+            </div>
+
+            <div class="institution-import__step" *ngSwitchCase="2">
+
+                <div class="institution-import__validating">
+                    <div>
+
+                        <div class="institution-import__icon" *ngIf="fileName">
+                            {{ fileName }}
+                        </div>
+
+                        {{ texts[ 'validateProcessing' ] }}
+
+                        <div class="institution-import__progress">
+
+                            <span [ngStyle]="{ 'width.%': progress }"></span>
+
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="institution-import__step" *ngSwitchCase="3">
+
+                <div class="institution-import__success">
+
+                    <div class="institution-import__success-message">
+                        {{ texts[ 'valid' ] }} ({{ successCounter[ 'institutions' ] }} {{ texts[ 'validInstitutions' ]
+                        }}, {{ successCounter[ 'merchants' ] }} {{ texts[ 'validMerchants' ] }}, {{ successCounter[
+                        'locations' ] }} {{ texts[ 'validLocations' ] }}, {{ successCounter[ 'devices' ] }} {{ texts[
+                        'validDevices' ] }})
+                    </div>
+
+                    <div class="institution-import__success-content" perfect-scrollbar>
+
+                        <div class="institution-import__institution"
+                             *ngFor="let institution of this.success[ 'institutions' ]">
+
+                            {{ institution[ 'name' ] }}
+
+                            <div class="institution-import__merchant"
+                                 *ngFor="let merchant of institution[ 'merchants' ]">
+
+                                {{ merchant[ 'name' ] }}
+
+                                <div class="institution-import__location"
+                                     *ngFor="let location of merchant[ 'locations' ]">
+
+                                    {{ location[ 'name' ] }}
+
+                                    <div class="institution-import__device"
+                                         *ngFor="let device of location[ 'devices' ]">
+
+                                        {{ device }}
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="main__btns">
+
+                        <button class="btn"
+                                (click)="import()"
+                                [disabled]="!fileName">{{ texts[ 'btnNext' ] }}
+                        </button>
+
+                        <button class="main__btns-link" (click)="close()">{{ texts[ 'btnCancel' ] }}</button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="institution-import__step" *ngSwitchCase="4">
+
+                <div class="institution-import__error">
+
+                    <div class="institution-import__error-message">
+                        {{ texts[ 'error' ] }} ({{ error.length }} {{ texts[ 'error2' ] }})
+                    </div>
+
+                    <div class="institution-import__error-content" perfect-scrollbar>
+
+                        <h2 class="institution-import__error-title">{{ texts[ 'errorDescription' ] }}</h2>
+
+                        <ul class="institution-import__list">
+                            <li *ngFor="let item of error">
+                                <span class="institution-import__list-code">{{ item[ 'code' ] }}</span>
+                                {{ item[ 'value' ] }}
+                            </li>
+                        </ul>
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+            <div class="institution-import__step" *ngSwitchCase="5">
+
+                <div class="institution-import__importing">
+                    <div>
+
+                        <div class="institution-import__icon" *ngIf="fileName">
+                            {{ fileName }}
+                        </div>
+
+                        <div class="spinner spinner_inner">
+
+                            <p class="spinner__text">{{ texts[ 'importProcessing' ] }}</p>
+
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

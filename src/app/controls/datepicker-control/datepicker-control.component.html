@@ -1,0 +1,28 @@
+<div class="datepicker-control" [class.datepicker-control_1]="required" [ngClass]="controlClassName" [class.datepicker-control_filter]="type"  [class.datepicker-control_2]="value || value === 0" [class.active]="activeSelectName==controlName" (click)="openDatepicker($event)">
+    <div  *ngIf="type" class="datepicker__wrap" [dropEffect]="'rgba(78, 159, 248, 0.2)'">
+        <div *ngIf="label" class="datepicker-control__label">{{ label }}</div>
+        <div *ngIf="!type">
+            {{ value | date: "dd MMM yyyy" }}
+            <span class="datepicker-control__value" *ngIf="displayValue">{{ displayValue | date: "hh:mm:ss a" }}</span>
+            <span class="datepicker-control__value" *ngIf="!displayValue">Select Date</span>
+        </div>
+
+        <div *ngIf="type">
+            <span class="datepicker-control__value" *ngIf="displayValue">{{ displayValue }}</span>
+        </div>
+    </div>
+
+
+    <div *ngIf="!type" class="datepicker__wrap">
+        <div *ngIf="label" class="datepicker-control__label">{{ label }}</div>
+        <div *ngIf="!type">
+            {{ value | date: "dd MMM yyyy" }}
+            <span class="datepicker-control__value" *ngIf="displayValue">{{ displayValue | date: "hh:mm:ss a" }}</span>
+            <span class="datepicker-control__value" *ngIf="!displayValue">Select Date</span>
+        </div>
+
+        <div *ngIf="type">
+            <span class="datepicker-control__value" *ngIf="displayValue">{{ displayValue }}</span>
+        </div>
+    </div>
+</div>

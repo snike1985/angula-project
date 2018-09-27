@@ -1,0 +1,29 @@
+<div class="popup-layout popup-layout_import">
+
+  <header>
+
+    <h1 class="popup-layout__title">{{ texts[ 'title' ] }} {{ currentItem[ 'name' ] }}</h1>
+
+  </header>
+
+  <div class="popup-layout__content">
+
+    <div class="delete-confirmation">
+
+      <p class="delete-confirmation__text" *ngIf="currentItem">
+        {{ texts[ 'text' ] }} {{ currentItem[ 'name' ] }} {{ texts[ 'text2' ] }} {{ currentItem[ 'totalLocation' ] }} {{ texts[ 'text3' ] }} {{ currentItem[ 'totalDevice' ] }} {{ texts[ 'text4' ] }}
+      </p>
+
+      <div class="main__btns">
+
+        <button class="btn btn_2" (click)="ok()">{{ texts[ 'btnOk' ] }}</button>
+
+        <button class="main__btns-link" (click)="cancel()">{{ texts[ 'btnCancel' ] }}</button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>

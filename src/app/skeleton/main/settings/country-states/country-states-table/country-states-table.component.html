@@ -1,0 +1,62 @@
+<section class="custom-table CountryStatesComponent">
+
+  <header #stickHead
+          *ngIf="viewSize >= 3 && !empty"
+          class="custom-table__header">
+
+    <div class="custom-table__header-inner">
+
+      <span class="custom-table__header-item"
+            *ngFor="let column of tableConf"
+            [class.order]="column[ 'orderName' ]"
+            [class.down]="checkDownClass( column )"
+            [class.up]="checkUpClass( column )"
+            (click)="order( column )">
+        {{ column[ 'title' ][ language ] }}
+      </span>
+
+    </div>
+
+  </header>
+
+  <div class="custom-table__body">
+
+    <div *ngFor="let row of tableData">
+
+      <country-state-row
+              [columns]="tableConf"
+              [language]="language"
+              [data]="row">
+      </country-state-row>
+
+    </div>
+
+  </div>
+
+  <div class="spinner spinner_inner" *ngIf="loading">
+
+    <p class="spinner__text">Loading…</p>
+
+  </div>
+
+  <div class="empty" *ngIf="empty">
+
+    <!--empty__icon-->
+    <div class="empty__icon">
+
+      <svg viewBox="0 0 24 24">
+        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+          <g>
+            <path d="M17,6 L20.6072212,3.114223 C21.3764317,2.49885463 22,2.89451376 22,3.99406028 L22,16.0059397 C22,17.1072288 21.3768562,18.4985151 20.6072212,19.114223 L17,22 L17,6 Z M15,6 L15,22 L9,18 L9,2 L15,6 Z M7,18 L3.39277875,20.885777 C2.62356829,21.5011454 2,21.1054862 2,20.0059397 L2,7.99406028 C2,6.8927712 2.62314384,5.50148493 3.39277875,4.885777 L7,2 L7,18 Z" id="Combined-Shape"/>
+          </g>
+        </g>
+      </svg>
+
+    </div>
+    <!--/empty__icon-->
+
+    {{ texts[ 'empty' ] }}
+
+  </div>
+
+</section>

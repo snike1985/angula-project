@@ -1,0 +1,59 @@
+<section class="custom-table LocationsComponent">
+
+  <header #stickHead
+          *ngIf="viewSize >= 3 && !empty"
+          class="custom-table__header">
+
+    <div class="custom-table__header-inner">
+
+      <span class="custom-table__header-item"
+            *ngFor="let column of tableConf"
+            [class.order]="column[ 'orderName' ]"
+            [class.down]="checkDownClass( column )"
+            [class.up]="checkUpClass( column )"
+            (click)="order( column )">{{ column[ 'title' ][ language ] }}</span>
+    </div>
+
+  </header>
+
+  <div class="custom-table__body">
+
+    <div *ngFor="let row of tableData">
+
+      <location-row
+              [columns]="tableConf"
+              [language]="language"
+              [data]="row">
+      </location-row>
+
+    </div>
+
+  </div>
+
+  <div class="spinner spinner_inner" *ngIf="loading">
+
+    <p class="spinner__text">Loading…</p>
+
+  </div>
+
+  <div class="empty" *ngIf="empty">
+
+    <!--empty__icon-->
+    <div class="empty__icon">
+
+      <svg viewBox="0 0 24 24">
+        <g id="UI-Kit" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+          <g>
+            <path d="M10.6330937,22.5618823 C10.6330937,22.5618823 3,15.0241537 3,10 C3,5.04489413 7.02943725,1 12,1 C16.9705627,1 21,5.04489413 21,10 C21,15.0241537 13.3767032,22.5512167 13.3767032,22.5512167 C12.6186064,23.3624145 11.3880152,23.3561328 10.6330937,22.5618823 Z M12,12 C13.6568542,12 15,10.6568542 15,9 C15,7.34314575 13.6568542,6 12,6 C10.3431458,6 9,7.34314575 9,9 C9,10.6568542 10.3431458,12 12,12 Z" id="Combined-Shape"/>
+          </g>
+        </g>
+      </svg>
+
+    </div>
+    <!--/empty__icon-->
+
+    {{ texts[ 'empty' ] }}
+
+  </div>
+
+</section>

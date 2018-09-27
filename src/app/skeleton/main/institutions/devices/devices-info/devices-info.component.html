@@ -1,0 +1,78 @@
+<div class="main__scroll" #mainscroll perfect-scrollbar [@FadeInOut]="">
+
+    <div class="main__head">
+
+        <h2 class="main__title">{{ texts[ 'title' ] }}</h2>
+
+        <div class="main__head-btns">
+
+            <button class="btn-import" (click)="import()">
+                <i>
+                    <svg width="24px" height="24px" viewBox="0 0 24 24">
+                        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                            <g fill="#4E9FF8">
+                                <path d="M10,14 L10,15.9914698 C10,17.0980496 10.7484629,17.5010247 11.6717387,16.8855076 L17.3282613,13.1144924 C18.248145,12.5012366 18.2515371,11.5010247 17.3282613,10.8855076 L11.6717387,7.11449245 C10.751855,6.50123665 10,6.8992496 10,8.0085302 L10,10 L2,10 L2,14 L10,14 Z M2,5.99922997 C2,3.79051625 3.79246765,2 5.99922997,2 L18.00077,2 C20.2094838,2 22,3.79246765 22,5.99922997 L22,18.00077 C22,20.2094838 20.2075324,22 18.00077,22 L5.99922997,22 C3.79051625,22 2,20.2075324 2,18.00077 L2,5.99922997 Z"></path>
+                            </g>
+                        </g>
+                    </svg>
+                </i>
+                {{ texts[ 'importBtn' ] }}
+            </button>
+
+            <a [routerLink]="'create'" class="btn">{{ texts[ 'createBtn' ] }}</a>
+
+        </div>
+
+    </div>
+
+    <div class="main__controls" *ngIf="totalRecords">
+
+        <devices-filter [filterConf]="filterConf"
+                        *ngIf="filterConf"
+                        [lang]="language"
+                        [modifClass]="true"
+                        [viewSize]="viewSize">
+        </devices-filter>
+
+        <div class="main__controls-wrap">
+
+            <span class="main__controls-title">{{ totalStr }}</span>
+
+        </div>
+
+        <devices-search
+                *ngIf="config[ 'search' ]"
+                [placeholderText]="texts[ 'searchPlaceholder' ]">
+        </devices-search>
+
+    </div>
+
+    <devices-table
+            *ngIf="totalRecords"
+            [tableConf]="tableConf"
+            [tableData]="tableData"
+            [viewSize]="viewSize"
+            [loading]="loading"
+            [language]="language"
+            [empty]="empty"
+            [texts]="texts">
+    </devices-table>
+
+  <div class="empty" *ngIf="!totalRecords">
+<!--empty__icon-->
+    <div class="empty__icon">
+
+      <svg viewBox="0 0 24 24">
+        <g id="UI-Kit" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+          <g id="device" fill="#CBCFDA">
+            <path d="M3,4.99508929 C3,3.8932319 3.8926228,3 4.99508929,3 L19.0049107,3 C20.1067681,3 21,3.8926228 21,4.99508929 L21,19.0049107 C21,20.1067681 20.1073772,21 19.0049107,21 L4.99508929,21 C3.8932319,21 3,20.1073772 3,19.0049107 L3,4.99508929 Z M3,10 L3,12 L21,12 L21,10 L3,10 Z M6,17 C6,17.5561352 6.44661595,18 6.99754465,18 L14.0024554,18 C14.5536886,18 15,17.5522847 15,17 C15,16.4438648 14.553384,16 14.0024554,16 L6.99754465,16 C6.4463114,16 6,16.4477153 6,17 Z M6.5,8 C7.32842712,8 8,7.32842712 8,6.5 C8,5.67157288 7.32842712,5 6.5,5 C5.67157288,5 5,5.67157288 5,6.5 C5,7.32842712 5.67157288,8 6.5,8 Z" id="Combined-Shape"/>
+          </g>
+        </g>
+      </svg>
+
+    </div>
+    <!--/empty__icon-->    <div>{{ texts[ 'emptyTotal' ] }}</div>
+  </div>
+
+</div>
+

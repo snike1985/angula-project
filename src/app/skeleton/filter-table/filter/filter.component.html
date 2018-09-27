@@ -1,0 +1,99 @@
+<div>
+
+    <form class="filter-mobile" *ngIf="viewSize < 1 && fg" [formGroup]="fg">
+
+        <div class="filter-mobile__top">
+            <span>{{ totalString }}</span>
+            <span class="filter-mobile__title" [activeEffect]="'blue'" (click)="togglePopup()">Filters</span>
+        </div>
+
+        <div class="filter-mobile__selected" *ngIf="selected.length">
+
+          <span class="filter-mobile__selected-item" *ngFor="let item of selected">
+
+            {{ item[ 'label' ] }}: <span>{{ item[ 'value' ] }} </span>
+
+            <button class="filter-mobile__selected-close" (click)="resetItem( item )"></button>
+
+          </span>
+
+            <button class="filter-mobile__selected-reset" (click)="resetAll()">Reset Filters</button>
+
+        </div>
+
+        <div class="filter-mobile__popup" *ngIf="menuVisible || viewSize">
+
+            <div class="filter-mobile__head">
+
+                Filters
+
+                <button class="filter-mobile__close" [dropEffect]="'#d9d9d9'" (click)="togglePopup()">
+                    <div>Close</div>
+                </button>
+
+            </div>
+
+            <div class="filter-mobile__wrap">
+
+                <select-control *ngFor="let key of filterConf | keys"
+                                [options]="filterConf[ key ][ 'options' ]"
+                                [label]="'Status'"
+                                [lang]="lang"
+                                [className]="'filter-select'"
+                                [overlayType]="filterConf[ key ][ 'type' ]"
+                                formControlName="{{ key }}">
+                </select-control>
+
+            </div>
+
+        </div>
+
+    </form>
+
+    <form class="filter" [ngClass]="{'filter_2': modifClass }" *ngIf="viewSize >= 1 && fg" [formGroup]="fg">
+
+
+        <div class="filter__row" *ngIf="filterConf">
+
+            <div class="filter__item"
+                 [class.filter__item-double]="itemsCount( filterConf ) === 2"
+                 [class.filter__item-triple]="itemsCount( filterConf ) === 3"
+                 [class.filter__item-quarter]="itemsCount( filterConf ) === 4"
+                 *ngFor="let key of filterConf | keys">
+
+                <select-control
+                        *ngIf="+filterConf[ key ][ 'type' ] < 3"
+                        [options]="filterConf[ key ][ 'options' ]"
+                        [lang]="lang"
+                        [label]="filterConf[ key ][ 'title' ][ lang ]"
+                        [className]="'filter-select'"
+                        [overlayType]="filterConf[ key ][ 'type' ]"
+                        [formControlName]="key"></select-control>
+
+                <datepicker-control
+                        *ngIf="+filterConf[ key ][ 'type' ] === 3"
+                        [label]="filterConf[ key ][ 'title' ][ lang ]"
+                        [formControlName]="key" [type]="1"></datepicker-control>
+
+            </div>
+
+        </div>
+
+
+        <div class="filter__selected" *ngIf="selected.length">
+
+          <span class="filter__selected-item" *ngFor="let item of selected">
+
+            {{ item[ 'label' ] }}: <span>{{ item[ 'value' ] }} </span>
+
+            <button class="filter__selected-close" (click)="resetItem( item )"></button>
+
+          </span>
+
+            <button class="filter__selected-reset" (click)="resetAll()">Reset Filters</button>
+
+        </div>
+
+    </form>
+
+</div>

@@ -1,0 +1,192 @@
+.dashboard {
+  position: relative;
+
+  &__item {
+    margin-bottom: 20px;
+    padding: 31px 30px;
+    border-radius: 4px;
+    background-color: $main-white-color;
+    box-shadow: 0 3px 10px 0 rgba(24, 40, 65, 0.15);
+
+    &_fraud {
+      border-left: 6px solid #fbba00;
+
+      .dashboard__item-title {
+        color: #fbba00;
+      }
+    }
+    &_secured {
+      border-left: 6px solid #66b34e;
+
+      .dashboard__item-title {
+        color: #66b34e;
+      }
+    }
+    &_blocked {
+      border-left: 6px solid #f46771;
+
+      .dashboard__item-title {
+        color: #f46771;
+      }
+    }
+  }
+  &__item-head {
+    @include justify-flex();
+    margin-bottom: 19px;
+  }
+  &__item-head-action {
+    vertical-align: middle;
+    font-size: 16px;
+    font-weight: $bold;
+    line-height: 1.25;
+    color: $main-blue-color;
+    @include transition( color, $animation-time, 0 );
+
+    &:hover {
+      color: $main-blue-color-2;
+    }
+  }
+  &__item-title {
+    vertical-align: middle;
+    font-size: 20px;
+    line-height: 1;
+    color: #212c3d;
+    font-weight: $regular;
+  }
+  &__item-text {
+    margin-bottom: 23px;
+    font-size: 16px;
+    line-height: 1.5;
+    color: #9aa1b9;
+
+    a {
+      color: $main-blue-color;
+      @include transition( color, $animation-time, 0 );
+
+      &:hover {
+        color: $main-blue-color-2;
+      }
+    }
+  }
+  &__row {
+    @include justify-flex();
+
+    > div {
+      width: 48%;
+    }
+  }
+  &__chart {
+
+  }
+  &__chart-wrap {
+
+  }
+  &__chart-schema{
+
+    > div {
+      display: inline-block;
+      vertical-align: top;
+      margin-right: 15px;
+      margin-bottom: 11px;
+
+      &:last-child {
+        margin-right: 0;
+      }
+      span {
+        display: inline-block;
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+      }
+    }
+  }
+  &__table {
+
+  }
+  &__table-head {
+    @include justify-flex();
+    border-bottom: solid 1px #e8ebf1;
+    font-size: 16px;
+    line-height: 3.28;
+    color: #9ba1b9;
+
+    > div {
+
+      &:nth-child(1) {
+        width: 40%;
+      }
+      &:nth-child(2) {
+        width: 30%;
+      }
+      &:nth-child(3) {
+        width: 30%;
+        text-align: right;
+      }
+    }
+  }
+  &__table-body {
+
+  }
+  &__table-row {
+    @include justify-flex();
+    border-bottom: solid 1px #e8ebf1;
+
+    > div {
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      font-size: 16px;
+      line-height: 3.28;
+    }
+  }
+  &__table-type {
+    width: 40%;
+    color: #212c3d;
+  }
+  &__table-status {
+    width: 30%;
+    color: #9aa1b9;
+
+    &:before {
+      display: inline-block;
+      width: 12px;
+      height: 12px;
+      margin-right: 5px;
+      border-radius: 50%;
+      content: '';
+    }
+    &.secured {
+
+      &:before {
+        background: #66b34e;
+      }
+    }
+    &.blocked {
+
+      &:before {
+        background: #f46771;
+      }
+    }
+    &.fraud {
+
+      &:before {
+        background: #ff9426;
+      }
+    }
+  }
+  &__table-price {
+    width: 30%;
+    text-align: right;
+  }
+}
+
+@media (min-width: $tablet-portrait) {
+
+}
+@media (min-width: $tablet-landscape) {
+
+}
+@media (min-width: $desktop) {
+
+}
+

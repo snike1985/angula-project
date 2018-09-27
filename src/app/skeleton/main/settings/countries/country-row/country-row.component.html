@@ -1,0 +1,57 @@
+<div [class.country-row]="viewSize >= 3"
+        [class.country-row-mobile]="viewSize < 3">
+
+    <div class="country-row__name">{{ data[ 'countryName' ] }}</div>
+
+    <div class="country-row__status">
+
+        <switch-control
+                [disabledState]="false"
+                [formControl]="fc"
+                [label]=""
+                [niceCheckbox]="">
+        </switch-control>
+
+    </div>
+
+    <div class="country-row__currencyName country-row__column">
+
+        <div class="country-row__title" *ngIf="viewSize < 3">
+            {{ columns[ 2 ][ 'title' ][ language ] }}
+        </div>
+
+        {{ data[ 'currency' ][ 'currencyName' ] }}
+
+    </div>
+
+    <div class="country-row__code country-row__column">
+
+        <div class="country-row__title" *ngIf="viewSize < 3">
+            {{ columns[ 3 ][ 'title' ][ language ] }}
+        </div>
+
+        {{ data[ 'currency' ][ 'code' ] }}
+
+    </div>
+
+    <div class="country-row__isoCode country-row__column">
+
+        <div class="country-row__title" *ngIf="viewSize < 3">
+            {{ columns[ 4 ][ 'title' ][ language ] }}
+        </div>
+
+        {{ data[ 'isoCode' ] }}
+
+    </div>
+
+    <div class="country-row__isdCode country-row__column">
+
+        <div class="country-row__title" *ngIf="viewSize < 3">
+            {{ columns[ 4 ][ 'title' ][ language ] }}
+        </div>
+
+        {{ data[ 'isdCode' ] }}
+
+    </div>
+
+</div>

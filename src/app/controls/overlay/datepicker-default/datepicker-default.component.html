@@ -1,0 +1,82 @@
+<div class="simple-dropdown">
+
+  <div class="hide_element"></div>
+
+  <div class="datepicker datepicker_min">
+
+    <div class="datepicker__head">
+
+      <div class="datepicker__time">
+        <div>
+
+          <div  class="datepicker__time-container">
+            <span *ngIf="selectedDate; else selecDate" class="datepicker__time-date">{{ getDayView(selectedDate) | date: "dd MMM yyyy" }}</span>
+            <ng-template #selecDate>
+              <span class="datepicker__time-select">Select date</span>
+            </ng-template>
+
+          </div>
+        </div>
+        <div>
+
+            <timepicker [formControl]="timepickerControl"></timepicker>
+
+        </div>
+        <div>
+
+          <div class="datepicker__time-day">
+
+            <span class="datepicker__time-selected" [class.active]="amPmSelector" (click)="amPmSelector = !amPmSelector">
+              <span *ngIf="amPmSelector; else pmBlock">AM</span>
+              <ng-template #pmBlock>PM</ng-template>
+            </span>
+
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+
+    <div class="datepicker__content">
+
+      <div class="datepicker__caption">
+        <button (click)="getPrevMonth()" class="datepicker__btn datepicker__prev"></button>
+        <span class="datepicker__period">{{ currentMonthName | date: 'MMMM' }} {{ year }}</span>
+        <button (click)="getNextMonth()" class="datepicker__btn datepicker__next"></button>
+      </div>
+
+      <div class="datepicker__rows">
+        <div class="datepicker__row datepicker__row_days">
+          <div class="datepicker__cell"><span>S</span></div>
+          <div class="datepicker__cell"><span>M</span></div>
+          <div class="datepicker__cell"><span>T</span></div>
+          <div class="datepicker__cell"><span>W</span></div>
+          <div class="datepicker__cell"><span>T</span></div>
+          <div class="datepicker__cell"><span>F</span></div>
+          <div class="datepicker__cell"><span>S</span></div>
+        </div>
+        <div *ngFor="let week of days" class="datepicker__row">
+          <div  *ngFor="let day of week"
+                [class.current]="day['day'] == today && day['month'] == currentMonth && currentYear == year"
+                [class.non-available]="day['month'] !== month"
+                [class.selected]="isSelected(day)"
+                (click)="chooseDay( day, $event )"
+                class="datepicker__cell"><span>{{ day['day'] }}</span></div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="datepicker__controls">
+
+      <button [disabled]="!isValid"  (click)="saveDate()" type="button" class="btn">Save</button>
+
+      <button  (click)="closeDropDown()" type="button" class="main-form__link">Cancel</button>
+
+    </div>
+
+  </div>
+
+</div>

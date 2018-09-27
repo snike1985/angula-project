@@ -1,0 +1,482 @@
+.main {
+
+  &__wrap {
+    overflow: hidden;
+    position: relative;
+    min-height: 100vh;
+    padding: 74px 0 40px;
+
+    &:after {
+      display: block;
+      height: 183px;
+      content: '';
+    }
+
+  }
+  &__body {
+    padding: 0 20px;
+  }
+  &__content {
+    position: relative;
+    background: $main-white-color;
+  }
+  &__controls {
+    position: relative;
+    padding: 0 20px 18px;
+
+    &-wrap {
+      @include justify-flex();
+      align-items: center;
+    }
+    &-title {
+      display: block;
+      padding-right: 10px;
+      font-size: 20px;
+      font-weight: 300;
+      line-height: 2.0;
+      color: #9ba1b9;
+    }
+  }
+  &__title {
+    margin-bottom: 7px;
+    font-size: 32px;
+    line-height: 1.56;
+    font-weight: $light;
+  }
+  &__title-icon {
+    margin-right: 18px;
+  }
+  &__title-label {
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: 3px;
+    border-radius: 100px;
+    padding: 2px 16px;
+    color: $main-white-color;
+    font-weight: $bold;
+    font-size: 13px;
+
+    &_active {
+      background: #8cc574;
+    }
+    &_inactive {
+      background: #f3ce68;
+    }
+    &_disabled {
+      background: #cbcfda;
+    }
+  }
+  &__head {
+
+    padding: 0 20px;
+  }
+  &__head-btns {
+
+    .btn {
+      width: 100%;
+      margin-bottom: 20px;
+    }
+  }
+  &__btns {
+    padding-top: 10px;
+  }
+  &__btns-link {
+    font-size: 16px;
+    font-weight: $bold;
+    line-height: 1.25;
+    color: $main-blue-color;
+  }
+  &__back-link {
+    display: inline-block;
+    vertical-align: top;
+    margin-right: 30px;
+    margin-bottom: 15px;
+    background: transparent;
+    padding: 0;
+    text-align: left;
+    border: none;
+    box-shadow: none;
+    @include main-font();
+    font-size: 16px;
+    line-height: 1.25;
+    font-weight: $bold;
+    color: $main-blue-color;
+  }
+  &__edit {
+    width: 100%;
+    max-width: 530px;
+  }
+  &__delete-btn {
+    display: inline-block;
+    margin-bottom: 21px;
+    background: transparent;
+    padding: 0;
+    text-align: left;
+    border: none;
+    box-shadow: none;
+    @include main-font();
+    font-size: 16px;
+    line-height: 1.25;
+    font-weight: 900;
+    cursor: pointer;
+    color: $main-red-color-1;
+  }
+  &__links {
+    margin-bottom: 20px;
+
+    a,
+    button {
+      display: inline-block;
+      vertical-align: top;
+      margin-right: 27px;
+      padding: 0;
+      border: none;
+      background: transparent;
+      font-size: 16px;
+      line-height: 1.25;
+      color: $main-blue-color;
+      @include main-font();
+      font-weight: $bold;
+
+      &:last-child {
+        margin-right: 0;
+      }
+      &.main__delete-btn {
+        color: $main-red-color-1;
+      }
+    }
+  }
+
+  &__info {
+    position: relative;
+  }
+  &__info-title {
+    margin-bottom: 29px;
+    font-size: 20px;
+    line-height: 1;
+    color: #212c3d;
+    font-weight: $regular;
+  }
+  &__info-title-icon {
+    position: relative;
+    top: -2px;
+    left: 2px;
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: -4px;
+
+    svg {
+      margin-right: 6px;
+    }
+  }
+  &__info-wrap {
+    margin-bottom: 29px;
+  }
+  &__info-inner {
+    display: inline-block;
+    vertical-align: top;
+    width: 342px;
+    margin-right: 80px;
+  }
+  &__info-item {
+    margin-bottom: 11px;
+
+    > div {
+      display: inline-block;
+      vertical-align: top;
+      font-size: 16px;
+      line-height: 1.2;
+    }
+  }
+  &__info-label {
+    width: 107px;
+    margin-right: 21px;
+    text-align: right;
+    color: #9aa1b9;
+  }
+  &__info-info {
+    width: 200px;
+    color: #19212e;
+
+    &_mark {
+      color: $main-blue-color;
+    }
+
+    a{
+      color: $main-blue-color;
+      @include transition( color, $animation-time, 0 );
+
+      &:hover {
+        color: $main-blue-color-2;
+      }
+      &.phone {
+        cursor: default;
+        color: #19212e;
+
+        &:hover {
+          color: #19212e;
+        }
+      }
+    }
+  }
+  &__info-extra {
+    display: inline-block;
+    vertical-align: top;
+    font-size: 16px;
+    line-height: 1.2;
+
+    a {
+      color: $main-blue-color;
+      @include transition(opacity, $animation-time, 0);
+
+      &:hover {
+        opacity: .8;
+      }
+    }
+    div {
+      margin-bottom: 11px;
+      color: $main-blue-color;
+
+      &.empty {
+        color: #cbcfda;
+      }
+      &.main__info-section {
+        margin-bottom: 31px;
+      }
+      &.main__info-description {
+        max-width: 245px;
+        color: #212c3d;
+        line-height: 1.2;
+
+        span {
+          display: block;
+          margin-bottom: 11px;
+          color: #9aa1b9;
+        }
+      }
+    }
+  }
+  &__info-section {
+    margin-bottom: 31px;
+  }
+  &__info-row {
+
+    .main__info-wrap {
+      display: inline-block;
+      vertical-align: top;
+
+      &:last-child {
+
+        .main__info-inner {
+          margin-right: 0;
+        }
+      }
+    }
+  }
+}
+
+.empty {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 5vh 0;
+  color: #cbcfda;
+  font-size: 16px;
+  font-weight: 200;
+
+  &__icon{
+    margin-bottom: 1.8vh;
+
+    svg{
+      display: block;
+      width: 7vh;
+      min-width: 34px;
+      height: 7vh;
+      min-height: 34px;
+      fill: #e8ebf1;
+    }
+
+  }
+
+}
+
+@media (min-width: $tablet-portrait) {
+
+  .main {
+    overflow: hidden;
+    display: flex;
+    justify-content: space-between;
+    height: 100vh;
+
+    &__wrap {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 183px;
+      left: 0;
+      height: auto;
+      min-height: 0;
+      padding: 0 0 0;
+    }
+    &__scroll {
+      overflow: hidden !important;
+      height: 100%;
+      padding-top: 30px;
+      padding-bottom: 40px;
+    }
+    &__body {
+      padding: 0 35px;
+    }
+    &__content {
+      width: calc(100% - 260px);
+    }
+    &__controls {
+      padding: 0 35px;
+
+      &-wrap {
+        min-height: 75px;
+        padding: 20px 0;
+      }
+    }
+    &__title {
+      margin-bottom: 10px;
+      font-size: 40px;
+      line-height: 1.25;
+    }
+    &__title-icon {
+      margin-right: 21px;
+    }
+    &__head {
+      @include justify-flex();
+      padding: 0 35px;
+    }
+    &__head-btns {
+
+      > * {
+        display: inline-block;
+        vertical-align: middle;
+        margin-left: 20px;
+      }
+      .btn {
+        width: auto;
+        margin-bottom: 0;
+      }
+    }
+    &__head-btns-wrap {
+
+      button {
+        position: relative;
+        margin-right: 58px;
+
+        &:after {
+          @include absoluteCenterY();
+          width: 2px;
+          height: 51px;
+          right: -33px;
+          margin-top: -2px;
+          background: #e8ebf1;
+          content: '';
+        }
+        &:last-child {
+          margin-right: 17px;
+
+          &:after {
+            display: none;
+          }
+        }
+      }
+    }
+    &__btns {
+      padding-top: 10px;
+
+      * {
+        display: inline-block;
+        vertical-align: middle;
+      }
+      .btn {
+        margin-right: 37px;
+      }
+    }
+    &__btns-link {
+      padding: 0;
+      background: transparent;
+      border: none;
+      font-size: 16px;
+      font-weight: $bold;
+      line-height: 1.25;
+      color: $main-blue-color;
+      @include transition( color, $animation-time, 0 );
+
+      &:hover {
+        color: $main-blue-color-2;
+      }
+    }
+  }
+
+  .empty {
+    font-size: 3vh;
+  }
+
+}
+@media (min-width: $tablet-landscape) {
+
+  .main {
+
+    &__wrap {
+      bottom: 81px;
+
+      &:after {
+        height: 81px;
+      }
+    }
+    &__content {
+      width: calc(100% - 300px);
+    }
+    &__title {
+      margin-bottom: 30px;
+    }
+  }
+}
+@media (min-width: $desktop) {
+  .main {
+
+    &__btns-link {
+      @include transition( opacity, $animation-time, 0 );
+
+      &:hover {
+        opacity: .8;
+      }
+    }
+    &__back-link {
+      @include transition( opacity, $animation-time, 0 );
+
+      &:hover {
+        opacity: .8;
+      }
+    }
+    &__links {
+      margin-bottom: 30px;
+
+      a,
+      button {
+        margin-right: 27px;
+        @include transition( opacity, $animation-time, 0 );
+
+        &:hover {
+          opacity: .8;
+        }
+      }
+      .main__delete-btn {
+        margin-bottom: 0;
+      }
+    }
+    &__delete-btn {
+
+      &:hover {
+        opacity: .8;
+      }
+    }
+  }
+}
+

@@ -1,0 +1,46 @@
+<div class="popup-layout popup-layout_import" *ngIf="currentItem && paymentMethods">
+
+  <header>
+
+    <h1 class="popup-layout__title" *ngIf="currentItem[ 'id' ]">{{ texts[ 'titles' ][ 'edit' ] }}</h1>
+
+    <h1 class="popup-layout__title" *ngIf="!currentItem[ 'id' ]">{{ texts[ 'titles' ][ 'create' ] }}</h1>
+
+  </header>
+
+  <div class="popup-layout__content" perfect-scrollbar [style.maxHeight.px]="maxHeight">
+
+    <form class="payment-methods" *ngIf="fg" [formGroup]="fg">
+
+      <div class="spinner spinner_main" *ngIf="loading" ></div>
+
+      <h2 class="payment-methods__title">{{ texts[ 'paymentsTitle' ] }}</h2>
+
+      <div class="payment-methods__item" [class.invalid]="invalid" *ngFor="let control of paymentMethods">
+
+        <switch-control
+                [disabledState]="false"
+                [formControlName]="control[ 'id' ]"
+                [label]="control[ 'name' ]"
+                [niceCheckbox]="true">
+        </switch-control>
+
+      </div>
+
+      <div class="payment-methods__error" *ngIf="invalid">{{ texts[ 'error' ] }}</div>
+
+
+      <div class="payment-methods__btns main__btns">
+        <button class="payment-methods__save btn" (click)="create( $event, fg )" *ngIf="!currentItem[ 'id' ]">{{ texts[ 'btns' ][ 'create' ] }}</button>
+        <button class="payment-methods__edit btn" (click)="edit( $event, fg )" *ngIf="currentItem[ 'id' ]">{{ texts[ 'btns' ][ 'edit' ] }}</button>
+        <button class="main-form__link payment-methods__cancel"
+                type="button"
+                (click)="cancel()"
+                [activeEffect]="'blue'">{{ texts[ 'btns' ][ 'cancel' ] }}</button>
+      </div>
+
+    </form>
+
+  </div>
+
+</div>

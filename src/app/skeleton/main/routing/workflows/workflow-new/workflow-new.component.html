@@ -1,0 +1,90 @@
+<div class="popup-layout popup-layout_import" #popup>
+
+  <header #popupHeader>
+
+    <h1 class="popup-layout__title">
+      <span  *ngIf="currentItem && currentItem[ 'id' ]">
+        {{ texts[ 'titles' ][ 'edit' ] }} {{ currentItem[ 'id' ] }}
+      </span>
+      <span *ngIf="currentItem && !currentItem[ 'id' ]">
+              {{ texts[ 'titles' ][ 'create' ] }}
+      </span>
+      <div class="popup-layout__subtitle">
+        {{ texts[ 'payment' ][ 0 ] }}<span *ngFor="let method of paymentMethods; let first = first; let last = last;"><span *ngIf="!first && !last">,</span> <span *ngIf="!first && last">{{ texts[ 'payment' ][ 1 ] }}</span> {{ method[ 'name' ] }}</span>
+      </div>
+    </h1>
+
+  </header>
+
+  <div class="popup-layout__content" *ngIf="currentItem && services" perfect-scrollbar [style.maxHeight.px]="maxHeight">
+
+    <div class="workflow-new">
+
+      <div class="workflow-new__services">
+
+        <h2 class="workflow-new__services-title">{{ texts[ 'titles' ][ 'services' ] }}</h2>
+
+        <div class="workflow-new__services-wrap" *ngIf="selectedServices.length">
+
+          <workflow-service *ngFor="let service of selectedServices; let i = index;"
+                            [language]="language"
+                            [parent]="-1"
+                            [index]=" i+'' "
+                            [service]="service"></workflow-service>
+
+        </div>
+
+        <add-function *ngIf="lastServices && lastServices.length"
+                      [options]="lastServices"
+                      [label]="texts[ 'btns' ][ 'addService' ]"
+                      [className]="'select-control_type-2'"
+                      (deleteFunction)="addService($event)">
+        </add-function>
+
+        <div class="workflow-new__error" *ngIf="error">{{ texts[ 'error' ] }}</div>
+
+      </div>
+
+      <form class="workflow-new__options" [formGroup]="fg" *ngIf="fg">
+
+        <h3 class="workflow-new__options-title">{{ texts[ 'titles' ][ 'options' ] }}</h3>
+
+        <div class="workflow-new__options-control">
+
+          <switch-control
+                  [disabledState]="false"
+                  formControlName="enabled"
+                  [niceCheckbox]="true">
+          </switch-control>
+
+        </div>
+
+        <div class="workflow-new__options-control">
+
+          <switch-control
+                  [disabledState]="false"
+                  formControlName="default"
+                  [label]="texts[ 'default' ]"
+                  [niceCheckbox]="true">
+          </switch-control>
+
+        </div>
+
+        <div class="workflow-new__btns main__btns">
+          <button class="payment-methods__save btn" (click)="create( $event, fg )" *ngIf="!currentItem[ 'id' ]">{{ texts[ 'btns' ][ 'create' ] }}</button>
+          <button class="payment-methods__edit btn" (click)="edit( $event, fg )" *ngIf="currentItem[ 'id' ]">{{ texts[ 'btns' ][ 'edit' ] }}</button>
+          <button class="main-form__link workflow-new__cancel"
+                  type="button"
+                  (click)="cancel()"
+                  [activeEffect]="'blue'">{{ texts[ 'btns' ][ 'cancel' ] }}</button>
+        </div>
+
+      </form>
+
+    </div>
+
+  </div>
+
+  <div class="spinner spinner_main" *ngIf="loading"></div>
+
+</div>

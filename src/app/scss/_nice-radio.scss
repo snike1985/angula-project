@@ -1,0 +1,87 @@
+.nice-radio {
+  display: inline-block;
+  vertical-align: top;
+  user-select: none;
+
+  input[ type = radio ] {
+    position: absolute;
+    clip: rect(0, 0, 0, 0);
+
+    &:checked + label {
+      background-color: $main-blue-color;
+
+      &:before { opacity: 0 }
+
+      &:after { opacity: 1 }
+
+    }
+
+    &:disabled + label {
+      cursor: default;
+
+      &:before { opacity: 0 }
+
+      &:after {
+        opacity: 1;
+        background-color: #e5e8ed;
+      }
+    }
+
+    //&:error + label {
+    //
+    //  &:before {
+    //    border-color: #ee7e85;
+    //  }
+    //}
+  }
+
+  label {
+    position: relative;
+    display: flex;
+    text-align: left;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    transition: background .15s ease-in-out;
+
+    &:hover:before { border-color: $main-blue-color }
+
+    &:before {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: solid 2px #e8ebf1;
+      border-radius: 50%;
+      background-color: $main-white-color;
+      box-sizing: border-box;
+      transition: opacity .15s ease-in-out, border .15s ease-in-out;
+      content: '';
+    }
+
+    &:after {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 8px;
+      height: 8px;
+      margin: -4px 0 0 -4px;
+      opacity: 0;
+      background: $main-white-color;
+      border-radius: 50%;
+      box-sizing: border-box;
+      transition: opacity .15s ease-in-out;
+      content: '';
+    }
+  }
+
+  .drop {
+    top: 50% !important;
+    left: 50% !important;
+    margin: -10px 0 0 -10px;
+  }
+}

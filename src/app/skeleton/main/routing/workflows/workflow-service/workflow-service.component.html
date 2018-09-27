@@ -1,0 +1,75 @@
+<div class="workflow-service">
+
+    <div class="workflow-service__main" *ngIf="!parent">
+
+        {{ service[ 'name' ] }}
+
+        <span *ngIf="service[ 'optional' ]">{{ texts[ 'optional' ] }}</span>
+
+    </div>
+
+    <form class="workflow-service__controls" [formGroup]="fg" *ngIf="parent && fg">
+
+        <div class="workflow-service__column" [style.width.px]="( 270 - ( level * 40 ) )">
+
+            <div class="workflow-service__control">
+
+                <select-control
+                        [options]="services"
+                        [className]="'default-select'"
+                        [formControlName]="'service'">
+                </select-control>
+
+            </div>
+
+        </div>
+
+        <div class="workflow-service__column">
+
+            {{ texts[ 'depends' ] }}
+
+        </div>
+
+        <div class="workflow-service__column">
+
+            <select-control
+                    [options]="dependsServices"
+                    [className]="'default-select'"
+                    [formControlName]="'parent'">
+            </select-control>
+
+        </div>
+
+        <div class="workflow-service__column">
+
+            <switch-control
+                    [disabledState]="false"
+                    formControlName="optional"
+                    [label]="texts[ 'optional' ]"
+                    [niceCheckbox]="true">
+            </switch-control>
+
+        </div>
+
+    </form>
+
+    <div class="workflow-service__content" *ngIf="service[ 'services' ] && parent">
+
+        <workflow-service *ngFor="let item of service[ 'services' ]; let i = index;"
+                          [language]="language"
+                          [parent]="service[ 'id' ]"
+                          [level]="level"
+                          [index]="index + '-' + i"
+                          [service]="item"></workflow-service>
+
+    </div>
+
+    <div class="workflow-service__content" *ngIf="service[ 'services' ] && !parent">
+
+        <workflow-service *ngFor="let item of service[ 'services' ]"
+                          [language]="language"
+                          [service]="item"></workflow-service>
+
+    </div>
+
+</div>

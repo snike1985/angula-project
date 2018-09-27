@@ -1,0 +1,146 @@
+<div class="main__scroll" #mainscroll *ngIf="viewSize" perfect-scrollbar [@FadeInOut]="">
+
+    <div>
+
+        <div class="main__head">
+
+            <h2 class="main__title">{{ texts[ 'title' ] }}</h2>
+
+            <div class="main__head-btns">
+
+                <button class="btn"
+                        *ngIf="config[ 'createBtn' ]"
+                        (click)="create()">
+                    {{ texts[ 'createBtn' ] }}
+                </button>
+
+            </div>
+
+        </div>
+
+        <div class="main__controls" *ngIf="totalRecords">
+
+            <currencies-filter
+                    [filterConf]="filterConf"
+                    *ngIf="filterConf"
+                    [lang]="language"
+                    [viewSize]="viewSize">
+            </currencies-filter>
+
+            <div class="main__controls-wrap">
+
+                <span class="main__controls-title">{{ totalStr }}</span>
+
+            </div>
+
+            <currencies-search
+                    *ngIf="config[ 'search' ]"
+                    [placeholderText]="texts[ 'searchPlaceholder' ]">
+            </currencies-search>
+
+        </div>
+
+        <currencies-table
+                *ngIf="tableData && totalRecords"
+                [tableConf]="tableConf"
+                [tableData]="tableData"
+                [viewSize]="viewSize"
+                [loading]="loading"
+                [language]="language"
+                [empty]="empty"
+                [texts]="texts" >
+        </currencies-table>
+
+        <div class="empty" *ngIf="!totalRecords">
+
+            <!--empty__icon-->
+            <div class="empty__icon">
+
+                <svg viewBox="0 0 24 24">
+                    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                        <g>
+                            <path d="M12.0511059,13.7270462 L12.0511059,13.7270462 C13.2556934,14.5534664 15.4024011,15 18,15 C19.4597717,15 20.8978325,14.7512404 22,14.2814334 L22,15 C22,16.0406102 19.7614237,17 17,17 C14.2385763,17 12,16.0406102 12,15 L12,14 C12,13.908182 12.0174282,13.8169963 12.0511059,13.7270462 Z M12.0511059,17.7270462 L12.0511059,17.7270462 C13.2556934,18.5534664 15.4024011,19 18,19 C19.4597717,19 20.8978325,18.7512404 22,18.2814334 L22,19 C22,20.0406102 19.7614237,21 17,21 C14.2385763,21 12,20.0406102 12,19 L12,18 C12,17.908182 12.0174282,17.8169963 12.0511059,17.7270462 Z M12,11 C12,9.76751186 14.2385763,9 17,9 C19.7614237,9 22,9.76751186 22,11 C22,12.2324881 19.7614237,13 17,13 C14.2385763,13 12,12.2324881 12,11 Z M2.05110586,7.72704624 L2.05110586,7.72704624 C3.25569335,8.55346639 5.40240106,9 8,9 C9.45977165,9 10.8978325,8.75124042 12,8.28143336 L12,9 C12,10.0406102 9.76142375,11 7,11 C4.23857625,11 2,10.0406102 2,9 L2,8 C2,7.908182 2.01742816,7.81699633 2.05110586,7.72704624 Z M2.05110586,11.7270462 L2.05110586,11.7270462 C3.25569335,12.5534664 5.40240106,13 8,13 C9.45977165,13 10.8978325,12.7512404 12,12.2814334 L12,13 C12,14.0406102 9.76142375,15 7,15 C4.23857625,15 2,14.0406102 2,13 L2,12 C2,11.908182 2.01742816,11.8169963 2.05110586,11.7270462 Z M2.05110586,15.7270462 L2.05110586,15.7270462 C3.25569335,16.5534664 5.40240106,17 8,17 C9.45977165,17 10.8978325,16.7512404 12,16.2814334 L12,17 C12,18.0406102 9.76142375,19 7,19 C4.23857625,19 2,18.0406102 2,17 L2,16 C2,15.908182 2.01742816,15.8169963 2.05110586,15.7270462 Z M2,5 C2,3.76751186 4.23857625,3 7,3 C9.76142375,3 12,3.76751186 12,5 C12,6.23248814 9.76142375,7 7,7 C4.23857625,7 2,6.23248814 2,5 Z" id="Combined-Shape"/>
+                        </g>
+                    </g>
+                </svg>
+
+            </div>
+            <!--/empty__icon-->
+
+            <div>{{ texts[ 'emptyTotal' ] }}</div>
+        </div>
+
+    </div>
+
+</div>
+
+<div class="main__scroll" *ngIf="!viewSize" [@FadeInOut]="">
+
+    <div>
+
+        <div class="main__head">
+
+            <h2 class="main__title">{{ texts[ 'title' ] }}</h2>
+
+            <div class="main__head-btns">
+
+                <button class="btn"
+                        *ngIf="config[ 'createBtn' ]"
+                        (click)="create()">
+                    {{ texts[ 'createBtn' ] }}
+                </button>
+
+            </div>
+
+        </div>
+
+        <div class="main__controls" *ngIf="totalRecords">
+
+            <currencies-filter
+                    [totalString]="totalStr"
+                    [filterConf]="filterConf"
+                    *ngIf="filterConf"
+                    [lang]="language"
+                    [viewSize]="viewSize">
+            </currencies-filter>
+
+            <currencies-search
+                    *ngIf="config[ 'search' ]"
+                    [placeholderText]="texts[ 'searchPlaceholder' ]">
+            </currencies-search>
+
+        </div>
+
+        <currencies-table
+                *ngIf="tableData && totalRecords"
+                [tableConf]="tableConf"
+                [tableData]="tableData"
+                [viewSize]="viewSize"
+                [loading]="loading"
+                [language]="language"
+                [empty]="empty"
+                [texts]="texts">
+        </currencies-table>
+
+        <div class="empty" *ngIf="!totalRecords">
+
+            <!--empty__icon-->
+            <div class="empty__icon">
+
+                <svg viewBox="0 0 24 24">
+                    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                        <g>
+                            <path d="M12.0511059,13.7270462 L12.0511059,13.7270462 C13.2556934,14.5534664 15.4024011,15 18,15 C19.4597717,15 20.8978325,14.7512404 22,14.2814334 L22,15 C22,16.0406102 19.7614237,17 17,17 C14.2385763,17 12,16.0406102 12,15 L12,14 C12,13.908182 12.0174282,13.8169963 12.0511059,13.7270462 Z M12.0511059,17.7270462 L12.0511059,17.7270462 C13.2556934,18.5534664 15.4024011,19 18,19 C19.4597717,19 20.8978325,18.7512404 22,18.2814334 L22,19 C22,20.0406102 19.7614237,21 17,21 C14.2385763,21 12,20.0406102 12,19 L12,18 C12,17.908182 12.0174282,17.8169963 12.0511059,17.7270462 Z M12,11 C12,9.76751186 14.2385763,9 17,9 C19.7614237,9 22,9.76751186 22,11 C22,12.2324881 19.7614237,13 17,13 C14.2385763,13 12,12.2324881 12,11 Z M2.05110586,7.72704624 L2.05110586,7.72704624 C3.25569335,8.55346639 5.40240106,9 8,9 C9.45977165,9 10.8978325,8.75124042 12,8.28143336 L12,9 C12,10.0406102 9.76142375,11 7,11 C4.23857625,11 2,10.0406102 2,9 L2,8 C2,7.908182 2.01742816,7.81699633 2.05110586,7.72704624 Z M2.05110586,11.7270462 L2.05110586,11.7270462 C3.25569335,12.5534664 5.40240106,13 8,13 C9.45977165,13 10.8978325,12.7512404 12,12.2814334 L12,13 C12,14.0406102 9.76142375,15 7,15 C4.23857625,15 2,14.0406102 2,13 L2,12 C2,11.908182 2.01742816,11.8169963 2.05110586,11.7270462 Z M2.05110586,15.7270462 L2.05110586,15.7270462 C3.25569335,16.5534664 5.40240106,17 8,17 C9.45977165,17 10.8978325,16.7512404 12,16.2814334 L12,17 C12,18.0406102 9.76142375,19 7,19 C4.23857625,19 2,18.0406102 2,17 L2,16 C2,15.908182 2.01742816,15.8169963 2.05110586,15.7270462 Z M2,5 C2,3.76751186 4.23857625,3 7,3 C9.76142375,3 12,3.76751186 12,5 C12,6.23248814 9.76142375,7 7,7 C4.23857625,7 2,6.23248814 2,5 Z" id="Combined-Shape"/>
+                        </g>
+                    </g>
+                </svg>
+
+            </div>
+            <!--/empty__icon-->
+
+            <div>{{ texts[ 'emptyTotal' ] }}</div>
+        </div>
+
+    </div>
+
+</div>

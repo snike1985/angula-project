@@ -1,0 +1,46 @@
+@import "../../../scss/default-select";
+
+.combo-multi-select {
+  padding: 20px 19px;
+  min-width: 620px;
+  width: auto;
+
+  &__header {
+    display: block;
+    height: auto;
+    width: 100%;
+    margin-bottom: 20px;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin-bottom: 30px;
+   }
+
+  &__label {
+    display: block;
+    @include main-font;
+    font-size: 16px;
+    line-height: 1.25;
+    color: #9aa1b8;
+    margin-bottom: 10px;
+  }
+
+  &__row {
+    width: 194px;
+  }
+
+  &__switch {
+    margin-bottom: 10px;
+  }
+
+  .main-forms__btns {
+    button {
+      display: inline-block;
+      margin-right: 40px;
+    }
+  }
+
+}

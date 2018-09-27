@@ -1,0 +1,241 @@
+<!--main__scroll-->
+<div class="main__scroll" *ngIf="viewSize" perfect-scrollbar [@FadeInOut]="">
+
+  <!--main__head-->
+  <div class="main__head">
+
+    <!--main__title-->
+    <h2 class="main__title">Velocity Limits</h2>
+    <!--/main__title-->
+
+    <div class="main__head-btns">
+
+      <a class="btn"
+         routerLink="/settings/users/create">
+         <!--*ngIf="config[ 'createBtn' ]">-->
+        Create Velocity Limit
+        <!--{{ texts[ 'createBtn' ] }}-->
+
+      </a>
+
+    </div>
+
+  </div>
+  <!--/main__head-->
+
+  <!-- main__controls -->
+  <div class="main__controls">
+
+    <section class="custom-table VelocityLimitsComponent">
+
+      <header class="custom-table__header">
+
+        <div class="custom-table__header-inner">
+
+          <span class="custom-table__header-item order down">Apply Limit to</span>
+          <span class="custom-table__header-item">Status</span>
+          <span class="custom-table__header-item"></span>
+          <span class="custom-table__header-item">Amount</span>
+          <span class="custom-table__header-item">Count</span>
+
+        </div>
+
+      </header>
+
+      <div class="custom-table__body">
+
+        <div class="custom-table__row">
+
+          <div class="velocity-limits-row">
+
+            <div class="velocity-limits-row__name">
+
+              <h2>Toyota Motor Corporation</h2>
+
+              Institution
+
+              <div><a href="#">5 Transaction Types</a></div>
+
+            </div>
+
+            <div class="velocity-limits-row__status">
+
+              <label class="switch-control ">
+
+                <input class="switch-input" type="checkbox" value="false">
+
+                <span class="switch-control__bar">
+                  <span class="ng-tns-c15-7"></span>
+                </span>
+                <span class="switch-control__text ng-tns-c15-7">Disabled</span>
+
+              </label>
+
+            </div>
+
+            <div class="velocity-limits-row__titles">
+
+              <div>SIngle transaction:</div>
+              <div>Per 20 minutes:</div>
+              <div>Per day:</div>
+              <div>Per month:</div>
+
+            </div>
+
+            <div class="velocity-limits-row__amount">
+
+              <div><span>23 450.00</span></div>
+              <div>Unlimited</div>
+              <div>Unlimited</div>
+              <div>Unlimited</div>
+
+            </div>
+
+            <div class="velocity-limits-row__count">
+
+              <div><span>20 000</span></div>
+              <div>Unlimited</div>
+              <div>Unlimited</div>
+              <div><span>350 000 000</span></div>
+
+            </div>
+
+            <div class="velocity-limits-row_btns edits">
+
+              <div><a class="edits__btn" href="/settings/users/1/edit">Edit</a></div>
+
+              <div><a class="edits__btn" href="/settings/users/1/edit">Delete</a></div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+  </div>
+  <!-- /main__controls -->
+
+</div>
+<!--/main__scroll-->
+
+<!--main__scroll-->
+<div class="main__scroll" *ngIf="!viewSize" [@FadeInOut]="">
+
+  <!--main__head-->
+  <div class="main__head">
+
+    <!--main__title-->
+    <h2 class="main__title">Velocity Limits</h2>
+    <!--/main__title-->
+
+    <div class="main__head-btns">
+
+      <a class="btn"
+         routerLink="/settings/users/create">
+         <!--*ngIf="config[ 'createBtn' ]">-->
+        Create Velocity Limit
+        <!--{{ texts[ 'createBtn' ] }}-->
+
+      </a>
+
+    </div>
+
+  </div>
+  <!--/main__head-->
+
+  <!-- main__controls -->
+  <div class="main__controls">
+
+    <section class="custom-table VelocityLimitsComponent">
+
+      <header class="custom-table__header">
+
+        <div class="custom-table__header-inner">
+
+          <span class="custom-table__header-item order down">Username</span>
+          <span class="custom-table__header-item">Status</span>
+          <span class="custom-table__header-item">Contacts</span>
+
+        </div>
+
+      </header>
+
+      <div class="custom-table__body">
+
+        <div class="custom-table__row">
+
+          <div class="velocity-limits-row">
+
+            <div class="velocity-limits-row__name">
+
+              <h2>
+
+                Ripps 1 Admin 1</h2>
+
+              SYS_ROLE 1
+
+            </div>
+
+            <div class="velocity-limits-row__status">
+
+              Disabled
+
+            </div>
+
+            <div class="velocity-limits-row__contacts">
+
+              <dl>
+                <dt>E-mail:</dt>
+
+                <dd>
+                  <a class="velocity-limits-row__contacts-mail" href="mailto:ripps.admin@renovite1.com">
+                    ripps.admin@renovite1.com
+                  </a>
+                </dd>
+              </dl>
+
+            </div>
+
+            <div class="velocity-limits-row_btns edits">
+
+            <a class="edits__btn" href="/settings/users/1/edit">Edit</a>
+
+            <div class="edits__dropdown">
+
+              <button class="edits__btn">
+                <span>More…</span>
+              </button>
+
+              <div class="edits__dropdown-inner">
+
+                <button class="edits__dropdown-btn" type="button">
+                  Reset Password
+                </button>
+
+                <button class="edits__dropdown-btn edits__dropdown-btn_delete" type="button">
+                  Delete
+                </button>
+
+              </div>
+
+            </div>
+
+          </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+  </div>
+  <!-- /main__controls -->
+
+</div>
+<!--/main__scroll-->

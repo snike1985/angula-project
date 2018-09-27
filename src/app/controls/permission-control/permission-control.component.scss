@@ -1,0 +1,13 @@
+@import "../../scss/main-app";
+@import "../../scss/permissions";
+@import "../../scss/users";
+
+.permissions {
+
+  .switch-control_nice-checkbox {
+
+    .switch-control__bar {
+      margin-right: 0 !important;
+    }
+  }
+}

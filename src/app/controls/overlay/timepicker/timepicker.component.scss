@@ -1,0 +1,123 @@
+@import "../../../scss/main-app";
+
+.timepicker {
+  position: relative;
+  display: inline-block;
+  width: 110px;
+  height: 40px;
+  font-size: 14px;
+  line-height: 1.43;
+  color: #212c3d;
+  border-radius: 4px;
+  background-color: #ffffff;
+  border: solid 2px #e8ebf1;
+
+  &__wrap {
+    position: absolute;
+    display: inline-flex;
+    left: 0;
+    width: 92px;
+    padding: 8px 24px 8px 7px;
+
+    > label {
+      position: relative;
+      display: inline-block;
+      width: 30%;
+
+      input {
+        width: 100%;
+        line-height: 1.43;
+        border: none;
+        @include main-font;
+        font-weight: bold;
+        font-size: 14px;
+
+        &.active {
+          background-color: rgba(32, 176, 242, 0.19);
+        }
+
+      }
+
+      input[type=number]::-webkit-inner-spin-button,
+      input[type=number]::-webkit-outer-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+      }
+
+      &:after {
+        position: absolute;
+        right: -2px;
+        top: 0;
+        z-index: 1;
+        content: ':';
+      }
+
+      &:last-child {
+
+        &:after {
+
+          content: '';
+
+        }
+
+      }
+
+    }
+
+  }
+
+  &__controls {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 18px;
+    height: 36px;
+    border-left: solid 2px #e8ebf1;
+
+    button{
+      position: absolute;
+      display: inline-block;
+      width: 100%;
+      height: 18px;
+      background-color: #f4f6f9;
+      border: none;
+
+      &:after {
+        position: absolute;
+        right: 4px;
+        width: 0;
+        height: 0;
+        border-left: 4px solid transparent;
+        border-right: 4px solid transparent;
+
+        content: '';
+      }
+
+      &:first-child {
+        top: 0;
+        right: 0;
+        border-bottom: 2px solid #e8ebf1;
+
+        &:after {
+          top: 7px;
+          border-bottom: 4px solid #9aa1b8;
+        }
+
+      }
+
+      &:last-child {
+        bottom: 0;
+        right: 0;
+
+        &:after {
+          top: 8px;
+          border-top: 4px solid #9aa1b8;
+        }
+
+      }
+
+    }
+
+  }
+
+}

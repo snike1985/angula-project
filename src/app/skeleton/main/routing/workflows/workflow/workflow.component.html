@@ -1,0 +1,48 @@
+<div class="workflow">
+
+    <div class="workflow__column">
+
+        <h4 class="workflow__title">
+
+            {{ texts[ 'title' ] }} {{ workflow[ 'id' ] }}
+
+            <span *ngIf="workflow[ 'default' ]">{{ texts[ 'default' ] }}</span>
+
+        </h4>
+
+        <switch-control
+                *ngIf="fc"
+                [disabledState]="false"
+                [formControl]="fc"
+                [class]="">
+        </switch-control>
+
+    </div>
+
+    <div class="workflow__column">
+
+        <div class="workflow__services">
+
+            <workflow-service *ngFor="let service of workflow[ 'services' ]"
+                              [language]="language"
+                              [service]="service"></workflow-service>
+
+        </div>
+
+    </div>
+
+    <div class="workflow__column">
+
+        <div>
+            <button class="workflow__edit" (click)="edit()" [activeEffect]="'blue'">{{ texts[ 'btns' ][ 'edit' ] }}</button>
+        </div>
+
+        <div>
+            <button class="workflow__delete" [activeEffect]="'red'" (click)="askToDelete()">{{ texts[ 'btns' ][ 'delete' ] }}</button>
+        </div>
+
+    </div>
+
+    <div *ngIf="loading" class="spinner"></div>
+
+</div>

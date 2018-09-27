@@ -1,0 +1,165 @@
+<div class="main__scroll" #mainscroll *ngIf="fg && viewSize" perfect-scrollbar [@FadeInOut]="fg">
+
+  <!--main__head-->
+  <div class="main__head">
+
+    <!--main__title-->
+    <h2 class="main__title">{{ texts[ 'title' ] }}</h2>
+    <!--/main__title-->
+
+  </div>
+  <!--/main__head-->
+
+  <!-- main__body -->
+  <div class="main__body">
+
+    <form class="main-form" [formGroup]="fg" (submit)="submit( fg )">
+
+
+      <fieldset>
+        <select-control
+                [options]="languages"
+                [label]="'Language'"
+                [className]="'default-select'"
+                formControlName="language">
+        </select-control>
+      </fieldset>
+
+
+      <fieldset>
+        <select-control
+                [options]="pages"
+                [label]="'Pagination'"
+                [className]="'default-select'"
+
+                formControlName="pagination">
+        </select-control>
+      </fieldset>
+
+
+      <fieldset>
+
+        <div class="main-form__title">{{ texts[ 'searchOptions' ][ 'title' ] }}</div>
+
+        <div *ngFor="let input of searchData[ 'items' ]" class="custom-radio">
+
+          <input id="{{input[ 'value' ]}}" type="radio" name="search" value="{{ input[ 'value' ] }}" formControlName="search">
+
+          <label for="{{input[ 'value' ]}}" class="custom-radio__label">
+
+            <span class="custom-radio__point">
+              <span></span>
+            </span>
+
+            {{ input[ 'text' ] }}
+
+            <span></span>
+
+          </label>
+
+        </div>
+
+      </fieldset>
+
+      <div class="main-form__btns">
+
+        <!--btn-->
+        <button class="btn"
+                [disabled]="!hasChanges"
+                [dropEffect]="'#2271ca'">
+          <span class="btn__inner">{{ texts[ 'submitBtn' ] }}</span>
+        </button>
+        <!--/btn-->
+
+        <button class="main-form__link" (click)="reset( $event )">{{ texts[ 'cancelBtn' ] }}</button>
+
+      </div>
+
+    </form>
+
+  </div>
+  <!-- /main__body -->
+
+</div>
+
+<div class="main__scroll" *ngIf="fg && !viewSize" [@FadeInOut]="fg">
+
+  <!--main__head-->
+  <div class="main__head">
+
+    <!--main__title-->
+    <h2 class="main__title">{{ texts[ 'title' ] }}</h2>
+    <!--/main__title-->
+
+  </div>
+  <!--/main__head-->
+
+  <!-- main__body -->
+  <div class="main__body">
+
+    <form class="main-form" [formGroup]="fg" (submit)="submit( fg )">
+
+
+      <fieldset>
+        <select-control
+                [options]="languages"
+                [label]="'Language'"
+                [className]="'default-select'"
+                formControlName="language">
+        </select-control>
+      </fieldset>
+
+
+      <fieldset>
+        <select-control
+                [options]="pages"
+                [label]="'Pagination'"
+                [className]="'default-select'"
+                formControlName="pagination">
+        </select-control>
+      </fieldset>
+
+      <fieldset>
+
+        <div class="main-form__title">{{ texts[ 'searchOptions' ][ 'title' ] }}</div>
+
+        <div *ngFor="let input of searchData[ 'items' ]" class="custom-radio">
+
+          <input id="{{input[ 'value' ]}}_mob" type="radio" name="search" value="{{ input[ 'value' ] }}" formControlName="search">
+
+          <label for="{{input[ 'value' ]}}_mob" class="custom-radio__label">
+
+            <span class="custom-radio__point">
+              <span></span>
+            </span>
+
+            {{ input[ 'text' ] }}
+
+            <span></span>
+
+          </label>
+
+        </div>
+
+      </fieldset>
+
+      <div class="main-form__btns">
+
+        <!--btn-->
+        <button class="btn"
+                [disabled]="!hasChanges"
+                [dropEffect]="'#2271ca'">
+          <span class="btn__inner">{{ texts[ 'submitBtn' ] }}</span>
+        </button>
+        <!--/btn-->
+
+        <button class="main-form__link" (click)="reset( $event )">{{ texts[ 'cancelBtn' ] }}</button>
+
+      </div>
+
+    </form>
+
+  </div>
+  <!-- /main__body -->
+
+</div>

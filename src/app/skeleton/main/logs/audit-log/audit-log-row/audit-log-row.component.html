@@ -1,0 +1,48 @@
+<div>
+
+    <div class="audit-log-row" (click)="open( item )">
+
+        <div class="audit-log-row__date">
+
+            <span>{{ data[ 'date' ] | date: "dd MMM yyyy" }}</span>
+            {{ data[ 'date' ] | date: "hh:mm:ss a" }}
+
+        </div>
+        <div class="audit-log-row__object">
+
+            <div>
+                <span [highlight]="searchText"
+                      [color]="'#ffff97'"
+                      [content]="data[ 'object' ][ 'type' ][ 'name' ]"></span>
+            </div>
+            <span [highlight]="searchText"
+                  [color]="'#ffff97'"
+                  [content]="data[ 'object' ][ 'text' ]"></span>
+
+        </div>
+
+        <div class="audit-log-row__action">
+
+            <span class="audit-log-row__action-type {{ data[ 'action' ] }}">{{ data[ 'action' ] }}</span>
+            <span [highlight]="searchText"
+                  [color]="'#ffff97'"
+                  [content]="action"></span>
+
+        </div>
+
+        <div class="audit-log-row__description">
+
+            <span>{{ data[ 'description' ] }}</span>
+
+        </div>
+
+        <div class="audit-log-row__user">
+
+            <a class="audit-log__user-name">{{ data[ 'user' ][ 'name' ] }}</a>
+            {{ data[ 'user' ][ 'role' ][ 'name' ] }}
+
+        </div>
+
+    </div>
+
+</div>

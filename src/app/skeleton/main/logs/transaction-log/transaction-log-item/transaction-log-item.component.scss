@@ -1,0 +1,154 @@
+.transaction-log-item {
+	border-radius: 4px;
+	background-color: #f4f6f9;
+	padding: 20px;
+	margin-top: 20px;
+
+	header {
+		position: relative;
+
+		h3 {
+			font-family: Lato;
+			font-size: 20px;
+			text-align: left;
+			color: #212c3d;
+			font-weight: 400;
+			display: inline-block;
+			vertical-align: middle;
+		}
+
+		.transaction-log-item__state {
+			vertical-align: middle;
+			display: inline-block;
+			margin-left: 10px;
+
+			span {
+				padding: 0 10px;
+				display: inline-block;
+				height: 20px;
+				border-radius: 100px;
+				font-family: Lato;
+				font-size: 13px;
+				font-weight: 900;
+				line-height: 20px;
+				color: #ffffff;
+			}
+
+			.type_0 {
+				background-color: #8cc574;
+			}
+
+			.type_1 {
+				background-color: #f3ce68;
+			}
+
+			.type_2 {
+				background-color: #ffb163;
+			}
+
+			.type_3 {
+				background-color: #ee8087;
+			}
+
+		}
+
+		button {
+			position: absolute;
+			top: 0;
+			right: 0;
+			width: 20px;
+			height: 20px;
+			border: none;
+			background: none;
+			padding: 0;
+
+			svg {
+				position: absolute;
+				top: -2px;
+				left: -2px;
+			}
+		}
+
+	}
+
+	&__layout {
+		margin-top: 20px;
+		padding: 20px 20px 20px;
+		border-radius: 4px;
+		background-color: #ffffff;
+
+		h4 {
+			position: relative;
+			font-family: Lato;
+			font-size: 18px;
+			line-height: 20px;
+			text-align: left;
+			color: #212c3d;
+			padding-left: 30px;
+			font-weight: 400;
+			height: 20px;
+			margin-bottom: 20px;
+
+			svg {
+				position: absolute;
+				top: -2px;
+				left: -2px;
+			}
+
+		}
+	}
+
+	&__row {
+		display: grid;
+		grid-template-columns: 300px 1fr;
+	}
+
+	&__column {
+
+		dl {
+			display: grid;
+		}
+
+		dt {
+			justify-self: end;
+			align-self: start;
+			margin-bottom: 10px;
+			font-family: Lato;
+			font-size: 16px;
+			line-height: 1.25;
+			text-align: right;
+			color: #9ba1b9;
+		}
+
+		dd {
+			margin-left: 20px;
+			align-self: start;
+			font-family: Lato;
+			font-size: 16px;
+			line-height: 1.25;
+			text-align: left;
+			color: #212c3d;
+		}
+
+		&:first-child {
+
+			dl {
+				grid-template-columns: 131px 1fr;
+			}
+
+		}
+		&:last-child {
+
+			dl {
+				grid-template-columns: 142px 1fr;
+			}
+
+			dt {
+				padding-left: 20px;
+			}
+
+		}
+
+	}
+
+}

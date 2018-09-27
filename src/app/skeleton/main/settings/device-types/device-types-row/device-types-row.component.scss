@@ -1,0 +1,133 @@
+@import "../../../../../scss/main-app";
+@import "../../../../../scss/main";
+
+.device-types-row {
+  display: flex;
+  align-items: flex-start;
+  @include transition( box-shadow, $animation-time, 0 );
+
+  > div {
+    display: flex;
+    align-items: center;
+    min-height: 60px;
+    padding: 0 10px;
+    border-bottom: 2px solid #f4f6f9;
+    font-size: 14px;
+    line-height: 1.43;
+    color: #212c3d;
+    -webkit-transition-property: border-color, opacity, visibility;
+    transition-property: border-color, opacity, visibility;
+    -webkit-transition: $animation-time+s linear;
+    transition: $animation-time+s linear;
+
+    &:first-child {
+      position: relative;
+      padding-left: 75px;
+      font-size: 18px;
+      line-height: 1.11;
+      color: #212c3d;
+
+      &:before {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 75px;
+        background-image: url(../../../../../../assets/img/icon-device.svg);
+        background-position: center;
+        background-repeat: no-repeat;
+        content: '';
+      }
+    }
+    &:nth-child(1) {
+      width: 32.2%;
+    }
+    &:nth-child(2) {
+      width: 25.6%;
+    }
+    &:nth-child(3) {
+      width: 42.2%;
+    }
+  }
+
+  &:hover {
+    box-shadow: 0 3px 10px 0 rgba(24, 40, 65, 0.15);
+
+    > div {
+      border-color: transparent;
+    }
+  }
+}
+
+.device-types-row-mobile {
+  display: flex;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  padding-bottom: 10px;
+  padding-left: 60px;
+  border-bottom: 2px solid #f4f6f9;
+
+  > div {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 19px 20px 8px 0;
+
+    &:first-child {
+      width: 100%;
+    }
+  }
+
+  .device-types-row__name {
+    position: relative;
+    width: 100%;
+    font-size: 18px;
+    line-height: 1.11;
+    color: #212c3d;
+
+    &:before {
+      position: absolute;
+      top: 0;
+      left: -59px;
+      height: 60px;
+      width: 60px;
+      background-image: url(../../../../../../assets/img/icon-device.svg);
+      background-position: center;
+      background-repeat: no-repeat;
+      content: '';
+    }
+  }
+  .device-types-row__status {
+    width: 100%;
+    padding-top: 2px;
+  }
+
+  .device-types-row__title {
+    width: 100%;
+    display: block;
+    font-size: 16px;
+    line-height: 1.25;
+    color: #9ba1b9;
+  }
+
+  .device-types-row__column {
+    display: block;
+    width: 50%;
+    margin-bottom: 8px;
+    padding-top: 2px;
+    padding-bottom: 0;
+    font-size: 14px;
+    line-height: 1.43;
+    color: #212c3d;
+
+    &:nth-child(1) {
+      width: 100%;
+      font-size: 18px;
+      line-height: 1.11;
+      color: #212c3d;
+
+    }
+    &:nth-child(2) {
+      width: 100%;
+    }
+  }
+}

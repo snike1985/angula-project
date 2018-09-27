@@ -1,0 +1,101 @@
+<div class="custom-table__row">
+
+  <div  [class.user-role-row]="viewSize >= 3"
+          [class.user-role-row-mobile]="viewSize < 3">
+
+    <div class="user-role-row__name">
+
+      <h2>
+        <div class="device-types-row__name"
+               [highlight]="searchText"
+               [color]="'#ffff97'"
+               [content]="data[ 'name' ]"></div>
+      </h2>
+
+      <p>{{ data[ 'description' ] }}</p>
+
+    </div>
+
+    <div class="user-role-row__status">
+
+      <switch-control
+              [disabledState]="false"
+              [formControl]="fc">
+      </switch-control>
+
+    </div>
+
+    <div class="user-role-row__functions">
+
+      <functions
+              [functions]="data[ 'roleFunction' ]"
+              [language]="language">
+      </functions>
+
+    </div>
+
+    <div class="user-role-row_btns edits" *ngIf="viewSize >=3; else mobileView">
+
+      <div class="edits__dropdown"
+              [class.active]="isOpened"
+              (mouseenter)="showDropDown()"
+              (mouseleave)="closeDropDown()">
+
+        <button class="edits__btn">
+          <span>{{ this.texts[ 'btnMore' ] }}</span>
+        </button>
+
+        <div class="edits__dropdown-inner">
+
+          <a class="edits__dropdown-btn" routerLink="/settings/user-roles/{{ data[ 'id' ] }}/edit/" (click)="setCurrent()">
+            {{ this.texts[ 'btnEdit' ] }}
+          </a>
+
+          <button class="edits__dropdown-btn edits__dropdown-btn_delete" type="button" (click)="closeDropDown(); delete();">
+            {{ this.texts[ 'btnDelete' ] }}
+          </button>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <ng-template #mobileView>
+
+      <div class="user-row_btns edits" *ngIf="viewSize < 3">
+
+        <div class="edits__dropdown"
+                [class.active]="isOpened"
+                (mouseenter)="showDropDown()"
+                (mouseleave)="closeDropDown()">
+
+          <button type="button" class="edits__dropdown-open-btn">
+            <span></span>
+          </button>
+
+          <div class="edits__dropdown-inner">
+
+            <a class="edits__dropdown-btn" routerLink="/settings/user-roles/{{ data[ 'id' ] }}/edit">
+              {{ this.texts[ 'btnEdit' ] }}
+            </a>
+
+            <button class="edits__dropdown-btn edits__dropdown-btn_delete" type="button" (click)="closeDropDown(); delete();">
+              {{ this.texts[ 'btnDelete' ] }}
+            </button>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </ng-template>
+
+  </div>
+
+  <div *ngIf="loading" class="spinner"></div>
+
+</div>
+
+

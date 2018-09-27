@@ -1,0 +1,83 @@
+<div class="simple-dropdown">
+
+  <div class="datepicker__wrap">
+
+    <div class="ranges">
+      <div (click)="setCurrentMenuRange(range['value'])" *ngFor="let range of rangesMenu" class="ranges__item" [class.selected]="range['value'] === selectedMenuRange" >{{ range['name'] }}</div>
+    </div>
+
+    <div class="datepicker">
+
+      <div class="datepicker__head">
+
+        <p *ngIf="!isRangeSelected" >You can select any period by clicking
+          on the calendar</p>
+
+        <div *ngIf="isRangeSelected" class="datepicker__diapason">
+          <div>
+            <span class="datepicker__diapason-name">From</span>
+            <div class="datepicker__diapason-container" [class.active]="order == 1" (click)="reCheckRange(1, $event)">
+              <span  *ngIf="startRange; else startRangeTemplate" class="datepicker__diapason-date">{{ getTimestampFromRange(startRange) | date: "dd MMM yyyy"  }}</span>
+
+              <ng-template #startRangeTemplate>
+                <span class="datepicker__diapason-select">Select date</span>
+              </ng-template>
+
+            </div>
+          </div>
+          <div>
+            <span class="datepicker__diapason-name">To</span>
+            <div class="datepicker__diapason-container" [class.active]="order == 2" (click)="reCheckRange(2, $event)">
+              <span  *ngIf="endRange; else endRangeTemplate" class="datepicker__diapason-date">{{ getTimestampFromRange(endRange) | date: "dd MMM yyyy"  }}</span>
+              <ng-template #endRangeTemplate>
+                <span  class="datepicker__diapason-select">Select date</span>
+              </ng-template>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="datepicker__content">
+
+        <div class="datepicker__caption">
+          <button (click)="getPrevMonth()" class="datepicker__btn datepicker__prev"></button>
+          <span class="datepicker__period">{{ currentMonthName | date: 'MMMM' }} {{ year }}</span>
+          <button (click)="getNextMonth()" class="datepicker__btn datepicker__next"></button>
+        </div>
+
+        <div class="datepicker__rows">
+          <div class="datepicker__row datepicker__row_days">
+            <div class="datepicker__cell"><span>S</span></div>
+            <div class="datepicker__cell"><span>M</span></div>
+            <div class="datepicker__cell"><span>T</span></div>
+            <div class="datepicker__cell"><span>W</span></div>
+            <div class="datepicker__cell"><span>T</span></div>
+            <div class="datepicker__cell"><span>F</span></div>
+            <div class="datepicker__cell"><span>S</span></div>
+          </div>
+          <div *ngFor="let week of days" class="datepicker__row">
+            <div  *ngFor="let day of week"
+                  [class.current]="day['day'] == today && day['month'] == currentMonth && currentYear == year"
+                  [class.non-available]="day['month'] !== month"
+                  [class.selected]="isSelected(day)"
+                  [class.range]="inRange(day)"
+                  (click)="chooseDate(day, $event)"
+                  class="datepicker__cell selected"><span>{{ day['day'] }}</span></div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="datepicker__controls">
+    <button (click)="applyFilter()" [disabled]="!isValid" type="button" class="btn">Apply Filter</button>
+    <button  (click)="closeDropDown()" type="button" class="main-form__link">Cancel</button>
+  </div>
+
+</div>
+

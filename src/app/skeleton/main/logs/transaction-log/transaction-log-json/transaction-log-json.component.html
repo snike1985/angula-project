@@ -1,0 +1,21 @@
+<div class="popup-layout popup-layout_import">
+
+  <header>
+
+    <h1 class="popup-layout__title">{{ texts[ 'title' ] }}</h1>
+
+  </header>
+
+  <div class="popup-layout__content" [perfect-scrollbar]="{ suppressScrollX: true }" [style.maxHeight.px]="maxHeight">
+
+    <div class="popup-layout__json">
+
+      <div class="spinner spinner_main" *ngIf="loading" ></div>
+
+      <prettyjson [obj]="json"></prettyjson>
+
+    </div>
+
+  </div>
+
+</div>

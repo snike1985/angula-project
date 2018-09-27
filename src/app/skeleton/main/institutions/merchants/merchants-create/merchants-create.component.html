@@ -1,0 +1,479 @@
+<div class="main__scroll" perfect-scrollbar [@FadeInOut]="">
+
+    <div class="merchants">
+
+        <button class="main__back-link"
+                (click)="back()"
+                [activeEffect]="'blue'">
+            {{ texts[ 'backBtn' ] }}
+        </button>
+
+        <h1 class="main__title">
+
+            <i class="main__title-icon">
+                <svg width="31px" height="30px" viewBox="0 0 31 30">
+                    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                        <g fill="#CBCFDA">
+                            <path d="M24.0000139,11 C24.0049961,12.6553442 25.3462266,14 27,14 L27,25 L4,25 L4,14 C5.65041273,14 6.99499857,12.6577095 6.99998608,11 L1,11 L5,2 L26,2 L30,11 L24.0000129,11 Z M23.9999877,11 L13.0000129,11 C13.0049961,12.6553442 14.3462266,14 16,14 C17.0418683,14 17.9618611,13.4650823 18.4999115,12.6535779 C19.0373599,13.4645986 19.9564573,14 21,14 C22.6504127,14 23.9949986,12.6577095 23.9999861,11 Z M12.9999871,11 L7.00001235,11 C7.00499607,12.6553442 8.34622657,14 10,14 C11.6504127,14 12.9949986,12.6577095 12.9999861,11 Z M1,26.5 C1,25.6715729 1.67415592,25 2.49809915,25 L28.5019009,25 C29.3292782,25 30,25.6657972 30,26.5 C30,27.3284271 29.3258441,28 28.5019009,28 L2.49809915,28 C1.67072183,28 1,27.3342028 1,26.5 Z M8,16 L8,25 L14,25 L14,16 L8,16 Z M18,16 L18,21 L23,21 L23,16 L18,16 Z"
+                                  id="Combined-Shape"></path>
+                        </g>
+                    </g>
+                </svg>
+            </i>
+
+            <span *ngIf="!isEdit">{{ texts[ 'titleCreate' ] }}</span>
+            <span *ngIf="isEdit">{{ texts[ 'titleEdit' ] }} Toyota</span>
+
+        </h1>
+
+        <button class="main__delete-btn"
+                *ngIf="isEdit"
+                (click)="askToDelete( $event, 'MerchantDeleteComponent' )"
+                [activeEffect]="'red'">
+            {{ texts[ 'deleteBtn' ] }}
+        </button>
+
+        <div class="tabs">
+
+            <button class="tabs__control"
+                    [class.active]="activeTab === 'general'"
+                    (click)="openTab( 'general' )">
+
+                <i>
+                    <svg width="24px" height="24px" viewBox="0 0 24 24">
+                        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                            <g fill="#CBCFDA">
+                                <path d="M2,6 C2,4.8954305 2.88772964,4 4,4 C5.1045695,4 6,4.88772964 6,6 C6,7.1045695 5.11227036,8 4,8 C2.8954305,8 2,7.11227036 2,6 Z M8,6 C8,5.44771525 8.44994876,5 9.00684547,5 L20.9931545,5 C21.5492199,5 22,5.44386482 22,6 C22,6.55228475 21.5500512,7 20.9931545,7 L9.00684547,7 C8.45078007,7 8,6.55613518 8,6 Z M2,12 C2,10.8954305 2.88772964,10 4,10 C5.1045695,10 6,10.8877296 6,12 C6,13.1045695 5.11227036,14 4,14 C2.8954305,14 2,13.1122704 2,12 Z M8,12 C8,11.4477153 8.44994876,11 9.00684547,11 L20.9931545,11 C21.5492199,11 22,11.4438648 22,12 C22,12.5522847 21.5500512,13 20.9931545,13 L9.00684547,13 C8.45078007,13 8,12.5561352 8,12 Z M2,18 C2,16.8954305 2.88772964,16 4,16 C5.1045695,16 6,16.8877296 6,18 C6,19.1045695 5.11227036,20 4,20 C2.8954305,20 2,19.1122704 2,18 Z M8,18 C8,17.4477153 8.44994876,17 9.00684547,17 L20.9931545,17 C21.5492199,17 22,17.4438648 22,18 C22,18.5522847 21.5500512,19 20.9931545,19 L9.00684547,19 C8.45078007,19 8,18.5561352 8,18 Z"></path>
+                            </g>
+                        </g>
+                    </svg>
+                </i>
+
+                {{ texts[ 'tabsBtns' ][ 'generalInfo' ] }}
+
+                <span class="tabs__control-note" *ngIf="generalErrorsCount > 0">{{ generalErrorsCount }}</span>
+
+            </button>
+
+            <button class="tabs__control"
+                    [class.active]="activeTab === 'merchant'"
+                    (click)="openTab( 'merchant' )">
+
+                <i>
+                    <svg width="24px" height="24px" viewBox="0 0 24 24">
+                        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                            <g fill="#CBCFDA">
+                                <path d="M20,6.17070571 L20,2.99180311 C20,2.45530558 19.5522847,2 19,2 C18.4438648,2 18,2.44404538 18,2.99180311 L18,6.17070571 C16.8348076,6.58254212 16,7.69378117 16,9 C16,10.3062188 16.8348076,11.4174579 18,11.8292943 L18,21.0081969 C18,21.5446944 18.4477153,22 19,22 C19.5561352,22 20,21.5559546 20,21.0081969 L20,11.8292943 C21.1651924,11.4174579 22,10.3062188 22,9 C22,7.69378117 21.1651924,6.58254212 20,6.17070571 Z M13,12.1707057 L13,2.99180311 C13,2.45530558 12.5522847,2 12,2 C11.4438648,2 11,2.44404538 11,2.99180311 L11,12.1707057 C9.83480763,12.5825421 9,13.6937812 9,15 C9,16.3062188 9.83480763,17.4174579 11,17.8292943 L11,21.0081969 C11,21.5446944 11.4477153,22 12,22 C12.5561352,22 13,21.5559546 13,21.0081969 L13,17.8292943 C14.1651924,17.4174579 15,16.3062188 15,15 C15,13.6937812 14.1651924,12.5825421 13,12.1707057 Z M6,6.17070571 L6,2.99180311 C6,2.45530558 5.55228475,2 5,2 C4.44386482,2 4,2.44404538 4,2.99180311 L4,6.17070571 C2.83480763,6.58254212 2,7.69378117 2,9 C2,10.3062188 2.83480763,11.4174579 4,11.8292943 L4,21.0081969 C4,21.5446944 4.44771525,22 5,22 C5.55613518,22 6,21.5559546 6,21.0081969 L6,11.8292943 C7.16519237,11.4174579 8,10.3062188 8,9 C8,7.69378117 7.16519237,6.58254212 6,6.17070571 Z" id="Combined-Shape"></path>
+                            </g>
+                        </g>
+                    </svg>
+                </i>
+
+                {{ texts[ 'tabsBtns' ][ 'merchantOptions' ] }}
+
+                <span class="tabs__control-note" *ngIf="optionErrorsCount > 0">{{ optionErrorsCount }}</span>
+
+            </button>
+
+            <button class="tabs__control"
+                    [class.active]="activeTab === 'contact'"
+                    (click)="openTab( 'contact' )">
+
+                <i>
+                    <svg width="24px" height="24px" viewBox="0 0 24 24">
+                        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                            <g id="contact-info" fill="#CBCFDA">
+                                <path d="M2,5.99922997 C2,3.79051625 3.79246765,2 5.99922997,2 L18.00077,2 C20.2094838,2 22,3.79246765 22,5.99922997 L22,18.00077 C22,20.2094838 20.2075324,22 18.00077,22 L5.99922997,22 C3.79051625,22 2,20.2075324 2,18.00077 L2,5.99922997 Z M17.1955239,17.4050478 C16.96005,17.5714978 16.7013948,17.7183654 16.4256586,17.8260683 C16.1694435,17.9264278 15.9168886,17.9888465 15.652133,18.0206678 C15.5313459,18.0341307 12.7239604,18.2972684 9.24065516,14.8030437 C6.7212067,12.2756973 5.79273198,10.4129267 6.03796644,8.37391503 C6.06602809,8.12056844 6.12825176,7.86599795 6.22951772,7.6004124 C6.33810412,7.32136398 6.48451275,7.0618979 6.6602031,6.83792483 L7.16897308,6.29573865 C7.55207566,5.91143513 8.16455175,5.90042006 8.53423353,6.27003682 L10.3899629,8.1328074 C10.7584246,8.50364807 10.748664,9.11682025 10.3655614,9.50112377 L10.0568833,9.8119935 L9.42854623,10.4398524 C9.46148818,10.4973756 9.49443012,10.5585704 9.5298122,10.6209891 C9.85801154,11.2133551 10.306998,12.0260224 11.1598283,12.8815261 C12.0102184,13.7358059 12.819126,14.184976 13.4096408,14.5142041 C13.4730846,14.5496971 13.5340882,14.5839662 13.5938717,14.6170114 L14.5284468,13.6782828 C14.9115493,13.2952031 15.5240254,13.2829642 15.8937072,13.6525809 L17.7494366,15.5153515 C18.1178983,15.8861922 18.1069176,16.5005883 17.7250351,16.8848918 L17.1955239,17.4050478 Z"
+                                      id="Combined-Shape"></path>
+                            </g>
+                        </g>
+                    </svg>
+                </i>
+
+                {{ texts[ 'tabsBtns' ][ 'contactInfo' ] }}
+
+                <span class="tabs__control-note" *ngIf="contactErrorsCount > 0">{{ contactErrorsCount }}</span>
+
+            </button>
+
+        </div>
+
+        <form class="main-form"
+              [class.failure] = "generalErrorsCount > 0 || contactErrorsCount > 0 || optionErrorsCount > 0"
+              [formGroup]="fg"
+              (submit)="submit( fg )"
+              *ngIf="fg">
+
+            <div *ngIf="activeTab == 'general'" formGroupName="general" [@tabsAnimation]="activeTab == 'general'">
+
+                <!--main-form__group-->
+                <div class="main-form__group">
+
+                    <fieldset class="main-field">
+
+                        <label for="name" class="main-field__requared">
+                            {{ texts[ 'labels' ][ 'name' ] }}
+                        </label>
+
+                        <div class="main-field__inner">
+
+                            <input id="name"
+                                   name="name"
+                                   formControlName="name"
+                                   placeholder="{{ texts[ 'labels' ][ 'name' ] }}">
+
+                            <div class="main-field__invalid">
+
+                                <div>
+                                    {{texts[ 'filledError' ]}}
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </fieldset>
+
+                    <fieldset class="main-field">
+
+                        <label for="description">
+                            {{ texts[ 'labels' ][ 'description' ] }}
+                        </label>
+
+                        <div class="main-field__inner">
+
+                            <textarea id="description" formControlName="description" placeholder="{{ texts[ 'labels' ][ 'description' ] }}"></textarea>
+
+                        </div>
+
+                    </fieldset>
+
+                    <fieldset class="main-field">
+
+                        <select-control
+                                [options]="institutionsOptions"
+                                [label]="texts[ 'labels' ][ 'institution' ]"
+                                formControlName="institution"
+                                [className]="'default-select'">
+                        </select-control>
+
+                    </fieldset>
+
+                </div>
+                <!--/main-form__group-->
+
+                <div class="main-form__double-field">
+
+                    <fieldset class="main-field">
+
+                        <datepicker-control
+                                [label]= "texts[ 'labels' ][ 'activeSince' ]"
+                                [controlClassName]="'datepicker-control_1'"
+                                [type]="0"
+                                required="true"
+                                formControlName="activateOn"></datepicker-control>
+
+                        <div class="main-field__invalid">
+
+                            <div>
+                                {{ texts[ 'filledError' ] }}
+                            </div>
+
+                        </div>
+
+                    </fieldset>
+
+                    <fieldset class="main-field">
+
+                        <datepicker-control
+                                [label]= "texts[ 'labels' ][ 'activeTo' ]"
+                                [controlClassName]="'datepicker-control_1'"
+                                [type]="0"
+                                required="true"
+                                formControlName="expiryOn"></datepicker-control>
+
+                        <div class="main-field__invalid">
+
+                            <div>
+                                {{ texts[ 'filledError' ] }}
+                            </div>
+
+                        </div>
+
+                    </fieldset>
+
+                </div>
+
+            </div>
+
+            <div *ngIf="activeTab == 'merchant'" formGroupName="options" [@tabsAnimation]="activeTab == 'merchant'">
+
+                <fieldset class="main-field">
+
+                    <select-control
+                            formControlName="category"
+                            [options]="categoriesOptions"
+                            [label]="texts[ 'labels' ][ 'categoryCode' ]"
+                            [className]="'default-select'">
+                    </select-control>
+
+                </fieldset>
+
+                <fieldset class="main-field">
+
+                    <switch-control
+                            [disabledState]="false"
+                            formControlName="partialAuth"
+                            [label]="texts[ 'labels' ][ 'partialAuth' ]"
+                            [niceCheckbox]="true">
+                    </switch-control>
+
+                </fieldset>
+
+                <div class="main-form__double-field">
+
+                    <fieldset class="main-field">
+
+                        <div class="main-field__title">
+                            {{ texts[ 'labels' ][ 'services' ] }}
+                        </div>
+
+                        <switch-control
+                                [disabledState]="false"
+                                formControlName="authService"
+                                [label]="texts[ 'labels' ][ 'authService' ]"
+                                [niceCheckbox]="true">
+                        </switch-control>
+
+                        <switch-control
+                                [disabledState]="false"
+                                formControlName="prepaidService"
+                                [label]="texts[ 'labels' ][ 'prepaidService' ]"
+                                [niceCheckbox]="true">
+                        </switch-control>
+
+                    </fieldset>
+
+                    <fieldset class="main-field">
+
+                        <div class="main-field__title">
+                            {{ texts[ 'labels' ][ 'additional' ] }}
+                        </div>
+
+                        <switch-control
+                                [disabledState]="false"
+                                formControlName="fraudService"
+                                [label]="texts[ 'labels' ][ 'fraudService' ]"
+                                [niceCheckbox]="true">
+                        </switch-control>
+
+                        <switch-control
+                                [disabledState]="false"
+                                formControlName="loyaltyService"
+                                [label]="texts[ 'labels' ][ 'loyaltyService' ]"
+                                [niceCheckbox]="true">
+                        </switch-control>
+
+                    </fieldset>
+
+                </div>
+
+            </div>
+
+            <div *ngIf="activeTab == 'contact'" formGroupName="merchantDetail" [@tabsAnimation]="activeTab == 'contact'">
+
+                <!--main-form__group-->
+                <div class="main-form__group">
+
+                    <fieldset class="main-field">
+
+                        <label for="email">
+                            {{ texts[ 'labels' ][ 'email' ] }}
+                        </label>
+
+                        <div class="main-field__inner">
+
+                            <input id="email"
+                                   formControlName="email"
+                                   name="email"
+                                   placeholder="{{ texts[ 'labels' ][ 'email' ] }}">
+
+                            <div class="main-field__invalid">
+
+                                <div>
+                                    {{texts[ 'emailValidationError' ]}}
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </fieldset>
+
+                    <div class="main-form__double-field">
+
+                        <fieldset class="main-field">
+
+                            <label for="phone">
+                                {{ texts[ 'labels' ][ 'phone' ] }}
+                            </label>
+
+                            <input id="phone" type="tel"
+                                   name="phone"
+                                   formControlName="phone"
+                                   (keypress)="phoneOnly( $event )"
+                                   placeholder="{{ texts[ 'labels' ][ 'phone' ] }}">
+
+                        </fieldset>
+
+                        <fieldset class="main-field">
+
+                            <label for="fax">
+                                {{ texts[ 'labels' ][ 'fax' ] }}
+                            </label>
+
+                            <input id="fax" type="tel"
+                                   name="fax"
+                                   formControlName="fax"
+                                   (keypress)="phoneOnly( $event )"
+                                   placeholder="{{ texts[ 'labels' ][ 'fax' ] }}">
+
+
+                        </fieldset>
+
+                    </div>
+
+                </div>
+                <!--/main-form__group-->
+
+                <fieldset class="main-field">
+
+                    <select-control
+                            [options]="countriesOptions"
+                            formControlName="country"
+                            [label]= "texts[ 'labels' ][ 'country' ]"
+                            [className]="'default-select'">
+                    </select-control>
+
+                </fieldset>
+
+                <fieldset class="main-field">
+
+                    <label for="addressOne">
+                        {{ texts[ 'labels' ][ 'addressLineOne' ] }}
+                    </label>
+
+                    <div class="main-field__inner">
+
+                        <input id="addressOne"
+                               formControlName="address1"
+                               name="addressOne"
+                               placeholder="{{ texts[ 'labels' ][ 'addressLineOne' ] }}">
+
+                    </div>
+
+                </fieldset>
+
+                <fieldset class="main-field">
+
+                    <label for="addressOne">
+                        {{ texts[ 'labels' ][ 'addressLineTwo' ] }}
+                    </label>
+
+                    <div class="main-field__inner">
+
+                        <input id="addressTwo"
+                               formControlName="address1"
+                               name="addressTwo"
+                               placeholder="{{ texts[ 'labels' ][ 'addressLineTwo' ] }}">
+
+                    </div>
+
+                </fieldset>
+
+                <div class="main-form__double-field">
+
+                    <fieldset class="main-field">
+
+                        <label for="city">
+                            {{ texts[ 'labels' ][ 'city' ] }}
+                        </label>
+
+                        <input id="city"
+                               formControlName="city"
+                               name="city"
+                               placeholder="{{ texts[ 'labels' ][ 'city' ] }}">
+
+                    </fieldset>
+
+                    <fieldset class="main-field">
+
+                        <select-control
+                                [options]="statesOptions"
+                                formControlName="countryState"
+                                [label]= "texts[ 'labels' ][ 'state' ]"
+                                [className]="'default-select'">
+                        </select-control>
+
+                    </fieldset>
+
+                </div>
+
+                <div class="main-form__double-field">
+
+                    <fieldset class="main-field">
+
+                        <label for="zipCode">
+                            {{ texts[ 'labels' ][ 'zipCode' ] }}
+                        </label>
+
+                        <input id="zipCode"
+                               formControlName="zip"
+                               name="zipCode"
+                               placeholder="{{ texts[ 'labels' ][ 'zipCode' ] }}">
+
+
+                    </fieldset>
+
+                </div>
+
+            </div>
+
+            <div class="main-form__failure">
+
+                <div *ngIf="generalErrorsCount > 0 || contactErrorsCount > 0 || optionErrorsCount > 0">
+                    {{ texts[ 'errorMessage' ] }}
+                </div>
+
+            </div>
+
+            <div class="main-form__btns">
+
+                <button class="btn"
+                        *ngIf="!isEdit"
+                        [dropEffect]="'#2271ca'">
+                    <span class="btn__inner">{{texts[ 'createBtn' ]}}</span>
+                </button>
+
+                <button class="btn"
+                        *ngIf="isEdit"
+                        [dropEffect]="'#2271ca'">
+                    <span class="btn__inner">{{texts[ 'saveBtn' ]}}</span>
+                </button>
+
+                <button type="button"
+                        class="main-form__link"
+                        (click)="cancel( $event )"
+                        [activeEffect]="'blue'">
+                    {{ texts[ 'cancelBtn' ] }}
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+    <div class="spinner spinner_main" *ngIf="loaded" [@FadeInOut]="loaded"></div>
+
+</div>

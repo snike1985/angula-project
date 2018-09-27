@@ -1,0 +1,106 @@
+<div class="popup-layout popup-layout_import">
+
+    <header>
+
+        <h1 class="popup-layout__title">{{ texts[ 'title' ] }}</h1>
+
+    </header>
+
+    <div class="popup-layout__content">
+
+        <div class="access-log">
+
+            <div class="access-log__calendar">
+
+                <div class="access-log__calendar-item">
+
+                    <h2>{{ texts[ 'labels' ][ 'logIn' ] }}:</h2>
+
+                    <div class="access-log__date">
+
+                        <strong>{{ currentItem[ 'log_in' ] | date: "dd MMM yyyy" }}</strong>
+                        {{ currentItem[ 'log_in' ] | date: "hh:mm:ss a" }}
+
+                    </div>
+
+                </div>
+
+                <div class="access-log__calendar-item">
+
+                    <h2>{{ texts[ 'labels' ][ 'logOut' ] }}:</h2>
+
+                    <div class="access-log__date">
+
+                        <strong>{{ currentItem[ 'log_out' ] | date: "dd MMM yyyy" }}</strong>
+                        {{ currentItem[ 'log_out' ] | date: "hh:mm:ss a" }}
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="access-log__person">
+
+                <div class="access-log__item">
+
+                    <h2>{{ texts[ 'labels' ][ 'user' ] }}:</h2>
+
+                    <div class="access-log__user-name">
+
+                        {{ currentItem[ 'user' ][ 'name' ] }}
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="access-log__frame">
+
+                <dl class="access-log__login-info">
+
+                    <dt>{{ texts[ 'labels' ][ 'result' ] }}:</dt>
+
+                    <dd>
+
+                        <span class="access-log__label access-log__label_succeeded"
+                              *ngIf="currentItem[ 'login_result' ][ 'status' ]"
+                              [class.succeeded]="currentItem[ 'login_result' ][ 'status' ]">{{ texts['succeeded'] }}</span>
+                        <span class="access-log__label access-log__label_failed"
+                              *ngIf="!currentItem[ 'login_result' ][ 'status' ]"
+                              [class.succeeded]="currentItem[ 'login_result' ][ 'status' ]">{{ texts['failed'] }}</span>
+
+                        <div>{{ currentItem[ 'login_result' ][ 'message' ] }}</div>
+
+                    </dd>
+
+                </dl>
+
+                <dl class="access-log__info">
+
+                    <dt>{{ texts[ 'labels' ][ 'accessPoint' ] }}:</dt>
+
+                    <dd>
+
+                        {{ currentItem[ 'access_points' ] }}
+
+                    </dd>
+
+                </dl>
+
+                <dl class="access-log__info" *ngFor="let item of currentItem['description']">
+
+                    <dt>{{ item[ 'key' ] }}</dt>
+                    <dd>{{ item[ 'value' ] }}</dd>
+
+                </dl>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</div>

@@ -1,0 +1,170 @@
+<div class="main__scroll" #mainscroll perfect-scrollbar [@FadeInOut]="">
+
+    <div class="devices">
+
+        <button class="main__back-link"
+                (click)="back()"
+                [activeEffect]="'blue'">
+            {{ texts[ 'backBtn' ] }}
+        </button>
+
+        <h1 class="main__title">
+
+            <i class="main__title-icon">
+                <svg width="31px" height="30px" viewBox="0 0 31 30">
+                    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                        <g fill="#CBCFDA">
+                            <path d="M2,2.99124431 C2,1.89151044 2.89989752,1 3.99124431,1 L28.0087557,1 C29.1084896,1 30,1.89989752 30,2.99124431 L30,27.0087557 C30,28.1084896 29.1001025,29 28.0087557,29 L3.99124431,29 C2.89151044,29 2,28.1001025 2,27.0087557 L2,2.99124431 Z M2,11.8888889 L2,15 L30,15 L30,11.8888889 L2,11.8888889 Z M6.66666667,22.7777778 C6.66666667,23.6428769 7.36140259,24.3333333 8.21840278,24.3333333 L19.1149306,24.3333333 C19.9724045,24.3333333 20.6666667,23.6368874 20.6666667,22.7777778 C20.6666667,21.9126786 19.9719307,21.2222222 19.1149306,21.2222222 L8.21840278,21.2222222 C7.36092884,21.2222222 6.66666667,21.9186682 6.66666667,22.7777778 Z M7.44444444,8.77777778 C8.73310886,8.77777778 9.77777778,7.73310886 9.77777778,6.44444444 C9.77777778,5.15578003 8.73310886,4.11111111 7.44444444,4.11111111 C6.15578003,4.11111111 5.11111111,5.15578003 5.11111111,6.44444444 C5.11111111,7.73310886 6.15578003,8.77777778 7.44444444,8.77777778 Z"
+                                  id="Combined-Shape"></path>
+                        </g>
+                    </g>
+                </svg>
+            </i>
+
+            <span *ngIf="!isEdit">{{ texts[ 'titleCreate' ] }}</span>
+            <span *ngIf="isEdit">{{ texts[ 'titleEdit' ] }} Edit POS terminal</span>
+
+        </h1>
+
+        <button class="main__delete-btn"
+                *ngIf="isEdit"
+                (click)="askToDelete( $event, 'DeviceDeleteComponent' )"
+                [activeEffect]="'red'">
+            {{ texts[ 'deleteBtn' ] }}
+        </button>
+
+        <form class="main-form"
+              [formGroup]="fg"
+              (submit)="create( fg )"
+              *ngIf="fg">
+
+            <!--main-form__group-->
+            <div class="main-form__group">
+
+                <fieldset class="main-field">
+
+                    <select-control
+                            [options]="typesOptions"
+                            formControlName="type"
+                            [label]="texts[ 'labels' ][ 'deviceType' ]"
+                            [className]="'default-select'">
+                    </select-control>
+
+                </fieldset>
+
+                <div class="main-form__double-field">
+
+                    <fieldset class="main-field">
+
+                        <select-control
+                                [options]="institutionsOptions"
+                                formControlName="institution"
+                                [label]="texts[ 'labels' ][ 'institution' ]"
+                                [className]="'default-select'">
+                        </select-control>
+
+                    </fieldset>
+
+                    <fieldset class="main-field">
+
+                        <select-control
+                                [options]="merchantsOptions"
+                                formControlName="merchant"
+                                [label]="texts[ 'labels' ][ 'merchant' ]"
+                                [className]="'default-select'">
+                        </select-control>
+
+                    </fieldset>
+
+                </div>
+
+                <div class="main-form__double-field">
+
+                    <fieldset class="main-field">
+
+                        <select-control
+                                [options]="locationsOptions"
+                                formControlName="location"
+                                [label]="texts[ 'labels' ][ 'location' ]"
+                                [className]="'default-select'">
+                        </select-control>
+
+                    </fieldset>
+
+                </div>
+
+            </div>
+            <!--/main-form__group-->
+
+            <div class="main-form__double-field">
+
+                <fieldset class="main-field">
+
+                    <datepicker-control
+                            [label]= "'Active since'"
+                            [controlClassName]="'datepicker-control_1'"
+                            [type]="0"
+                            required="false"
+                            formControlName="activateOn"></datepicker-control>
+
+                    <div class="main-field__invalid">
+
+                        <div>
+                            {{ texts[ 'filledError' ] }}
+                        </div>
+
+                    </div>
+
+                </fieldset>
+
+                <fieldset class="main-field">
+
+                    <datepicker-control
+                            [label]= "'Active to'"
+                            [controlClassName]="'datepicker-control_1'"
+                            [type]="0"
+                            required="false"
+                            formControlName="expiryOn"></datepicker-control>
+
+                    <div class="main-field__invalid">
+
+                        <div>
+                            {{ texts[ 'filledError' ] }}
+                        </div>
+
+                    </div>
+
+                </fieldset>
+
+            </div>
+
+            <div class="main-form__btns">
+
+                <button class="btn"
+                        *ngIf="!isEdit"
+                        [dropEffect]="'#2271ca'">
+                    <span class="btn__inner">{{texts[ 'createBtn' ]}}</span>
+                </button>
+
+                <button class="btn"
+                        *ngIf="isEdit"
+                        [dropEffect]="'#2271ca'">
+                    <span class="btn__inner">{{texts[ 'saveBtn' ]}}</span>
+                </button>
+
+                <button type="button"
+                        class="main-form__link"
+                        (click)="cancel( $event )"
+                        [activeEffect]="'blue'">
+                    {{ texts[ 'cancelBtn' ] }}
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+    <div class="spinner spinner_main" *ngIf="loaded" [@FadeInOut]="loaded"></div>
+
+</div>

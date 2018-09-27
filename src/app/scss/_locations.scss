@@ -1,0 +1,22 @@
+.locations {
+	position: relative;
+	padding: 0 35px;
+
+	.main__title {
+
+		i {
+			display: inline-block;
+			height: 30px;
+			width: 27px;
+
+			svg {
+				width: 100%;
+				height: 100%;
+			}
+		}
+	}
+	.main-form {
+		max-width: 530px;
+	}
+
+}

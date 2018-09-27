@@ -1,0 +1,36 @@
+<div class="timepicker" (wheel)="mouseWheelUpFunc($event)">
+
+  <div class="timepicker__wrap" [formGroup]="fg">
+
+    <label (click)="setActiveIndex(0)">
+      <input maxlength="2" class="timepicker__field" formControlName="hours" type="tel" [value]="formatTime(ranges[0])"
+             [class.active]="0 == activeIndex"
+              (focus)="onFocusField($event)"
+              (blur)="onBlur('hours', 0)"
+              (keypress)="enteredTime($event)"  />
+    </label>
+
+    <label  (click)="setActiveIndex(1)">
+      <input maxlength="2" class="timepicker__field" formControlName="minutes" type="tel" [value]="formatTime(ranges[1])"
+             [class.active]="1 == activeIndex"
+             (focus)="onFocusField($event)"
+             (blur)="onBlur('minutes', 1)"
+            (keypress)="enteredTime($event)"/>
+    </label>
+
+    <label  (click)="setActiveIndex(2)">
+      <input maxlength="2" class="timepicker__field" formControlName="seconds" type="tel" [value]="formatTime(ranges[2])"
+             [class.active]="2 == activeIndex"
+             (focus)="onFocusField($event)"
+             (blur)="onBlur('seconds', 2)"
+             (keypress)="enteredTime($event)"/>
+    </label>
+
+  </div>
+
+  <div class="timepicker__controls">
+    <button (click)="changeToUp()"></button>
+    <button (click)="changeToDown()"></button>
+  </div>
+
+</div>

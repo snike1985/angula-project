@@ -1,0 +1,510 @@
+@import "main-app";
+@import "custom-tables";
+@import "empty";
+
+.CountriesComponent {
+
+  .custom-table__header {
+
+    &-item:first-child { padding-left: 74px }
+  }
+  .custom-table__header-inner {
+
+    > span {
+
+      &:nth-child(1) {
+        width: 33.2%;
+      }
+      &:nth-child(2) {
+        width: 14.6%;
+      }
+      &:nth-child(3) {
+        width: 16.3%;
+      }
+      &:nth-child(4) {
+        width: 11.4%;
+      }
+      &:nth-child(5) {
+        width: 12%;
+      }
+      &:nth-child(6) {
+        width: 12.5%;
+      }
+    }
+
+  }
+  .empty {
+
+    &:before {
+      background-image: url("/img/icon-сountry.svg");
+    }
+
+  }
+}
+.CountryStatesComponent {
+
+  .custom-table__header {
+
+    &-item:first-child { padding-left: 74px }
+
+  }
+  .custom-table__header-inner {
+
+    > span {
+
+      &:nth-child(1) {
+        width: 33.3%;
+      }
+      &:nth-child(2) {
+        width: 25.1%;
+      }
+      &:nth-child(3) {
+        width: 16.3%;
+      }
+      &:nth-child(4) {
+        width: 25.3%;
+      }
+    }
+
+  }
+  .empty {
+
+    &:before {
+      background-image: url("/img/icon-сountry-state.svg");
+    }
+  }
+}
+.CurrenciesComponent {
+
+  .custom-table__header {
+
+    &-item:first-child { padding-left: 74px }
+
+  }
+  .custom-table__header-inner {
+
+    > span {
+
+      &:nth-child(1) {
+        width: 31%;
+      }
+      &:nth-child(2) {
+        width: 18.8%;
+      }
+      &:nth-child(3) {
+        width: 12.9%;
+      }
+      &:nth-child(4) {
+        width: 15.9%;
+      }
+      &:nth-child(5) {
+        width: 21.4%;
+      }
+    }
+
+  }
+  .empty {
+
+    &:before {
+      background-image: url("/img/icon-сurrency.svg");
+    }
+  }
+}
+.DeviceTypesComponent {
+
+  .custom-table__header {
+
+    &-item:first-child { padding-left: 74px }
+
+  }
+  .custom-table__header-inner {
+
+    > span {
+
+      &:nth-child(1) {
+        width: 32.2%;
+      }
+      &:nth-child(2) {
+        width: 25.6%;
+      }
+      &:nth-child(3) {
+        width: 42.2%;
+      }
+    }
+
+  }
+  .empty {
+
+    &:before {
+      background-image: url("/img/icon-device.svg");
+    }
+  }
+}
+.UserRolesComponent {
+
+  .custom-table__header {
+
+    &-item:first-child { padding-left: 74px }
+
+  }
+  .custom-table__header-inner {
+
+    > span {
+
+      &:nth-child(1) {
+        width: 42.1%;
+      }
+      &:nth-child(2) {
+        width: 13.8%;
+      }
+      &:nth-child(3) {
+        width: 44.1%;
+      }
+    }
+
+  }
+  .empty {
+
+    &:before {
+      background-image: url("/img/icon-user.svg");
+    }
+  }
+}
+.UsersComponent {
+
+  .custom-table__header {
+
+    &-item:first-child { padding-left: 74px }
+
+  }
+  .custom-table__header-inner {
+
+    > span {
+
+      &:nth-child(1) {
+        width: 34%;
+      }
+      &:nth-child(2) {
+        width: 24.3%;
+      }
+      &:nth-child(3) {
+        width: 41.7%;
+      }
+    }
+
+  }
+  .empty {
+
+    &:before {
+      background-image: url("/img/icon-user.svg");
+    }
+  }
+}
+.ViewingSettingsComponent {
+
+  .empty {
+
+    &:before {
+      background-image: url("/img/icon-сountry.svg");
+    }
+  }
+}
+
+.InstitutionsComponent {
+
+	.custom-table__header {
+
+		&-item:first-child {
+			padding-left: 75px;
+
+			&.order {
+
+				&:after {
+					margin-top: 1px;
+					margin-left: 10px;
+				}
+
+			}
+
+		}
+
+	}
+	.custom-table__header-inner {
+
+		> span {
+
+			&:nth-child(1) {
+				width: 48.3%;
+			}
+			&:nth-child(2) {
+				width: 10%;
+			}
+			&:nth-child(3) {
+				width: 12.3%;
+			}
+			&:nth-child(4) {
+				width: 29.4%;
+			}
+
+		}
+
+	}
+
+}
+.MerchantsComponent,
+.LocationsComponent {
+
+	.custom-table__header {
+
+		&-item:first-child {
+			padding-left: 75px;
+
+			&.order {
+
+				&:after {
+					margin-top: 3px;
+					margin-left: 5px;
+				}
+
+			}
+
+		}
+
+	}
+	.custom-table__header-inner {
+
+		> span {
+
+			&:nth-child(1) {
+				width: 48.3%;
+			}
+			&:nth-child(2) {
+				width: 10%;
+			}
+			&:nth-child(3) {
+				width: 12.3%;
+			}
+			&:nth-child(4) {
+				width: 29.4%;
+			}
+
+		}
+
+	}
+
+}
+.DevicesComponent {
+
+	.custom-table__header {
+
+		&-item:first-child {
+			padding-left: 70px;
+
+			&.order {
+
+				&:after {
+					margin-top: 1px;
+					margin-left: 10px;
+				}
+
+			}
+
+		}
+
+	}
+	.custom-table__header-inner {
+
+		> span {
+
+			&:nth-child(1) {
+				width: 47.8%;
+			}
+			&:nth-child(2) {
+				width: 11.1%;
+			}
+			&:nth-child(3) {
+				width: 12.3%;
+			}
+			&:nth-child(4) {
+				width: 28.8%;
+			}
+
+		}
+
+	}
+
+}
+.VelocityLimitsComponent {
+
+	.custom-table__header {
+
+		&-item:first-child { padding-left: 74px }
+
+	}
+	.custom-table__header-inner {
+
+		> span {
+
+			&:nth-child(1) {
+				width: 35.326689%;
+			}
+			&:nth-child(2) {
+				width: 15.060908%;
+			}
+			&:nth-child(3) {
+				width: 14.839424%;
+			}
+			&:nth-child(4) {
+				width: 13.289037%;
+			}
+			&:nth-child(5) {
+				width: 21.1517%;
+			}
+		}
+
+	}
+	.empty {
+
+		&:before {
+			background-image: url("/img/icon-limit.svg");
+		}
+	}
+}
+
+.AccessLogComponent {
+	.custom-table__header-inner {
+
+		& > span{
+
+			&:nth-child(1){
+				width: 16.2%;
+				padding-left: 35px;
+			}
+			&:nth-child(2){
+				width: 14.1%;
+			}
+			&:nth-child(3){
+				width: 17.7%;
+			}
+			&:nth-child(4){
+				width: 17.1%;
+			}
+			&:nth-child(5){
+				width: 34.3%;
+			}
+
+		}
+
+	}
+}
+.TransactionLogComponent {
+	.custom-table__header {
+
+		padding: 0 35px;
+		width: 100%;
+		border-top: 2px solid #f4f6f9;
+		border-bottom: 2px solid #f4f6f9;
+
+	}
+	.custom-table__header-inner {
+
+		> span {
+			padding: 0 20px 0 0;
+			border-top: none;
+			border-bottom: none;
+
+			&:nth-child(1) {
+				width: 13.253%;
+			}
+
+			&:nth-child(2) {
+				width: 30.1205%;
+			}
+
+			&:nth-child(3) {
+				width: 30.1205%;
+			}
+
+			&:nth-child(4) {
+				width: 26.506%;
+			}
+
+		}
+
+	}
+}
+.AuditLogComponent{
+	.custom-table__header {
+
+		padding: 0 15px;
+		width: 100%;
+		border-top: 2px solid #f4f6f9;
+		border-bottom: 2px solid #f4f6f9;
+
+	}
+	.custom-table__header-inner {
+
+
+		> span {
+
+			padding: 0 0 0 20px;
+			border-top: none;
+			border-bottom: none;
+
+			&:nth-child(1) {
+
+				//width: 110px;
+				width: 13%;
+
+			}
+			&:nth-child(2) {
+
+				//width: 178px;
+				width: 20%;
+			}
+			&:nth-child(3) {
+
+				//width: 133px;
+				width: 15%;
+
+			}
+			&:nth-child(4) {
+
+				//width: 260px;
+				width: 30%;
+
+			}
+			&:nth-child(5) {
+
+				//width: 188px;
+				width: 22%;
+
+			}
+
+		}
+
+	}
+}
+/*
+.empty {
+  display: flex;
+  flex-flow: column wrap;
+  align-items: center;
+  margin-bottom: 20px;
+  @include main-font();
+  font-weight: 300;
+  font-size: 30px;
+  line-height: 1;
+  color: #cbcfda;
+
+  &:before {
+    width: 48px;
+    height: 48px;
+    margin-bottom: 21px;
+    background-position: center;
+    background-size: contain;
+    content: '';
+  }
+}*/
+
+

@@ -1,0 +1,50 @@
+<div class="main__scroll" *ngIf="viewSize" #mainscroll perfect-scrollbar [@FadeInOut]="">
+
+  <div>
+
+    <div class="main__head">
+
+      <h2 class="main__title">{{ texts[ 'title' ] }}</h2>
+
+    </div>
+
+    <div class="main__controls" *ngIf="totalRecords">
+
+      <access-logs-filter
+              [filterConf]="filterConf"
+              *ngIf="filterConf"
+              [lang]="language"
+              [viewSize]="viewSize">
+      </access-logs-filter>
+
+      <div class="main__controls-wrap">
+
+        <span class="main__controls-title">{{ totalStr }}</span>
+
+      </div>
+
+      <access-logs-search
+              *ngIf="config[ 'search' ]"
+              [placeholderText]="texts[ 'searchPlaceholder' ]">
+      </access-logs-search>
+
+    </div>
+
+    <access-logs-table *ngIf="tableData && totalRecords"
+                      [tableConf]="tableConf"
+                      [tableData]="tableData"
+                      [viewSize]="viewSize"
+                      [loading]="loading"
+                      [language]="language"
+                      [empty]="empty"
+                      [texts]="texts" >
+    </access-logs-table>
+
+    <div class="empty" *ngIf="!totalRecords">
+      <div>{{ texts[ 'emptyTotal' ] }}</div>
+    </div>
+
+  </div>
+
+</div>
+

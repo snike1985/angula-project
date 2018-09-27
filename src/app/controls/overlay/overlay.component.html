@@ -1,0 +1,24 @@
+<!--<div class="popup" [class.popup_open]="isOpenPopup" (click)="closePopup()" >-->
+  <!--<div  class="popup__wrap"  (click)="closePopupOverLay($event)" [@popupScale]="state">-->
+
+      <!--<span class="popup__title">-->
+
+        <!--<span class="popup__close" (click)="closePopup()"></span>-->
+      <!--</span>-->
+
+    <!--<div class="popup__content">-->
+      <!--<ng-template  popup></ng-template>-->
+    <!--</div>-->
+
+  <!--</div>-->
+<!--</div>-->
+
+<div class="popup" [class.popup_open]="isOpenPopup" (click)="closePopup()" >
+    <div  class="popup__wrap" (click)="closePopupOverLay($event)" [@popupScale]="state">
+        <span class="popup__close" (click)="closePopup()"></span>
+         <ng-template  popup></ng-template>
+
+    </div>
+</div>
+
+<ng-template dropdown></ng-template>

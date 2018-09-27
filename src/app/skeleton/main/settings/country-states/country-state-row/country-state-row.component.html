@@ -1,0 +1,46 @@
+<div [class.country-states-row]="viewSize >= 3"
+        [class.country-states-row-mobile]="viewSize < 3">
+
+  <div class="country-states-row__name">
+
+    <div [highlight]="searchText"
+         [color]="'#ffff97'"
+         [content]="data[ 'stateName' ]"></div>
+
+  </div>
+
+  <div class="country-states-row__status">
+
+      <switch-control
+              [disabledState]="false"
+              [formControl]="fc"
+              [class]="">
+      </switch-control>
+
+  </div>
+
+  <div class="country-states-row__code country-states-row__column">
+
+      <div class="country-states-row__title" *ngIf="viewSize < 3">
+          {{ columns[ 2 ][ 'title' ][ language ] }}
+      </div>
+
+    <div [highlight]="searchText"
+         [color]="'#ffff97'"
+         [content]="data[ 'code' ]"></div>
+
+  </div>
+
+  <div class="country-states-row__countryName country-states-row__column">
+
+      <div class="country-states-row__title" *ngIf="viewSize < 3">
+          {{ columns[ 3 ][ 'title' ][ language ] }}
+      </div>
+
+    <div [highlight]="searchText"
+         [color]="'#ffff97'"
+         [content]="data[ 'country' ][ 'countryName' ]"></div>
+
+  </div>
+
+</div>

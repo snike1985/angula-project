@@ -1,0 +1,10 @@
+@import "../../../../../scss/main-app";
+@import "../../../../../scss/main";
+
+.location-map {
+  padding: 0 35px;
+
+  agm-map {
+    height: 591px;
+  }
+}

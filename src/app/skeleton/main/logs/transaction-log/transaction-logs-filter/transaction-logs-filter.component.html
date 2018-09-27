@@ -1,0 +1,126 @@
+<div>
+
+    <form class="filter" [class.filter_2]="modifClass" *ngIf="fg" [formGroup]="fg">
+
+        <div class="filter__row" *ngIf="filterConf">
+
+            <div class="filter__item filter__item-quarter"
+                 *ngFor="let key of filterConf | keys | slice:0:4">
+
+                <select-control
+                        *ngIf="+filterConf[ key ][ 'type' ] < 3"
+                        [options]="filterConf[ key ][ 'options' ]"
+                        [lang]="lang"
+                        [label]="filterConf[ key ][ 'title' ][ lang ]"
+                        [className]="'filter-select'"
+                        [overlayType]="filterConf[ key ][ 'type' ]"
+                        [formControlName]="key"></select-control>
+
+                <datepicker-control
+                        *ngIf="+filterConf[ key ][ 'type' ] === 3"
+                        [label]="filterConf[ key ][ 'title' ][ lang ]"
+                        [formControlName]="key" [type]="1"></datepicker-control>
+
+                <div *ngIf="+filterConf[ key ][ 'type' ] === 6" class="filter__control-wrap">
+
+                    <div class="filter__chk-wrap">
+
+                        <label class="filter__chk">
+                            <input type="checkbox" [formControlName]="key">
+                            <div>
+                                <span class="filter__flag">
+                                    <svg width="24px" height="24px" viewBox="0 0 24 24">
+                                        <g id="UI-Kit" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                            <g id="for-review">
+                                                <g id="Marked" transform="translate(2.000000, 2.000000)">
+                                                    <path d="M9,11.3636364 L9,15 L7,15 L7,9.54545455 L7,5 L15,8.63636364 L9,11.3636364 Z" id="Combined-Shape" fill="#FFFFFF"></path>
+                                                </g>
+                                            </g>
+                                        </g>
+                                    </svg>
+                                    {{ forReview }}</span>
+                                <span class="filter__chk-label">{{ filterConf[ key ][ 'title' ][ lang ] }}</span>
+                            </div>
+                        </label>
+
+                    </div>
+
+                    <div class="filter__btn">
+                        <button type="button" *ngIf="opened" (click)="opened = !opened">{{ texts[ 'btns' ][ 'less' ] }}</button>
+                        <button type="button" *ngIf="!opened" (click)="opened = !opened">{{ texts[ 'btns' ][ 'more' ] }}</button>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="filter__hidden" *ngIf="opened">
+
+            <div class="filter__row" *ngIf="filterConf">
+
+                <div class="filter__item filter__item-quarter"
+                     *ngFor="let key of filterConf | keys | slice:4:8">
+
+                    <select-control
+                            *ngIf="+filterConf[ key ][ 'type' ] < 3"
+                            [options]="filterConf[ key ][ 'options' ]"
+                            [lang]="lang"
+                            [label]="filterConf[ key ][ 'title' ][ lang ]"
+                            [className]="'filter-select'"
+                            [overlayType]="filterConf[ key ][ 'type' ]"
+                            [formControlName]="key"></select-control>
+
+                </div>
+
+            </div>
+
+            <div class="filter__row" *ngIf="filterConf">
+
+                <div class="filter__item filter__item-triple"
+                     *ngFor="let key of filterConf | keys | slice:8:11">
+
+                    <select-control
+                            *ngIf="+filterConf[ key ][ 'type' ] < 3"
+                            [options]="filterConf[ key ][ 'options' ]"
+                            [lang]="lang"
+                            [label]="filterConf[ key ][ 'title' ][ lang ]"
+                            [className]="'filter-select'"
+                            [overlayType]="filterConf[ key ][ 'type' ]"
+                            [formControlName]="key"></select-control>
+
+                    <amount-control
+                            *ngIf="+filterConf[ key ][ 'type' ] === 4"
+                            [options]="filterConf[ key ][ 'options' ]"
+                            [lang]="lang"
+                            [label]="filterConf[ key ][ 'title' ][ lang ]"
+                            [className]="'filter-select'"
+                            [overlayType]="filterConf[ key ][ 'type' ]"
+                            [formControlName]="key"></amount-control>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="filter__selected" *ngIf="selected.length && !( selected.length === 1 && selected[0][ 'name' ] === 'forReview' && !selected[0][ 'value' ])">
+
+          <span class="filter__selected-item" *ngFor="let item of selected | review">
+
+             <i *ngIf="item[ 'name' ] === 'forReview' && item[ 'value' ]">{{ item[ 'label' ] }}</i>
+
+             <i *ngIf="item[ 'name' ] !== 'forReview'">{{ item[ 'label' ] }}: <span>{{ item[ 'value' ] }} </span></i>
+
+
+            <button class="filter__selected-close" (click)="resetItem( item )"></button>
+
+          </span>
+            <button class="filter__selected-reset" *ngIf="!( selected.length === 1 && selected[ 'name' ] === 'forReview' && !item[ 'value' ] )" (click)="resetAll()">Reset Filters</button>
+
+        </div>
+
+    </form>
+
+</div>

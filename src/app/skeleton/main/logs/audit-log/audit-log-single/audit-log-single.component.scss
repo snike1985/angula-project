@@ -1,0 +1,102 @@
+@import "../../../../../scss/main-app";
+@import "../../../../../scss/main";
+@import "../../../../../scss/popup-layout";
+
+
+
+.audit-log{
+  padding: 30px;
+
+  &__row {
+    margin-bottom: 20px;
+  }
+
+  &__item{
+    display: inline-block;
+    margin-right: 88px;
+    @include main-font();
+
+    .audit-log__discription{
+      width: 385px;
+      font-size: 16px;
+      line-height: 1.25;
+      color: #212c3d;
+    }
+
+    h2{
+      font-size: 16px;
+      line-height: 1.25;
+      display: inline-block;
+      color: #9ba1b9;
+    }
+
+    >div{
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 1.25;
+      color: #212c3d;
+
+      &.audit-log__object-type{
+        font-weight: 900;
+      }
+
+      &.audit-log__object-name{
+        color: #9ba1b9;
+      }
+
+      &.audit-log__action{
+        color: #9ba1b9;
+
+        span {
+          display: inline-block;
+          text-transform: uppercase;
+          width: 20px;
+          height: 20px;
+          border-radius: 2px;
+          font-family: Lato;
+          font-size: 14px;
+          font-weight: 900;
+          line-height: 20px;
+          text-align: center;
+          color: #ffffff;
+          margin-left: 1px;
+
+          &.u {
+            background-color: #f3ce68;
+          }
+
+          &.d {
+            background-color: #ee7e85;
+          }
+
+          &.c {
+            background-color: #8cc574;
+          }
+        }
+
+      }
+
+      &.audit-log__user{
+        color: #cbcfda;
+        font-size: 16px;
+
+        .audit-log__user-name{
+          font-size: 16px;
+          display: block;
+          line-height: 1.2;
+          color: #9ba1b9;
+        }
+
+      }
+
+      >span{
+        font-weight: 900;
+      }
+
+    }
+
+  }
+
+}
+
+

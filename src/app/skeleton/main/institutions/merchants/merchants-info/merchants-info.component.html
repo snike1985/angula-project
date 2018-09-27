@@ -1,0 +1,81 @@
+<div class="main__scroll" #mainscroll perfect-scrollbar [@FadeInOut]="">
+
+  <div class="main__head">
+
+    <h2 class="main__title">{{ texts[ 'title' ] }}</h2>
+
+    <div class="main__head-btns">
+
+      <button class="btn-import" (click)="import()">
+        <i>
+          <svg width="24px" height="24px" viewBox="0 0 24 24">
+            <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+              <g fill="#4E9FF8">
+                <path d="M10,14 L10,15.9914698 C10,17.0980496 10.7484629,17.5010247 11.6717387,16.8855076 L17.3282613,13.1144924 C18.248145,12.5012366 18.2515371,11.5010247 17.3282613,10.8855076 L11.6717387,7.11449245 C10.751855,6.50123665 10,6.8992496 10,8.0085302 L10,10 L2,10 L2,14 L10,14 Z M2,5.99922997 C2,3.79051625 3.79246765,2 5.99922997,2 L18.00077,2 C20.2094838,2 22,3.79246765 22,5.99922997 L22,18.00077 C22,20.2094838 20.2075324,22 18.00077,22 L5.99922997,22 C3.79051625,22 2,20.2075324 2,18.00077 L2,5.99922997 Z"></path>
+              </g>
+            </g>
+          </svg>
+        </i>
+        {{ texts[ 'importBtn' ] }}
+      </button>
+
+      <a [routerLink]="'create'" class="btn">{{ texts[ 'createBtn' ] }}</a>
+
+    </div>
+
+  </div>
+
+  <div class="main__controls" *ngIf="totalRecords">
+
+    <merchants-filter
+            [filterConf]="filterConf"
+            *ngIf="filterConf"
+            [lang]="language"
+            [viewSize]="viewSize"
+            [modifClass]="true">
+    </merchants-filter>
+
+    <div class="main__controls-wrap">
+
+      <span class="main__controls-title">{{ totalStr }}</span>
+
+    </div>
+
+    <merchants-search
+            *ngIf="config[ 'search' ]"
+            [placeholderText]="texts[ 'searchPlaceholder' ]">
+    </merchants-search>
+
+  </div>
+
+  <merchants-table
+          *ngIf="totalRecords"
+          [tableConf]="tableConf"
+          [tableData]="tableData"
+          [viewSize]="viewSize"
+          [loading]="loading"
+          [language]="language"
+          [empty]="empty"
+          [texts]="texts">
+  </merchants-table>
+
+  <div class="empty" *ngIf="!totalRecords">
+
+    <!--empty__icon-->
+    <div class="empty__icon">
+
+      <svg viewBox="0 0 31 30">
+        <g id="UI-Kit" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+          <g>
+            <path d="M24.0000139,11 C24.0049961,12.6553442 25.3462266,14 27,14 L27,25 L4,25 L4,14 C5.65041273,14 6.99499857,12.6577095 6.99998608,11 L1,11 L5,2 L26,2 L30,11 L24.0000129,11 Z M23.9999877,11 L13.0000129,11 C13.0049961,12.6553442 14.3462266,14 16,14 C17.0418683,14 17.9618611,13.4650823 18.4999115,12.6535779 C19.0373599,13.4645986 19.9564573,14 21,14 C22.6504127,14 23.9949986,12.6577095 23.9999861,11 Z M12.9999871,11 L7.00001235,11 C7.00499607,12.6553442 8.34622657,14 10,14 C11.6504127,14 12.9949986,12.6577095 12.9999861,11 Z M1,26.5 C1,25.6715729 1.67415592,25 2.49809915,25 L28.5019009,25 C29.3292782,25 30,25.6657972 30,26.5 C30,27.3284271 29.3258441,28 28.5019009,28 L2.49809915,28 C1.67072183,28 1,27.3342028 1,26.5 Z M8,16 L8,25 L14,25 L14,16 L8,16 Z M18,16 L18,21 L23,21 L23,16 L18,16 Z" id="Combined-Shape"/>
+          </g>
+        </g>
+      </svg>
+
+    </div>
+    <!--/empty__icon-->
+
+    <div>{{ texts[ 'emptyTotal' ] }}</div>
+  </div>
+
+</div>

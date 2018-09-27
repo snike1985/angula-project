@@ -1,0 +1,155 @@
+@import "../../../../../scss/main-app";
+@import "../../../../../scss/main";
+
+.transaction-log-row {
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-align: center;
+	-ms-flex-align: center;
+	border-bottom: 2px solid #f4f6f9;
+	font-size: 14px;
+	color: #9ba1b9;
+	line-height: 1.45;
+	padding: 0 35px;
+
+	>div {
+		padding: 20px 20px 20px 0;
+	}
+
+	&__date {
+		width: 13.253%;
+
+		span {
+			display: block;
+		}
+	}
+
+	&__transaction {
+		width: 30.1205%;
+
+		h2 {
+			font-weight: 400;
+			font-family: Lato;
+			font-size: 14px;
+			line-height: 1.43;
+			text-align: left;
+			color: #212c3d;
+		}
+
+		div {
+			text-overflow: ellipsis;
+			overflow: hidden;
+			white-space: nowrap;
+			font-family: Lato;
+			font-size: 14px;
+			line-height: 1.43;
+			text-align: left;
+			color: #9ba1b9;
+		}
+
+	}
+
+	&__amount {
+		width: 30.1205%;
+
+		dl {
+			display: grid;
+			grid-template-columns: 90px 1fr;
+
+			dt {
+				font-family: Lato;
+				font-size: 14px;
+				line-height: 1.43;
+				text-align: left;
+				color: #9ba1b9;
+			}
+
+			dd {
+				font-family: Lato;
+				font-size: 14px;
+				line-height: 1.43;
+				text-align: left;
+				color: #212c3d;
+				text-transform: uppercase;
+			}
+		}
+
+	}
+
+	&__mark {
+		grid-row: 2;
+		grid-column: 2;
+		line-height: 1.07;
+		margin-bottom: 0!important;
+	}
+
+	&__review {
+		height: 20px;
+		font-family: Lato;
+		font-size: 13px;
+		font-weight: 900;
+		line-height: 1.54;
+		color: #212c3d;
+		vertical-align: middle;
+		align-self: center;
+
+		svg {
+			position: relative;
+			top: -2px;
+			vertical-align: middle;
+		}
+	}
+
+	&__state {
+
+		span {
+			padding: 0 10px;
+			display: inline-block;
+			height: 20px;
+			border-radius: 100px;
+			font-family: Lato;
+			font-size: 13px;
+			font-weight: 900;
+			line-height: 20px;
+			color: #ffffff;
+		}
+
+		.type_0 {
+			background-color: #8cc574;
+		}
+		.type_1 {
+			background-color: #f3ce68;
+		}
+		.type_2 {
+			background-color: #ffb163;
+		}
+		.type_3 {
+			background-color: #ee8087;
+		}
+	}
+
+	&__status {
+		width: 26.506%;
+
+		>div {
+			display: grid;
+			grid-template-columns: 1fr 74px;
+
+			button {
+				font-family: Lato;
+				font-size: 14px;
+				font-weight: 900;
+				line-height: 1.43;
+				text-align: left;
+				color: #4e9ff8;
+				border: none;
+				padding: 0;
+				background: none;
+				margin-bottom: 5px;
+			}
+		}
+
+	}
+
+}

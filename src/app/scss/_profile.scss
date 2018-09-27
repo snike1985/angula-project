@@ -1,0 +1,166 @@
+.profile {
+  width: 100%;
+  padding: 0 20px;
+
+  &_edit {
+    padding-top: 15px;
+
+    .main__title {
+      margin-bottom: 19px;
+
+      &-icon {
+        margin-right: 2px;
+        margin-top: -8px;
+      }
+    }
+  }
+
+  &__link {
+    display: inline-block;
+    vertical-align: top;
+    margin-right: 30px;
+    margin-bottom: 15px;
+    font-size: 16px;
+    line-height: 1.25;
+    font-weight: $bold;
+    color: $main-blue-color;
+    @include transition( color, $animation-time, 0 );
+  }
+  &__links {
+    margin-bottom: 20px;
+
+    a {
+      display: inline-block;
+      vertical-align: top;
+      margin-right: 27px;
+      font-size: 16px;
+      line-height: 1.25;
+      font-weight: $bold;
+      color: $main-blue-color;
+      @include transition( color, $animation-time, 0 );
+
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+  }
+  &__info-title {
+    margin-bottom: 14px;
+    font-size: 20px;
+    line-height: 1;
+    color: #212c3d;
+    font-weight: $regular;
+  }
+  &__info-title-icon {
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: -4px;
+
+    svg {
+      margin-right: 6px;
+    }
+  }
+  &__info-item {
+    margin-bottom: 20px;
+
+    > div {
+      display: inline-block;
+      vertical-align: top;
+      font-size: 16px;
+      line-height: 1.28;
+
+      &:last-child {
+        display: block;
+      }
+    }
+  }
+  &__info-label {
+    width: auto;
+    color: #9aa1b9;
+  }
+  &__info-info {
+    color: #19212e;
+
+    a{
+      color: $main-blue-color;
+      @include transition( color, $animation-time, 0 );
+
+      &.phone {
+        cursor: default;
+        color: #19212e;
+      }
+    }
+  }
+}
+
+@media (min-width: $desktop) {
+
+  .profile {
+    width: 100%;
+    max-width: 530px;
+    padding: 0 35px;
+
+    &_edit {
+      padding-top: 15px;
+
+      .main__title {
+        margin-bottom: 19px;
+
+        &-icon {
+          margin-right: 2px;
+          margin-top: -8px;
+        }
+      }
+    }
+    &__link {
+      display: inline-block;
+      vertical-align: top;
+      margin-right: 30px;
+      margin-bottom: 15px;
+      font-size: 16px;
+      line-height: 1.25;
+      font-weight: $bold;
+      color: $main-blue-color;
+      @include transition( color, $animation-time, 0 );
+
+      &:hover {
+        color: $main-blue-color-2;
+      }
+    }
+    &__links {
+      margin-bottom: 30px;
+
+      a {
+        margin-right: 31px;
+
+        &:hover {
+          color: $main-blue-color-2;
+        }
+      }
+    }
+    &__info-item {
+
+      > div {
+
+        &:last-child {
+          display: inline-block;
+        }
+      }
+    }
+    &__info-label {
+      width: 110px;
+      margin-right: 17px;
+      text-align: right;
+      color: #9aa1b9;
+    }
+    &__info-info {
+
+      a{
+
+        &:hover {
+          color: $main-blue-color-2;
+        }
+      }
+    }
+  }
+}

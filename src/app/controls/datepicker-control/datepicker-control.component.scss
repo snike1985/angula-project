@@ -1,0 +1,155 @@
+@import "../../scss/main-app";
+
+.datepicker-control {
+  position: relative;
+  padding: 9px 14px;
+  margin: -12px 0 0 -13px;
+  background: #fff;
+  border: none;
+  width: 120px;
+  border-right: 3px;
+  @include main-font();
+  font-size: 14px;
+  line-height: 20px;
+  color: #4e9ff8;
+  text-align: left;
+  transition: color 0.15s linear 0s;
+  overflow: hidden;
+
+  &.datepicker-control_2 {
+      color: #4e9ff8;
+  }
+
+  &.datepicker-control_1 {
+    margin: 30px 0 0 0;
+    min-width: 232px;
+    height: 47px;
+    font-size: 16px;
+    color: #e5e8ed;
+    border-radius: 4px;
+    font-weight: bold;
+    padding: 15px 40px 15px 15px;
+    box-shadow: 0 0 0 2px #e8ebf1;
+    background: #ffffff url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz48c3ZnIHdpZHRoPSIyM3B4IiBoZWlnaHQ9IjIzcHgiIHZpZXdCb3g9IjAgMCAyMyAyMyIgdmVyc2lvbj0iMS4xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIj4gICAgICAgIDx0aXRsZT5jYWxlbmRhcjwvdGl0bGU+ICAgIDxkZXNjPkNyZWF0ZWQgd2l0aCBTa2V0Y2guPC9kZXNjPiAgICA8ZGVmcz48L2RlZnM+ICAgIDxnIGlkPSJVSS1LaXQiIHN0cm9rZT0ibm9uZSIgc3Ryb2tlLXdpZHRoPSIxIiBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPiAgICAgICAgPGcgaWQ9ImNhbGVuZGFyIiBmaWxsPSIjQ0JDRkRBIj4gICAgICAgICAgICA8cGF0aCBkPSJNMTcsNSBMMTkuMTk1Mzk2OCw1IEMyMC4xOTIwNTE2LDUgMjEsNS43OTM0NDI0OSAyMSw2Ljc3MzQxMjcgTDIxLDE5LjIyNjU4NzMgQzIxLDIwLjIwNjAxNjEgMjAuMTgzNTkzOCwyMSAxOS4xOTUzOTY4LDIxIEwzLjgwNDYwMzIyLDIxIEMyLjgwNzk0ODM4LDIxIDIsMjAuMjA2NTU3NSAyLDE5LjIyNjU4NzMgTDIsNi43NzM0MTI3IEMyLDUuNzkzOTgzOTEgMi44MTY0MDYyNSw1IDMuODA0NjAzMjIsNSBMNiw1IEw2LDMuMTk5NzY4OTkgQzYsMi41MzcxNTQ4NyA2LjY2NTc5NzIzLDIgNy41LDIgQzguMzI4NDI3MTIsMiA5LDIuNTMyNDU5OTcgOSwzLjE5OTc2ODk5IEw5LDUgTDE0LDUgTDE0LDMuMTk5NzY4OTkgQzE0LDIuNTM3MTU0ODcgMTQuNjY1Nzk3MiwyIDE1LjUsMiBDMTYuMzI4NDI3MSwyIDE3LDIuNTMyNDU5OTcgMTcsMy4xOTk3Njg5OSBMMTcsNSBaIE0xMCwxNS45OTg5NTY2IEwxMCwxNy4wMDEwNDM0IEMxMCwxNy41NTczMzk3IDEwLjQ0NzI0ODEsMTggMTAuOTk4OTU2NiwxOCBMMTIuMDAxMDQzNCwxOCBDMTIuNTU3MzM5NywxOCAxMywxNy41NTI3NTE5IDEzLDE3LjAwMTA0MzQgTDEzLDE1Ljk5ODk1NjYgQzEzLDE1LjQ0MjY2MDMgMTIuNTUyNzUxOSwxNSAxMi4wMDEwNDM0LDE1IEwxMC45OTg5NTY2LDE1IEMxMC40NDI2NjAzLDE1IDEwLDE1LjQ0NzI0ODEgMTAsMTUuOTk4OTU2NiBaIE0xNSwxNS45OTg5NTY2IEwxNSwxNy4wMDEwNDM0IEMxNSwxNy41NTczMzk3IDE1LjQ0NzI0ODEsMTggMTUuOTk4OTU2NiwxOCBMMTcuMDAxMDQzNCwxOCBDMTcuNTU3MzM5NywxOCAxOCwxNy41NTI3NTE5IDE4LDE3LjAwMTA0MzQgTDE4LDE1Ljk5ODk1NjYgQzE4LDE1LjQ0MjY2MDMgMTcuNTUyNzUxOSwxNSAxNy4wMDEwNDM0LDE1IEwxNS45OTg5NTY2LDE1IEMxNS40NDI2NjAzLDE1IDE1LDE1LjQ0NzI0ODEgMTUsMTUuOTk4OTU2NiBaIE01LDE1Ljk5ODk1NjYgTDUsMTcuMDAxMDQzNCBDNSwxNy41NTczMzk3IDUuNDQ3MjQ4MDksMTggNS45OTg5NTY1NiwxOCBMNy4wMDEwNDM0NCwxOCBDNy41NTczMzk2NywxOCA4LDE3LjU1Mjc1MTkgOCwxNy4wMDEwNDM0IEw4LDE1Ljk5ODk1NjYgQzgsMTUuNDQyNjYwMyA3LjU1Mjc1MTkxLDE1IDcuMDAxMDQzNDQsMTUgTDUuOTk4OTU2NTYsMTUgQzUuNDQyNjYwMzMsMTUgNSwxNS40NDcyNDgxIDUsMTUuOTk4OTU2NiBaIE0xMCw5Ljk5ODk1NjU2IEwxMCwxMS4wMDEwNDM0IEMxMCwxMS41NTczMzk3IDEwLjQ0NzI0ODEsMTIgMTAuOTk4OTU2NiwxMiBMMTIuMDAxMDQzNCwxMiBDMTIuNTU3MzM5NywxMiAxMywxMS41NTI3NTE5IDEzLDExLjAwMTA0MzQgTDEzLDkuOTk4OTU2NTYgQzEzLDkuNDQyNjYwMzMgMTIuNTUyNzUxOSw5IDEyLjAwMTA0MzQsOSBMMTAuOTk4OTU2Niw5IEMxMC40NDI2NjAzLDkgMTAsOS40NDcyNDgwOSAxMCw5Ljk5ODk1NjU2IFogTTE1LDkuOTk4OTU2NTYgTDE1LDExLjAwMTA0MzQgQzE1LDExLjU1NzMzOTcgMTUuNDQ3MjQ4MSwxMiAxNS45OTg5NTY2LDEyIEwxNy4wMDEwNDM0LDEyIEMxNy41NTczMzk3LDEyIDE4LDExLjU1Mjc1MTkgMTgsMTEuMDAxMDQzNCBMMTgsOS45OTg5NTY1NiBDMTgsOS40NDI2NjAzMyAxNy41NTI3NTE5LDkgMTcuMDAxMDQzNCw5IEwxNS45OTg5NTY2LDkgQzE1LjQ0MjY2MDMsOSAxNSw5LjQ0NzI0ODA5IDE1LDkuOTk4OTU2NTYgWiBNNSw5Ljk5ODk1NjU2IEw1LDExLjAwMTA0MzQgQzUsMTEuNTU3MzM5NyA1LjQ0NzI0ODA5LDEyIDUuOTk4OTU2NTYsMTIgTDcuMDAxMDQzNDQsMTIgQzcuNTU3MzM5NjcsMTIgOCwxMS41NTI3NTE5IDgsMTEuMDAxMDQzNCBMOCw5Ljk5ODk1NjU2IEM4LDkuNDQyNjYwMzMgNy41NTI3NTE5MSw5IDcuMDAxMDQzNDQsOSBMNS45OTg5NTY1Niw5IEM1LjQ0MjY2MDMzLDkgNSw5LjQ0NzI0ODA5IDUsOS45OTg5NTY1NiBaIiBpZD0iQ29tYmluZWQtU2hhcGUiPjwvcGF0aD4gICAgICAgIDwvZz4gICAgPC9nPjwvc3ZnPg==) no-repeat calc(100% - 16px) 12px;
+    overflow: initial;
+
+    &.datepicker-control_2 {
+      color: #212c3d;
+    }
+
+    &:after {
+      display: none;
+    }
+
+    .datepicker-control__label {
+      position: absolute;
+      color: #212c3d;
+      top: -30px;
+      left: 0;
+      font-weight: normal;
+      font-size: 16px;
+
+      &:after {
+        position: relative;
+        display: inline-block;
+        font-size: 16px;
+        line-height: 1.25;
+        color: #f46771;
+        content: '*';
+        left: 2px;
+        top: -1px;
+      }
+    }
+    &.active {
+      z-index: 1;
+      color: #212c3d;
+      box-shadow: 0 3px 10px 0 rgba(24, 40, 65, 0.15);
+    }
+
+  }
+
+  &.datepicker-control_2 {
+    font-size: 14px;
+
+    .datepicker-control__value {
+      display: inline-block;
+    }
+
+
+
+  }
+
+  &.datepicker-control_filter {
+      width: 100%;
+      height: 70px;
+      margin: 0;
+      border-bottom: none;
+      box-shadow: 0 3px 10px 0 rgba(24, 40, 65, 0.15);
+      border-radius: 4px;
+      color: #9aa1b8;
+      font-size: 16px;
+      padding: 0;
+
+    &.active {
+      background-color: #e8ebf1;
+
+      &:after {
+        display: none;
+      }
+    }
+    .datepicker__wrap{
+        padding: 15px 20px 10px;
+
+      &:after {
+        @include absoluteCenterY();
+        right: 16px;
+        top: 47px;
+        width: 0;
+        height: 0;
+        border-left: 4px solid transparent;
+        border-right: 4px solid transparent;
+        border-top: 4px solid #9aa1b8;
+        content: '';
+      }
+
+     }
+
+  }
+
+  &:hover {
+    color: #212c3d;
+  }
+
+
+  span {
+    display: block;
+  }
+
+  &.active {
+    z-index: 1;
+    color: #212c3d;
+    box-shadow: 0 3px 10px 0 rgba(24, 40, 65, 0.15);
+
+    &:after {
+      @include absoluteCenterY();
+      right: 8px;
+      width: 0;
+      height: 0;
+      border-left: 4px solid transparent;
+      border-right: 4px solid transparent;
+      border-bottom: 4px solid black;
+      content: '';
+    }
+
+  }
+
+}
+
+::ng-deep  datepicker-control.ng-invalid.ng-touched {
+
+  .datepicker-control.datepicker-control_1 {
+    border: 2px solid #f46771 !important;
+    box-shadow: 0 3px 10px 0 rgba(24, 40, 65, 0.15) !important;
+  }
+
+}

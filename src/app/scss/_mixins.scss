@@ -1,0 +1,99 @@
+
+@mixin main-font() {
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+
+//justify
+@mixin justify() {
+  text-align: justify;
+
+  &:after {
+    display: inline-block;
+    width: 100%;
+    content: '';
+  }
+}
+
+//justify-flex
+@mixin justify-flex() {
+  display: flex;
+  justify-content: space-between;
+}
+
+//align-center-flex
+@mixin align-center-flex() {
+  display: flex;
+  align-items: center;
+}
+
+//blockCentered
+@mixin blockCentered() {
+  display: block;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+//absolutePosition
+@mixin absolutePosition() {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+//absoluteCenter
+@mixin absoluteCenter() {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate( -50%, -50% );
+}
+@mixin absoluteCenterX() {
+  position: absolute;
+  left: 50%;
+  transform: translateX( -50% );
+}
+@mixin absoluteCenterY() {
+  position: absolute;
+  top: 50%;
+  transform: translateY( -50% );
+}
+
+//transform
+@mixin transform-translate( $posX, $posY ) {
+  -webkit-transform: translate( $posX, $posY );
+  transform: translate( $posX, $posY );
+}
+@mixin transform-rotate( $deg ) {
+  -webkit-transform: rotate( $deg + deg );
+  transform: rotate( $deg + deg );
+}
+@mixin transform-scale( $num ) {
+  -webkit-transform: scale( $num );
+  transform: scale( $num );
+}
+
+//transition
+@mixin transition( $property, $duration, $delay ) {
+  -webkit-transition: $property $duration+s linear $delay+s;
+  transition: $property $duration+s linear $delay+s;
+}
+
+//fixedCenterY
+@mixin fixedCenterY() {
+  position: fixed;
+  top: 50%;
+  transform: translateY( -50% );
+}
+
+//clearStyleButton
+@mixin clearStyleButton() {
+  padding: 0;
+  text-align: left;
+  border: none;
+  background: transparent;
+}

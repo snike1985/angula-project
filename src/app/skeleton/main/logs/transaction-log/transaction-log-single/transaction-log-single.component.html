@@ -1,0 +1,98 @@
+<div class="popup-layout popup-layout_import">
+
+  <header>
+
+    <h1 class="popup-layout__title">{{ texts[ 'title' ] }}</h1>
+
+    <button class="popup-layout__title-btn" (click)="viewJson()" *ngIf="currentItem[ 'operations' ]">{{ texts[ 'btns' ][ 'viewJson' ] }}</button>
+    <button class="popup-layout__title-btn" (click)="viewRowData()" *ngIf="currentItem[ 'errors' ]">{{ texts[ 'btns' ][ 'viewRowData' ] }}</button>
+
+  </header>
+
+  <div class="popup-layout__content" perfect-scrollbar [style.maxHeight.px]="maxHeight">
+
+    <div class="transaction-log-single">
+
+      <div class="transaction-log-single__error-title" *ngIf="currentItem[ 'errors' ]">
+
+        {{ texts[ 'errTitle' ] }} ({{ currentItem[ 'errors' ].length }} errors)
+
+      </div>
+
+      <div class="transaction-log-single__column">
+
+        <div>
+
+          <dl class="transaction-log-single__date">
+            <dt>{{ texts[ 'labels' ][ 'date' ] }}:</dt>
+            <dd>
+              {{ currentItem[ 'date' ] | date: "dd MMM yyyy" }}
+              <span>{{ currentItem[ 'date' ] | date: "hh:mm:ss a" }}</span>
+            </dd>
+          </dl>
+
+          <dl class="transaction-log-single__requested" *ngIf="currentItem[ 'requested_amount' ]">
+            <dt>{{ texts[ 'labels' ][ 'requested' ] }}:</dt>
+            <dd>{{ currentItem[ 'requested_amount' ] }}</dd>
+          </dl>
+
+          <dl class="transaction-log-single__approved" *ngIf="currentItem[ 'approved_amount' ]">
+            <dt>{{ texts[ 'labels' ][ 'approved' ] }}:</dt>
+            <dd>{{ currentItem[ 'approved_amount' ] }}</dd>
+          </dl>
+
+        </div>
+
+      </div>
+
+      <dl class="transaction-log-single__column">
+
+        <dt>{{ texts[ 'labels' ][ 'status' ] }}:</dt>
+        <dd class="transaction-log-single__state">
+          <span class="type_{{ currentItem[ 'status' ][ 'type' ] }}">{{ currentItem[ 'status' ][ 'text' ] }}</span>
+        </dd>
+
+        <dt>{{ texts[ 'labels' ][ 'review' ] }}:</dt>
+        <dd>
+
+          <button class="transaction-log-single__mark"
+                  [activeEffect]="'blue'"
+                  (click)="mark( $event )"
+                  type="button"
+                  *ngIf="!currentItem[ 'for_review' ]">{{ texts[ 'btns' ][ 'mark' ] }}</button>
+
+          <button class="transaction-log-single__mark"
+                  [activeEffect]="'blue'"
+                  (click)="mark( $event )"
+                  type="button"
+                  *ngIf="currentItem[ 'for_review' ]">{{ texts[ 'btns' ][ 'unMark' ] }}</button>
+
+        </dd>
+
+        <ng-container *ngFor="let item of currentItem[ 'additional_params' ]">
+          <dt>{{ item[ 'key' ] }}:</dt>
+          <dd>{{ item[ 'value' ] }}</dd>
+        </ng-container>
+
+      </dl>
+
+      <div class="transaction-log-single__item" *ngIf="currentItem[ 'operations' ]">
+
+        <transaction-log-item
+                *ngFor="let operation of currentItem[ 'operations' ]"
+                [lang]="language"
+                [currentItem]="operation"></transaction-log-item>
+
+      </div>
+
+      <ul class="transaction-log-single__error" *ngIf="currentItem[ 'errors' ]">
+
+        <li *ngFor="let error of currentItem[ 'errors' ]">{{ error }}</li>
+
+      </ul>
+
+    </div>
+
+  </div>
+
+</div>

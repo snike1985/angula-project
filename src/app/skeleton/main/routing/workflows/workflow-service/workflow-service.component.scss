@@ -1,0 +1,99 @@
+.workflow-service {
+	margin-bottom: 10px;
+	position: relative;
+
+	&__main {
+		position: relative;
+		z-index: 2;
+		height: 50px;
+		border-radius: 4px;
+		background-color: #f4f6f9;
+		font-family: Lato;
+		font-size: 16px;
+		line-height: 50px;
+		color: #212c3d;
+		padding: 0 20px;
+
+		&:after {
+			content: '';
+			background: url( ../../../../../../assets/img/arrow.svg );
+			position: absolute;
+			width: 19px;
+			height: 10px;
+			top: 50%;
+			left: -9px;
+			margin-top: -6px;
+			transform: translateX( -50% );
+		}
+
+		span {
+			font-family: Lato;
+			font-size: 16px;
+			line-height: 1.25;
+			color: #c4c7d2;
+			margin-left: 1px;
+		}
+
+	}
+
+	&__content {
+		z-index: 1;
+		margin-top: 10px;
+		padding-left: 40px;
+		position: relative;
+
+		&:after {
+			content: '';
+			width: 4px;
+			background-color: #cbcfda;
+			height: 100%;
+			top: -25px;
+			left: 21px;
+			position: absolute;
+		}
+	}
+
+	&__controls {
+		z-index: 2;
+		position: relative;
+
+		&:after {
+			content: '';
+			background: url( ../../../../../../assets/img/arrow.svg );
+			position: absolute;
+			width: 19px;
+			height: 10px;
+			top: 50%;
+			left: -9px;
+			margin-top: -6px;
+			transform: translateX( -50% );
+		}
+
+	}
+
+	&__control{
+
+	}
+
+	&__column {
+		display: inline-block;
+		vertical-align: middle;
+
+		&:last-child {
+			margin-left: 20px;
+		}
+
+		&:nth-child( 2 ) {
+			margin: 0 20px;
+			font-family: Lato;
+			font-size: 16px;
+			line-height: 1.25;
+			text-align: left;
+			color: #9ba1b9;
+		}
+		&:nth-child( 3 ) {
+			width: 190px;
+		}
+	}
+
+}

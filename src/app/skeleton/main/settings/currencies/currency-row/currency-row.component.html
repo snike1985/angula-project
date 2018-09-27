@@ -1,0 +1,54 @@
+<div [class.currency-row]="viewSize >= 3"
+        [class.currency-row-mobile]="viewSize < 3">
+
+  <div class="currency-row__name">
+
+    <div [highlight]="searchText"
+    [color]="'#ffff97'"
+    [content]="data[ 'currencyName' ]"></div>
+
+  </div>
+
+  <div class="currency-row__status">
+
+    <switch-control
+            [disabledState]="false"
+            [formControl]="fc"
+            [class]="">
+    </switch-control>
+
+  </div>
+
+  <div class="currency-row__code currency-row__column">
+
+    <div class="currency-row__title" *ngIf="viewSize < 3">
+      {{ columns[ 2 ][ 'title' ][ language ] }}
+    </div>
+
+    <div [highlight]="searchText"
+         [color]="'#ffff97'"
+         [content]="data[ 'code' ]"></div>
+
+  </div>
+
+  <div class="currency-row__isoCode currency-row__column">
+
+    <div class="currency-row__title" *ngIf="viewSize < 3">
+      {{ columns[ 3 ][ 'title' ][ language ] }}
+    </div>
+
+    {{ data[ 'isoCode' ] }}
+
+  </div>
+
+  <div class="currency-row__unit">
+
+    <div class="currency-row__title" *ngIf="viewSize < 3">
+      {{ columns[ 4 ][ 'title' ][ language ] }}
+    </div>
+
+    {{ data[ 'currencyMinorUnit' ] }}
+
+  </div>
+
+</div>

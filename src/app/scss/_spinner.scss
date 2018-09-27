@@ -1,0 +1,68 @@
+.spinner {
+  @include absolutePosition();
+  z-index: 4;
+  background: $main-white-color;
+
+  &:before {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin: -12px 0 0 -12px;
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    border-top: 4px solid #e8ebf1;
+    border-right: 4px solid #e8ebf1;
+    border-bottom: 4px solid #e8ebf1;
+    border-left: 4px solid $main-blue-color;
+    -webkit-transform: translateZ(0);
+    -ms-transform: translateZ(0);
+    transform: translateZ(0);
+    -webkit-animation: spinnerRotate 1.1s infinite linear;
+    animation: spinnerRotate 1.1s infinite linear;
+    content: '';
+  }
+  &_main {
+    position: fixed;
+    z-index: 4;
+  }
+  &_inner {
+    position: relative;
+    z-index: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 90px;
+
+    &:before {
+      position: relative;
+      top: auto;
+      left: auto;
+      margin: 0 0 0 0;
+    }
+  }
+  &__text {
+    margin-left: 10px;
+    font-size: 16px;
+    line-height: 1.5;
+    color: #9ba1b9;
+  }
+}
+
+
+@media (min-width: $tablet-portrait) {
+
+  .spinner {
+
+    &_main {
+      @include absolutePosition();
+    }
+  }
+}
+@media (min-width: $tablet-landscape) {
+
+}
+@media (min-width: $desktop) {
+
+}
+

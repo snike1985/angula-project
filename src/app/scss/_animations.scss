@@ -1,0 +1,141 @@
+
+//ripple
+@-webkit-keyframes ripple {
+  100% {opacity: 0; -webkit-transform: scale(2.5);}
+}
+@keyframes ripple {
+  100% {opacity: 0; transform: scale(2.5);}
+}
+
+//spinner
+@keyframes spinner {
+  to {
+    transform: rotate(360deg);
+  }
+}
+@-webkit-keyframes spinner {
+  to {
+    -webkit-transform: rotate(360deg);
+  }
+}
+
+//spinnerRotate
+@-webkit-keyframes spinnerRotate {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+@keyframes spinnerRotate {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+//linkEffect
+@-webkit-keyframes linkEffect {
+  0% {
+    opacity: 0;
+    -webkit-filter: blur( 0px )
+  }
+  20% {
+    opacity: 1;
+    -webkit-filter: blur( 8px )
+  }
+  100% {
+    opacity: 0;
+    -webkit-filter: blur( 0px )
+  }
+}
+@keyframes linkEffect {
+  0% {
+    opacity: 0;
+    filter: blur( 0px )
+  }
+  20% {
+    opacity: 1;
+    filter: blur( 8px )
+  }
+  100% {
+    opacity: 0;
+    filter: blur( 0px )
+  }
+}
+
+//radio-pulse
+@-webkit-keyframes radio-pulse {
+
+  0% {
+    -webkit-transform: translate(-50%,-50%) scale(.9);
+    opacity: .1;
+  }
+
+  33% {
+    -webkit-transform: translate(-50%,-50%) scale(1.34);
+    opacity: .25;
+  }
+
+  66% {
+    -webkit-transform: translate(-50%,-50%) scale(1.67);
+    opacity: .1;
+  }
+
+  100% {
+    -webkit-transform: translate(-50%,-50%) scale(2);
+    opacity: 0;
+  }
+}
+@keyframes radio-pulse {
+
+  0% {
+    transform: translate(-50%,-50%) scale(.9);
+    opacity: .1;
+  }
+
+  33% {
+    transform: translate(-50%,-50%) scale(1.34);
+    opacity: .25;
+  }
+
+  66% {
+    transform: translate(-50%,-50%) scale(1.67);
+    opacity: .1;
+  }
+
+  100% {
+    transform: translate(-50%,-50%) scale(2);
+    opacity: 0;
+  }
+}
+
+//radio-point
+@-webkit-keyframes radio-point {
+
+  0% {
+    -webkit-transform: translate(-50%,-50%) scale(0);
+  }
+
+  100% {
+    -webkit-transform: translate(-50%,-50%) scale(1);
+  }
+}
+@keyframes radio-point {
+
+  0% {
+    transform: translate(-50%,-50%) scale(0);
+  }
+
+  100% {
+    transform: translate(-50%,-50%) scale(1);
+  }
+}
+

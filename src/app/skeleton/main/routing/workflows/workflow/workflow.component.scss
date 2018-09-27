@@ -1,0 +1,89 @@
+@import "../../../../../scss/_main-app";
+
+.workflow {
+	position: relative;
+	overflow: hidden;
+	border-radius: 4px;
+	background-color: #ffffff;
+	box-shadow: 0 3px 10px 0 rgba(24, 40, 65, 0.15);
+	border: solid 2px #ffffff;
+	transition: border-color 150ms ease-in-out;
+	margin-bottom: 20px;
+	padding: 20px;
+	box-sizing: border-box;
+
+	&:hover {
+		border: solid 2px #cbcfda;
+
+		.workflow__edit,
+		.workflow__delete {
+			opacity: 1;
+		}
+	}
+
+	&__title {
+		font-family: Lato;
+		font-size: 18px;
+		line-height: 1.11;
+		color: #212c3d;
+		font-weight: 400;
+		margin-bottom: 20px;
+
+		span {
+			padding: 0 8px;
+			height: 20px;
+			border-radius: 100px;
+			background-color: #cbcfda;
+			font-family: Lato;
+			font-size: 13px;
+			font-weight: 900;
+			text-align: center;
+			color: #ffffff;
+			margin-left: 6px;
+		}
+	}
+
+	&__column {
+		display: inline-block;
+		vertical-align: top;
+
+		&:nth-child(1){
+			width: 271px;
+		}
+
+	}
+
+	&__services {
+		width: 370px;
+		overflow: hidden;
+	}
+
+	&__edit,
+	&__delete {
+		border: none;
+		background: none;
+		padding: 0;
+		opacity: 0;
+		margin-left: 42px;
+		transition: opacity 150ms ease-in-out;
+		margin-bottom: 5px;
+	}
+
+	&__edit {
+		font-family: Lato;
+		font-size: 14px;
+		font-weight: 900;
+		line-height: 1.43;
+		color: #4e9ef8;
+		margin-right: 30px;
+	}
+
+	&__delete {
+		font-family: Lato;
+		font-size: 14px;
+		font-weight: 900;
+		line-height: 1.43;
+		color: #f46771;
+	}
+
+}

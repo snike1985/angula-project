@@ -1,0 +1,139 @@
+<div class="main__scroll" #mainscroll *ngIf="viewSize" perfect-scrollbar [@FadeInOut]="">
+
+  <div>
+
+    <div class="main__head">
+
+      <h2 class="main__title">{{ texts[ 'title' ] }}</h2>
+
+      <div class="main__head-btns">
+
+        <a class="btn"
+           routerLink="/settings/users/create">
+
+          {{ texts[ 'createBtn' ] }}
+
+        </a>
+
+      </div>
+
+    </div>
+
+    <div class="main__controls" *ngIf="totalRecords">
+
+      <users-filter [filterConf]="filterConf"
+                    *ngIf="filterConf"
+                    [lang]="language"
+                    [viewSize]="viewSize"></users-filter>
+
+      <div class="main__controls-wrap">
+
+        <span class="main__controls-title">{{ totalStr }}</span>
+
+      </div>
+
+      <users-search
+              *ngIf="config[ 'search' ]"
+              [placeholderText]="texts[ 'searchPlaceholder' ]"></users-search>
+
+    </div>
+
+    <users-table  *ngIf="userRoles && totalRecords"
+                  [tableConf]="tableConf"
+                  [tableData]="tableData"
+                  [viewSize]="viewSize"
+                  [loading]="loading"
+                  [language]="language"
+                  [empty]="empty"
+                  [texts]="texts">
+    </users-table>
+
+    <div class="empty" *ngIf="!totalRecords">
+
+      <!--empty__icon-->
+      <div class="empty__icon">
+
+        <svg viewBox="0 0 24 24">
+          <g id="UI-Kit" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+            <g>
+              <path d="M7.18630005,12.0821764 C5.36735093,12.456869 4,14.0685723 4,16 L4,18.0018986 C4,19.1132936 4.8927712,20 5.99406028,20 L18.0059397,20 C19.1054862,20 20,19.1054196 20,18.0018986 L20,16 C20,14.072473 18.6323547,12.4578079 16.8135214,12.0823456 C15.5589631,13.2709472 13.8646212,14 12,14 C10.1352903,14 8.44087622,13.270878 7.18630005,12.0821764 Z M12,12 C14.209139,12 16,10.209139 16,8 C16,5.790861 14.209139,4 12,4 C9.790861,4 8,5.790861 8,8 C8,10.209139 9.790861,12 12,12 Z"/>
+            </g>
+          </g>
+        </svg>
+
+      </div>
+      <!--/empty__icon-->
+
+      <div>{{ texts[ 'emptyTotal' ] }}</div>
+    </div>
+
+  </div>
+
+</div>
+
+<div class="main__scroll" *ngIf="!viewSize" [@FadeInOut]="">
+
+  <div>
+
+    <div class="main__head">
+
+      <h2 class="main__title">{{ texts[ 'title' ] }}</h2>
+
+      <div class="main__head-btns">
+
+        <button class="btn"
+                routerLink="/settings/users/create"
+                *ngIf="config[ 'createBtn' ]">
+          {{ texts[ 'createBtn' ] }}
+        </button>
+
+      </div>
+
+    </div>
+
+    <div class="main__controls" *ngIf="totalRecords">
+
+      <users-filter [totalString]="totalStr"
+                    [filterConf]="filterConf"
+                    *ngIf="filterConf"
+                    [lang]="language"
+                    [viewSize]="viewSize"></users-filter>
+
+      <users-search
+              *ngIf="config[ 'search' ]"
+              [placeholderText]="texts[ 'searchPlaceholder' ]"></users-search>
+
+    </div>
+
+    <users-table  *ngIf="userRoles && totalRecords"
+                  [tableConf]="tableConf"
+                  [tableData]="tableData"
+                  [viewSize]="viewSize"
+                  [loading]="loading"
+                  [language]="language"
+                  [empty]="empty"
+                  [texts]="texts">
+    </users-table>
+
+    <div class="empty" *ngIf="!totalRecords">
+
+      <!--empty__icon-->
+      <div class="empty__icon">
+
+        <svg viewBox="0 0 24 24">
+          <g id="UI-Kit" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+            <g>
+              <path d="M7.18630005,12.0821764 C5.36735093,12.456869 4,14.0685723 4,16 L4,18.0018986 C4,19.1132936 4.8927712,20 5.99406028,20 L18.0059397,20 C19.1054862,20 20,19.1054196 20,18.0018986 L20,16 C20,14.072473 18.6323547,12.4578079 16.8135214,12.0823456 C15.5589631,13.2709472 13.8646212,14 12,14 C10.1352903,14 8.44087622,13.270878 7.18630005,12.0821764 Z M12,12 C14.209139,12 16,10.209139 16,8 C16,5.790861 14.209139,4 12,4 C9.790861,4 8,5.790861 8,8 C8,10.209139 9.790861,12 12,12 Z"/>
+            </g>
+          </g>
+        </svg>
+
+      </div>
+      <!--/empty__icon-->
+
+      <div>{{ texts[ 'emptyTotal' ] }}</div>
+    </div>
+
+  </div>
+
+</div>

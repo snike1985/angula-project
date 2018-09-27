@@ -1,0 +1,35 @@
+
+.preloader {
+  @include absolutePosition();
+  z-index: 20;
+  background: $main-white-color !important;
+
+  &__wrap {
+    @include absoluteCenter();
+    width: 70px;
+    height: 70px;
+    border-radius: 8px;
+
+    svg {
+      width: 100%;
+      height: 100%;
+      animation: spinner 2s infinite;
+      animation-timing-function: linear;
+
+      path {
+        fill: $main-blue-color;
+      }
+    }
+  }
+}
+
+@media (min-width: $tablet-portrait) {
+
+}
+@media (min-width: $tablet-landscape) {
+
+}
+@media (min-width: $desktop) {
+
+}
+

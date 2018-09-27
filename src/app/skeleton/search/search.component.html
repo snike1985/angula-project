@@ -1,0 +1,4 @@
+<div class="search" [class.fill]="isEmptyInput">
+    <input type="search" name="searchText" [formControl]="fc" (keyup)="changeVal()" placeholder="{{ placeholderText }}">
+    <button [@flyInOut] *ngIf="isEmptyInput" (click)="reset()" type="reset">Cancel</button>
+</div>

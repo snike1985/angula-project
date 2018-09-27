@@ -1,0 +1,113 @@
+<div class="custom-table__row">
+
+    <div class="devices-row" (click)="open()">
+
+        <div class="devices-row__name">
+
+            <h2>
+
+                <div class="device-types-row__name"
+                     [highlight]="searchText"
+                     [color]="'#ffff97'"
+                     [content]="data[ 'type' ][ 'name' ]"></div>
+
+            </h2>
+
+            <div class="devices-row__info">
+
+                <span>
+                    {{ texts[ 'code' ] }}:
+                  <span [highlight]="searchText"
+                        [color]="'#ffff97'"
+                        [content]="data[ 'code' ]"></span>
+                </span>
+
+                <span>
+
+          {{ texts[ 'location' ] }}:
+
+          <a routerLink="/institutions/locations" (click)="$event.stopPropagation()">
+
+            {{ data[ 'location' ][ 'name' ] }}
+
+          </a>
+
+        </span>
+
+            </div>
+
+        </div>
+
+        <div class="devices-row__status" [ngSwitch]="status">
+
+            <div class="status-code status-code_active" *ngSwitchCase="1">{{ texts[ 'status' ][ status ] }}</div>
+            <div class="status-code status-code_inactive" *ngSwitchCase="2">{{ texts[ 'status' ][ status ] }}</div>
+            <div class="status-code status-code_disabled" *ngSwitchCase="0">{{ texts[ 'status' ][ status ] }}</div>
+
+        </div>
+
+        <div class="devices-row__from">
+
+            <datepicker-control
+                    [formControl]="activateOnControl"
+                    *ngIf="activateOnControl" [type]="0"></datepicker-control>
+
+        </div>
+
+        <div class="devices-row__to">
+
+            <datepicker-control
+                    [formControl]="expiryOnControl"
+                    *ngIf="expiryOnControl" [type]="0"></datepicker-control>
+
+        </div>
+
+        <div class="devices-row_btns edits">
+
+            <a class="edits__btn"
+               routerLink="{{ data[ 'id' ] }}/edit"
+               [activeEffect]="'blue'"
+               (click)="setCurrent()">
+                {{ this.texts[ 'btnEdit' ] }}
+            </a>
+
+            <div class="edits__dropdown"
+                 [class.active]="isOpened"
+                 (mouseenter)="showDropDown()"
+                 (mouseleave)="closeDropDown()">
+
+                <button class="edits__btn">
+                    <span>{{ this.texts[ 'btnMore' ] }}</span>
+                </button>
+
+                <div class="edits__dropdown-inner">
+
+                    <button class="edits__dropdown-btn" type="button"
+                            *ngIf="status === 1"
+                            (click)="updateStatus($event)">
+                        {{ this.texts[ 'btnDisable' ] }}
+                    </button>
+
+                    <button class="edits__dropdown-btn" type="button"
+                            *ngIf="status === 0"
+                            (click)="updateStatus($event)">
+                        {{ this.texts[ 'btnEnable' ] }}
+                    </button>
+
+
+                    <button class="edits__dropdown-btn edits__dropdown-btn_delete" type="button"
+                            (click)="askToDelete( $event )">
+                        {{ this.texts[ 'btnDelete' ] }}
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div *ngIf="loading" class="spinner"></div>
+
+</div>

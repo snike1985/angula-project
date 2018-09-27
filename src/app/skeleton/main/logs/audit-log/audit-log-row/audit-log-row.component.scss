@@ -1,0 +1,97 @@
+@import "../../../../../scss/main-app";
+@import "../../../../../scss/main";
+
+
+.audit-log-row{
+
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  border-bottom: 2px solid #f4f6f9;
+  font-size: 14px;
+  color: #9ba1b9;
+  line-height: 1.45;
+  padding: 0 15px;
+
+  >div{
+
+    padding: 20px 0 20px 20px;
+
+  }
+
+  &__date{
+
+    //width: 110px;
+    width: 13%;
+    span{
+      display: block;
+    }
+
+
+  }
+  &__object{
+
+    //width: 178px;
+    width: 20%;
+    line-height: 1.43;
+
+    div{
+      color: #212c3d;
+
+    }
+    >span{
+      display: block;
+      color: #9ba1b9;
+    }
+
+  }
+  &__action{
+    //width: 133px;
+    width: 15%;
+  }
+  &__description{
+    //width: 260px;
+    width: 30%;
+  }
+
+  &__user{
+    width: 22%;
+    //width: 188px;
+  }
+
+  &__action-type {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    border-radius: 2px;
+    text-transform: uppercase;
+    color: #fff;
+    font-weight: 700;
+    line-height: 16px;
+    text-align: center;
+    margin-right: 1px;
+
+    &.u {
+      background-color: #f3ce68;
+    }
+
+    &.d {
+      background-color: #ee7e85;
+    }
+
+    &.c {
+      background-color: #8cc574;
+    }
+
+  }
+
+  .audit-log__user-name{
+
+    color: #9ba1b9;
+    display: block;
+
+  }
+
+}

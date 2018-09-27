@@ -1,0 +1,344 @@
+<div class="main__scroll" #mainscroll *ngIf="viewSize" perfect-scrollbar [@FadeInOut]="">
+
+    <div class="users">
+
+        <button class="main__back-link"
+                (click)="back()"
+                [activeEffect]="'blue'">
+            {{ texts[ 'backBtn' ] }}
+        </button>
+
+        <h1 class="main__title">
+
+            <i class="main__title-icon">
+                <svg width="30px" height="30px" viewBox="0 0 30 30">
+                    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                        <g fill="#CBCFDA">
+                            <path d="M5.98978173,15.0061486 C2.56616616,15.7398225 0,18.7798573 0,22.4186562 L0,28.0020615 C0,29.0968055 0.891677316,29.9998779 1.99161703,29.9998779 L28.008383,29.9998779 C29.1021596,29.9998779 30,29.1054251 30,28.0020615 L30,22.4186562 C30,18.7871791 27.4334189,15.7416232 24.0098681,15.0064794 C21.6591231,17.2264483 18.4884992,18.5874346 15,18.5874346 C11.5113275,18.5874346 8.34056203,17.2263132 5.98978173,15.0061486 Z M15,14.8374346 C19.1421356,14.8374346 22.5,11.4795702 22.5,7.33743456 C22.5,3.19529894 19.1421356,-0.162565437 15,-0.162565437 C10.8578644,-0.162565437 7.5,3.19529894 7.5,7.33743456 C7.5,11.4795702 10.8578644,14.8374346 15,14.8374346 Z" id="user"></path>
+                        </g>
+                    </g>
+                </svg>
+            </i>
+
+            <span *ngIf="!isEdit && fg">{{ texts[ 'titleCreate' ] }} {{ fg['controls']['name']['value'] }}</span>
+            <span *ngIf="isEdit && fg">{{ texts[ 'titleEdit' ] }} {{ fg['controls']['name']['value'] }}</span>
+
+        </h1>
+
+        <button class="users__delete"
+                *ngIf="isEdit"
+                (click)="remove()"
+                [activeEffect]="'red'">{{ texts[ 'deleteBtn' ] }} </button>
+
+        <form class="main-form" (submit)="submit( fg )" [formGroup]="fg" *ngIf="fg">
+
+            <fieldset class="main-field">
+
+                <label for="name" class="main-field__requared">
+                    {{ texts[ 'labels' ][ 'roleName' ] }}
+                </label>
+
+                <div class="main-field__inner">
+
+                    <input id="name" type="text"
+                           name="text" formControlName="name">
+
+                    <div class="main-field__invalid">
+
+                        <div>
+                            {{texts[ 'filledError' ]}}
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </fieldset>
+
+            <fieldset class="main-field">
+
+                <label for="description">
+                    {{ texts[ 'labels' ][ 'description' ] }}
+                </label>
+
+                <div class="main-field__inner">
+
+                    <textarea id="description" formControlName="description"></textarea>
+
+                </div>
+
+            </fieldset>
+
+            <div class="permission">
+
+                <div class="main-field__title">
+                    {{ texts[ 'labels' ][ 'functions' ] }}
+                </div>
+
+                <div class="permission__wrap">
+
+                    <div class="permission__header" *ngIf="selectedFunctions.length">
+
+                        <span class="permission__header-title">{{ texts[ 'functionsTable' ][ 'title' ] }}</span>
+
+                        <div class="permission__header-items">
+
+              <span *ngFor="let title of texts[ 'functionsTable' ][ 'titleItems' ]">
+
+                <span>{{ title[0] }}</span>
+
+                {{ title }}
+
+              </span>
+
+                        </div>
+
+                    </div>
+
+                    <div [formGroup]="fgPermissions">
+
+                        <div class="permission__content" *ngIf="selectedFunctions.length">
+
+                            <permission-control *ngFor="let selectedFunction of selectedFunctions"
+                                                formControlName="{{ selectedFunction['value'] }}"
+                                                [functionData]="selectedFunction"
+                                                [language]="language"
+                                                (deleteFunction)="removeFunction($event)" >
+                            </permission-control>
+
+                        </div>
+
+                    </div>
+
+                    <div class="permission__footer">
+
+                        <add-function *ngIf="functions.length"
+                                      [options]="functions"
+                                      [label]="texts[ 'addBtn' ]"
+                                      [className]="'select-control_type-2'"
+                                      (deleteFunction)="addFunction($event)">
+                        </add-function>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <fieldset class="main-field">
+
+                <div class="main-field__title">
+                    {{texts[ 'labels' ][ 'status' ]}}
+                </div>
+
+                <switch-control
+                        [disabledState]="false"
+                        [formControlName]="'locked'"
+                        [niceCheckbox]="true">
+                </switch-control>
+
+            </fieldset>
+
+            <div class="main-form__btns">
+
+                <button class="btn"
+                        *ngIf="!isEdit"
+                        [dropEffect]="'#2271ca'">
+                    <span class="btn__inner">{{texts[ 'createBtn' ]}}</span>
+                </button>
+
+                <button class="btn"
+                        *ngIf="isEdit"
+                        [dropEffect]="'#2271ca'">
+                    <span class="btn__inner">{{texts[ 'saveBtn' ]}}</span>
+                </button>
+
+                <button type="button"
+                        class="main-form__link"
+                        (click)="cancel()"
+                        [activeEffect]="'blue'">
+                    {{ texts[ 'cancelBtn' ] }}
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+    <div class="spinner spinner_main" *ngIf="loaded" [@FadeInOut]="loaded"></div>
+
+</div>
+
+<div class="main__scroll" *ngIf="!viewSize" [@FadeInOut]="">
+
+    <div class="users">
+
+        <button class="main__back-link"
+                (click)="back()"
+                [activeEffect]="'blue'">
+            {{ texts[ 'backBtn' ] }}
+        </button>
+
+        <h1 class="main__title">
+
+            <i class="main__title-icon">
+                <svg width="30px" height="30px" viewBox="0 0 30 30">
+                    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                        <g fill="#CBCFDA">
+                            <path d="M5.98978173,15.0061486 C2.56616616,15.7398225 0,18.7798573 0,22.4186562 L0,28.0020615 C0,29.0968055 0.891677316,29.9998779 1.99161703,29.9998779 L28.008383,29.9998779 C29.1021596,29.9998779 30,29.1054251 30,28.0020615 L30,22.4186562 C30,18.7871791 27.4334189,15.7416232 24.0098681,15.0064794 C21.6591231,17.2264483 18.4884992,18.5874346 15,18.5874346 C11.5113275,18.5874346 8.34056203,17.2263132 5.98978173,15.0061486 Z M15,14.8374346 C19.1421356,14.8374346 22.5,11.4795702 22.5,7.33743456 C22.5,3.19529894 19.1421356,-0.162565437 15,-0.162565437 C10.8578644,-0.162565437 7.5,3.19529894 7.5,7.33743456 C7.5,11.4795702 10.8578644,14.8374346 15,14.8374346 Z" id="user"></path>
+                        </g>
+                    </g>
+                </svg>
+            </i>
+
+            <span *ngIf="!isEdit && fg">{{ texts[ 'titleCreate' ] }} {{ fg['controls']['name']['value'] }}</span>
+            <span *ngIf="isEdit && fg">{{ texts[ 'titleEdit' ] }} {{ fg['controls']['name']['value'] }}</span>
+
+
+        </h1>
+
+        <button class="users__delete"
+                *ngIf="isEdit"
+                (click)="remove()"
+                [activeEffect]="'red'">{{ texts[ 'deleteBtn' ] }} </button>
+
+        <form class="main-form" (submit)="submit( fg )"  [formGroup]="fg" *ngIf="fg">
+
+            <fieldset class="main-field">
+
+                <label for="name-mobile" class="main-field__requared">
+                    {{ texts[ 'labels' ][ 'roleName' ] }}
+                </label>
+
+                <div class="main-field__inner">
+
+                    <input id="name-mobile" type="text"
+                           name="text" formControlName="name">
+
+                    <div class="main-field__invalid">
+
+                        <div>
+                            {{texts[ 'filledError' ]}}
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </fieldset>
+
+            <fieldset class="main-field">
+
+                <label for="description-mobile">
+                    {{ texts[ 'labels' ][ 'description' ] }}
+                </label>
+
+                <div class="main-field__inner">
+
+                    <textarea id="description-mobile" formControlName="description"></textarea>
+
+                </div>
+
+            </fieldset>
+
+            <div class="permission">
+
+                <div class="main-field__title">
+                    {{ texts[ 'labels' ][ 'functions' ] }}
+                </div>
+
+                <div class="permission__wrap">
+
+                    <div class="permission__header" *ngIf="selectedFunctions.length">
+
+                        <span class="permission__header-title">{{ texts[ 'functionsTable' ][ 'title' ] }}</span>
+
+                        <div class="permission__header-items">
+
+              <span *ngFor="let title of texts[ 'functionsTable' ][ 'titleItems' ]">
+
+                <span>{{ title[0] }}</span>
+
+                {{ title }}
+
+              </span>
+
+                        </div>
+
+                    </div>
+
+                    <div [formGroup]="fgPermissions">
+
+                        <div class="permission__content" *ngIf="selectedFunctions.length">
+
+                            <permission-control *ngFor="let selectedFunction of selectedFunctions"
+                                                formControlName="{{ selectedFunction['value'] }}"
+                                                [functionData]="selectedFunction"
+                                                [language]="language"
+                                                (deleteFunction)="removeFunction($event)" >
+                            </permission-control>
+
+                        </div>
+
+                    </div>
+
+                    <div class="permission__footer">
+
+                        <add-function *ngIf="functions.length"
+                                      [options]="functions"
+                                      [label]="texts[ 'addBtn' ]"
+                                      [className]="'select-control_type-2'"
+                                      (deleteFunction)="addFunction($event)">
+                        </add-function>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <fieldset class="main-field">
+
+                <div class="main-field__title">
+                    {{texts[ 'labels' ][ 'status' ]}}
+                </div>
+
+                <switch-control
+                        [disabledState]="false"
+                        [formControlName]="'locked'"
+                        [niceCheckbox]="true">
+                </switch-control>
+
+            </fieldset>
+
+            <div class="main-form__btns">
+
+                <button class="btn"
+                        *ngIf="!isEdit"
+                        [dropEffect]="'#2271ca'">
+                    <span class="btn__inner">{{texts[ 'createBtn' ]}}</span>
+                </button>
+
+                <button class="btn"
+                        *ngIf="isEdit"
+                        [dropEffect]="'#2271ca'">
+                    <span class="btn__inner">{{texts[ 'saveBtn' ]}}</span>
+                </button>
+
+                <button type="button"
+                        class="main-form__link"
+                        (click)="cancel()"
+                        [activeEffect]="'blue'">
+                    {{ texts[ 'cancelBtn' ] }}
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+    <div class="spinner spinner_main" *ngIf="loaded" [@FadeInOut]="loaded"></div>
+
+</div>

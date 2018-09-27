@@ -1,0 +1,103 @@
+<div class="simple-dropdown" perfect-scrollbar>
+  <div class="amount-control" [formGroup]="fg">
+    <div class="amount-control__header">
+      <switch-control
+              [formControl]="anyAmount"
+              [disabledState]="false"
+              [niceCheckbox]="true"
+              [label]="amounControlConfig['texts'][currentLanguage]['any']">
+      </switch-control>
+
+    </div>
+
+    <div class="amount-control__content main_field">
+
+      <div class="amount-control__label">{{ amounControlConfig['texts'][currentLanguage]['requestAmount'] }}</div>
+
+      <div class="amount-control__item">
+
+        <fieldset class="main-field">
+
+          <label for="activeFrom">
+            {{ amounControlConfig['texts'][currentLanguage]['from'] }}
+          </label>
+
+          <input id="activeFrom" type="text"
+                 formControlName="fromRequestAmount"
+                 placeholder="Write amount"
+                 (keypress)="onFill($event)">
+
+        </fieldset>
+
+      </div>
+
+      <span>-</span>
+
+      <div class="amount-control__item">
+
+        <fieldset class="main-field">
+
+          <label for="activeTo">
+            {{ amounControlConfig['texts'][currentLanguage]['to'] }}
+          </label>
+
+          <input id="activeTo" type="text"
+                 formControlName="toRequestAmount"
+                 placeholder="Write amount"
+                 (keypress)="onFill($event)">
+
+        </fieldset>
+
+      </div>
+
+    </div>
+
+    <div class="amount-control__content main_field">
+
+      <div class="amount-control__label">{{ amounControlConfig['texts'][currentLanguage]['approvedAmount'] }}</div>
+
+      <div class="amount-control__item">
+
+        <fieldset class="main-field">
+
+          <label for="activeFrom">
+            {{ amounControlConfig['texts'][currentLanguage]['from'] }}
+          </label>
+
+          <input type="text"
+                 formControlName="fromApprovedAmount"
+                 placeholder="Write amount"
+                (keypress)="onFill($event)">
+
+        </fieldset>
+
+      </div>
+
+      <span>-</span>
+
+      <div class="amount-control__item">
+
+        <fieldset class="main-field">
+
+          <label for="activeTo">
+            {{ amounControlConfig['texts'][currentLanguage]['to'] }}
+          </label>
+
+          <input  type="text"
+                  formControlName="toApprovedAmount"
+                 placeholder="Write amount"
+                  (keypress)="onFill($event)">
+
+        </fieldset>
+
+      </div>
+
+    </div>
+
+    <div class="amount-control__btns">
+      <button class="btn" type="submit" (click)="submit( fg )">Apply Filter</button>
+      <button class="main-form__link" type="button" (click)="closeDropDown()">Cancel</button>
+    </div>
+
+  </div>
+</div>

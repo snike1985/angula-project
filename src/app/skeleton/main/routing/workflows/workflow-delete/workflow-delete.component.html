@@ -1,0 +1,29 @@
+<div class="popup-layout popup-layout_import">
+
+  <header>
+
+    <h1 class="popup-layout__title">{{ texts[ 'title' ] }} <span *ngIf="currentItem">{{ currentItem[ 'id' ] }}</span></h1>
+
+  </header>
+
+  <div class="popup-layout__content">
+
+    <div class="popup-layout__wrap">
+
+      <p class="popup-layout__text" *ngIf="currentItem">
+        {{ texts[ 'text' ] }} {{ currentItem[ 'id' ] }}?
+      </p>
+
+      <div class="main__btns">
+
+        <button class="btn btn_2" (click)="ok()">{{ texts[ 'btns' ][ 'ok' ] }}</button>
+
+        <button class="main__btns-link" (click)="close()">{{ texts[ 'btns' ][ 'cancel' ] }}</button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>

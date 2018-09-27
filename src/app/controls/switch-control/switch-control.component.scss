@@ -1,0 +1,240 @@
+@import "../../scss/main-app";
+@import "../../scss/animations";
+
+.switch-control {
+  display: inline-flex;
+  align-items: center;
+  min-width: 90px;
+  cursor: pointer;
+  user-select: none;
+
+  &.filled {
+    display: block;
+    padding: 9px 20px 10px;
+    border-bottom: solid 2px #f4f6f9;
+  }
+
+  input {
+    opacity: 0;
+    visibility: hidden;
+    position: absolute;
+  }
+  &__bar {
+    display: block;
+    position: relative;
+    width: 20px;
+    height: 14px;
+    border-radius: 7px;
+    background: #e5e5e5;
+
+    > span {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      border: 1px solid #e5e5e5;
+      box-sizing: border-box;
+      background: #fff;
+      transition: all .3s ease-in-out;
+
+      &:before {
+        opacity: 0;
+        @include absoluteCenter();
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        border: 0.03em solid #e5e5e5;
+        content: '';
+      }
+    }
+  }
+  &__text {
+    margin-left: 7px;
+    font-size: 16px;
+    line-height: 1.88;
+    color: #525a77;
+    transition: color .3s ease-in-out;
+  }
+  &.active {
+
+    .switch-control__bar {
+
+      span {
+        background: $main-green-color-1;
+        border-color: $main-green-color-1;
+        transform: translateX(50%);
+
+        &:before {
+          animation: radio-pulse .4s linear;
+          border-color: #34900d;
+        }
+      }
+    }
+    .switch-control__text {
+      color: $main-blue-color
+    }
+
+    &.disabled {
+
+      .switch-control__text {
+        color: #cbcfda;
+      }
+      .switch-control__bar {
+
+        > span {
+          border: 1px solid #cbcfda;
+          background: #cbcfda;
+        }
+      }
+    }
+  }
+  &.disabled {
+
+    .switch-control__text {
+      color: #cbcfda;
+    }
+    .switch-control__bar {
+
+      > span {
+        border: 1px solid #e5e7ed;
+        background: $main-white-color;
+      }
+    }
+  }
+  &_nice-checkbox {
+    min-width: 0;
+
+    .switch-control__bar {
+      position: relative;
+      z-index: 3;
+      display: inline-block;
+      vertical-align: middle;
+      width: 20px;
+      height: 20px;
+
+      background: $main-white-color;
+
+      &:before {
+        content: '';
+        position: absolute;
+        width: 24px;
+        height: 24px;
+        margin: auto;
+        top: 50%;
+        left: 50%;
+        //z-index: 1;
+        opacity: 0;
+        border: 0.03em solid $main-blue-color;
+        border-radius: 4px;
+        box-shadow: inset 0 0 .15em .1em $main-blue-color;
+        box-sizing: border-box;
+        transform: translate(-50%,-50%);
+      }
+      &:after {
+        position: absolute;
+        //z-index: 2;
+        box-sizing: border-box;
+        width: 100%;
+        background: $main-white-color;
+        height: 100%;
+        border: 2px solid #e8ebf1;
+        border-radius: 4px;
+        -webkit-transition-property: border-color, background;
+        transition-property: border-color, background;
+        -webkit-transition: $animation-time+s ease-in-out;
+        transition: $animation-time+s ease-in-out;
+        content: '';
+      }
+      > span {
+        display: block;
+        position: absolute;
+        z-index: 1;
+        top: 50%;
+        left: 50%;
+        width: 8px;
+        height: 8px;
+        background-color: $main-white-color;
+        border-radius: 50%;
+        -webkit-transform: translate(-50%,-50%) scale( 0 );
+        transform: translate(-50%,-50%) scale( 0 );
+        -webkit-transition: background-color $animation-time+s ease-in-out;
+        transition: background-color $animation-time+s ease-in-out;
+
+        &:before {
+          display: none;
+        }
+        svg {
+          @include absoluteCenter();
+          width: 12px;
+          height: 9px;
+
+          path {
+            fill: $main-white-color;
+          }
+        }
+      }
+    }
+    .switch-control__text,
+    .switch-control__label{
+      vertical-align: middle;
+      margin-left: 10px;
+      color: #212c3d;
+      line-height: 1.88;
+    }
+    &:hover {
+
+      .switch-control__bar:after {
+        border-color: $main-blue-color;
+      }
+    }
+    &.active {
+
+      .switch-control__bar {
+
+        &:before {
+          animation: radio-pulse .4s linear;
+        }
+        &:after {
+          background: $main-blue-color;
+          border-color: $main-blue-color;
+        }
+
+        & > span {
+          border: none;
+          background-color: transparent;
+          animation: radio-point $animation-time+s ease-in-out forwards;
+        }
+      }
+      .switch-control__text,
+      .switch-control__label {
+        color: #212c3d
+      }
+      &.disabled {
+
+        .switch-control__bar {
+
+          > span {
+            border: none;
+            background: transparent;
+          }
+        }
+      }
+    }
+    &.disabled {
+
+      .switch-control__bar{
+
+        > span {
+          border: none;
+          background: transparent;
+        }
+        &:after {
+          background: #e4e8ec;
+          border-color: #e4e8ec;
+        }
+      }
+    }
+  }
+}

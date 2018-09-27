@@ -1,0 +1,78 @@
+<div class="simple-dropdown">
+
+        <div class="simple-dropdown_label">
+            {{ label }}
+            <span (click)="closeDropDown()" class="simple-dropdown_close"></span>
+        </div>
+
+        <div class="simple-dropdown__wrap">
+
+            <div class="simple-dropdown__wrap__static">
+
+                <switch-control *ngIf="options[0]['value'] === '-1'"
+                        [formControl]="anyControl"
+                        [disabledState]="false"
+                        [niceCheckbox]="true"
+                        [className]="'filled'"
+                        [label]="options[0]['text']">
+                </switch-control>
+
+                <div class="simple-dropdown__option simple-dropdown__option_combo">
+
+                    <fieldset class="main-field">
+
+                        <div class="main-field__inner">
+
+                            <input class="search_dropdown_field" id="searchText" type="text" name="searchText"
+                                   placeholder="Placeholder"
+                                   (keyup)="onKeyUp($event)"
+                                   (focus)="onFocus()">
+
+                            <svg viewBox="0 0 24 24">
+                                <title>search</title>
+                                <desc>Created with Sketch.</desc>
+                                <defs></defs>
+                                <g id="UI-Kit" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                    <g id="search" fill="#E8EBF1">
+                                        <path d="M13.5592602,17.1665847 C12.4872651,17.7000151 11.2786652,18 10,18 C5.581722,18 2,14.418278 2,10 C2,5.581722 5.581722,2 10,2 C14.418278,2 18,5.581722 18,10 C18,11.2788883 17.6999104,12.4876869 17.1663055,13.5598214 C17.2752089,13.6386416 17.3791801,13.7269858 17.4770294,13.824835 L21.1336355,17.4814411 C22.141464,18.4892697 22.1479302,20.1168165 21.1323733,21.1323733 C20.1238477,22.140899 18.4823559,22.1345502 17.4814411,21.1336355 L13.824835,17.4770294 C13.7268356,17.37903 13.6383043,17.2751709 13.5592602,17.1665847 Z M10,15 C12.7614237,15 15,12.7614237 15,10 C15,7.23857625 12.7614237,5 10,5 C7.23857625,5 5,7.23857625 5,10 C5,12.7614237 7.23857625,15 10,15 Z"
+                                              id="Combined-Shape"></path>
+                                    </g>
+                                </g>
+                            </svg>
+
+                        </div>
+
+                    </fieldset>
+
+
+                </div>
+
+            </div>
+
+        <form [formGroup]="fg" class="main-form">
+
+            <div class="simple-dropdown__wrap__scrollable"  perfect-scrollbar>
+
+            <ng-template ngFor let-option [ngForOf]="options">
+
+                <switch-control *ngIf="isCoincidence(option.text) && option.value !== '-1'"
+                        formControlName="{{option.value}}"
+                        [disabledState]="false"
+                        [niceCheckbox]="true"
+                        [className]="'filled'"
+                        [label]="option.text | hihglight: searchTerm">
+                </switch-control>
+
+            </ng-template>
+
+            </div>
+
+            <div class="simple-dropdown_controlls">
+                <button (click)="submit( fg )" type="button" class="btn">Apply Filter</button>
+                <button (click)="cancel()" type="button" class="main-form__link">Cancel</button>
+            </div>
+
+        </form>
+
+    </div>
+</div>

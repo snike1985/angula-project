@@ -1,0 +1,124 @@
+<div class="custom-table__row">
+
+    <div class="institutions-row" (click)="open()">
+
+        <div class="institutions-row__name">
+
+            <h2>
+
+                <div class="device-types-row__name"
+                     [highlight]="searchText"
+                     [color]="'#ffff97'"
+                     [content]="data[ 'name' ]"></div>
+
+            </h2>
+
+            <span class="institutions-row__name-code">{{ texts[ 'codeLabel' ] }}: <span [highlight]="searchText"
+                                                                                        [color]="'#ffff97'"
+                                                                                        [content]="data[ 'code' ]"></span></span>
+
+            <div class="institutions-row__links" *ngIf="
+           data[ 'totalMerchant' ] ||
+           data[ 'totalLocation' ] ||
+           data[ 'totalDevice' ]">
+
+                <a *ngIf="data[ 'totalMerchant' ]"
+                   routerLink="/institutions/merchants"
+                   [queryParams]="{ institutions: this.data[ 'id' ] }"
+                   (click)="$event.stopPropagation()">
+
+                    {{ data[ 'totalMerchant' ] }} {{ texts[ 'merchant' ] }}
+
+                </a>
+
+                <a *ngIf="data[ 'totalLocation' ]"
+                   routerLink="/institutions/locations"
+                   [queryParams]="{ institutions: this.data[ 'id' ] }"
+                   (click)="$event.stopPropagation()">
+
+                    {{ data[ 'totalLocation' ] }} {{ texts[ 'location' ] }}
+
+                </a>
+
+                <a *ngIf="data[ 'totalDevice' ]"
+                   routerLink="/institutions/devices"
+                   [queryParams]="{ institutions: this.data[ 'id' ] }"
+                   (click)="$event.stopPropagation()">
+
+                    {{ data[ 'totalDevice' ] }} {{ texts[ 'device' ] }}
+
+                </a>
+
+            </div>
+
+        </div>
+
+        <div class="institutions-row__status" [ngSwitch]="status">
+
+
+            <div class="status-code status-code_active" *ngSwitchCase="1">{{ texts[ 'status' ][ status ] }}</div>
+            <div class="status-code status-code_inactive" *ngSwitchCase="2">{{ texts[ 'status' ][ status ] }}</div>
+            <div class="status-code status-code_disabled" *ngSwitchCase="0">{{ texts[ 'status' ][ status ] }}</div>
+
+        </div>
+
+        <div class="institutions-row__from">
+
+            <datepicker-control
+                    [formControl]="activateOnControl"
+                    *ngIf="activateOnControl" [type]="0"></datepicker-control>
+
+        </div>
+
+        <div class="institutions-row__to">
+
+            <datepicker-control
+                    [formControl]="expiryOnControl"
+                    *ngIf="expiryOnControl" [type]="0"></datepicker-control>
+
+        </div>
+
+        <ul class="institutions-row_btns edits">
+
+            <li>
+                <a class="edits__btn"
+                   routerLink="{{ data[ 'id' ] }}/edit"
+                   [activeEffect]="'blue'"
+                   (click)="setCurrent($event)">
+                    <span>{{ this.texts[ 'btnEdit' ] }}</span>
+                </a>
+            </li>
+
+            <li>
+
+                <button class="edits__btn" type="button"
+                        *ngIf="status === 1"
+                        (click)="updateStatus($event)"
+                        [activeEffect]="'blue'">
+                    <span>{{ this.texts[ 'btnDisable' ] }}</span>
+                </button>
+
+                <button class="edits__btn" type="button"
+                        *ngIf="status === 0"
+                        (click)="updateStatus($event)"
+                        [activeEffect]="'blue'">
+                    <span>{{ this.texts[ 'btnEnable' ] }}</span>
+                </button>
+
+            </li>
+
+            <li>
+                <button class="edits__btn edits__btn_delete" type="button"
+                        (click)="askToDelete($event)"
+                        [activeEffect]="'red'">
+                    {{ this.texts[ 'btnDelete' ] }}
+                </button>
+            </li>
+
+        </ul>
+
+    </div>
+
+    <div *ngIf="loading" class="spinner"></div>
+
+</div>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="60px" height="60px" viewBox="0 0 60 60" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 44.1 (41455) - http://www.bohemiancoding.com/sketch -->
+    <title>grn-check</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="UI-Kit" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="grn-check">
+            <circle id="Oval-5" fill="#fff" cx="30" cy="30" r="25"></circle>
+            <path fill="#8cc574" stroke="#8cc574" d="M26.9096732,36.3444946 C26.9650938,36.4285591 27.0298289,36.5083195 27.1038475,36.5823381 C27.6937179,37.1722085 28.6404105,37.1670955 29.2274663,36.5800396 L41.2436846,24.5638213 C41.8361091,23.9713968 41.8317695,23.0259889 41.2459831,22.4402025 C40.6561127,21.850332 39.7094201,21.8554451 39.1223642,22.442501 L28.1320221,33.4328432 L21.5578262,26.8586473 C20.971832,26.2726531 20.0284687,26.2790372 19.4426822,26.8648237 C18.8528118,27.4546941 18.8541305,28.3975923 19.4365059,28.9799677 L26.5199264,36.0633882 C26.6374001,36.1808619 26.7692356,36.2745292 26.9096732,36.3444946 Z" id="Combined-Shape"></path>
+        </g>
+    </g>
+</svg>

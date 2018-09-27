@@ -1,0 +1,15 @@
+@import "../../../scss/default-select";
+  .main-form__link {
+    padding: 0;
+    background: transparent;
+    border: none;
+    font-size: 16px;
+    font-weight: $bold;
+    line-height: 1.25;
+    color: $main-blue-color;
+    @include transition( color, $animation-time, 0 );
+
+    &:hover {
+      color: $main-blue-color-2;
+    }
+  }

@@ -1,0 +1,345 @@
+<div class="main__scroll" #mainscroll *ngIf="viewSize" perfect-scrollbar [@FadeInOut]="">
+
+    <div class="profile profile_edit" *ngIf="loaded">
+
+        <a class="profile__link" routerLink="/profile">
+            {{ texts[ 'edit' ][ 'backBtn' ] }}
+        </a>
+
+        <h1 class="main__title">
+
+            <!--main__title-icon-->
+            <i class="main__title-icon">
+                <svg width="30px" height="30px" viewBox="0 0 30 30">
+                    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                        <g id="edit" fill="#CBCFDA">
+                            <path d="M10.1145596,26.3961987 L20.1145596,26.3961987 L16.7034608,31.8539567 C15.8259349,33.2579982 14.3981815,33.2499937 13.5256583,31.8539567 L10.1145596,26.3961987 Z M10.1145596,2.32416833 C10.1145596,-0.436723819 12.3587548,-2.67486913 15.1145596,-2.67486913 C17.8759833,-2.67486913 20.1145596,-0.434284568 20.1145596,2.32416833 L20.1145596,22.3251309 L10.1145596,22.3251309 L10.1145596,2.32416833 Z" id="Combined-Shape" transform="translate(15.114560, 15.114560) rotate(-315.000000) translate(-15.114560, -15.114560) "></path>
+                        </g>
+                    </g>
+                </svg>
+            </i>
+
+            {{texts[ 'edit' ][ 'title' ]}}
+        </h1>
+
+        <form  class="main-form" novalidate
+                *ngIf="editProfileForm"
+                [formGroup]="editProfileForm"
+                (change)="setDefaultState()">
+
+            <div class="main-form__double-field">
+
+                <fieldset class="main-field">
+
+                    <label for="firstName">
+                        {{texts[ 'edit' ][ 'labels' ][ 'firstName' ]}}
+                    </label>
+
+                    <input id="firstName" type="text"
+                            name="firstName"
+                            placeholder="{{texts[ 'edit' ][ 'labels' ][ 'firstName' ]}}"
+                            formControlName="firstName">
+
+                    <div class="main-field__invalid">
+
+                        <div>
+                            {{texts[ 'filledError' ]}}
+                        </div>
+
+                    </div>
+
+                </fieldset>
+
+                <fieldset class="main-field">
+
+                    <label for="lastName">
+                        {{texts[ 'edit' ][ 'labels' ][ 'lastName' ]}}
+                    </label>
+
+                    <input id="lastName" type="text"
+                            name="lastName"
+                           placeholder="{{texts[ 'edit' ][ 'labels' ][ 'lastName' ]}}"
+                            formControlName="lastName">
+
+                    <div class="main-field__invalid">
+
+                        <div>
+                            {{texts[ 'filledError' ]}}
+                        </div>
+
+                    </div>
+
+                </fieldset>
+
+            </div>
+
+            <fieldset>
+
+                <select-control
+                        [options]="userRoles"
+                        [label]="'Roles'"
+                        [className]="'default-select'"
+                        formControlName="roleId">
+                </select-control>
+
+            </fieldset>
+
+            <fieldset class="main-field">
+
+                <label for="email">
+                    {{texts[ 'edit' ][ 'labels' ][ 'email' ]}}
+                </label>
+
+                <div class="main-field__inner">
+
+                    <input id="email" type="email"
+                            name="email"
+                           placeholder="{{texts[ 'edit' ][ 'labels' ][ 'email' ]}}"
+                            formControlName="email">
+
+                    <div class="main-field__invalid">
+
+                        <div>
+                            {{texts[ 'emailValidationError' ]}}
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </fieldset>
+
+            <fieldset class="main-field">
+
+                <label for="phone">
+                    {{texts[ 'edit' ][ 'labels' ][ 'phone' ]}}
+                </label>
+
+                <div class="main-field__inner">
+
+                    <input id="phone" type="tel"
+                            name="phone"
+                           placeholder="{{texts[ 'edit' ][ 'labels' ][ 'phone' ]}}"
+                            formControlName="phone"
+                            (keypress)="phoneOnly( $event )">
+
+                    <div class="main-field__invalid">
+
+                        <div>
+                            {{texts[ 'filledError' ]}}
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </fieldset>
+
+            <div class="main-form__failure">
+
+                <div *ngIf="!failureText">{{ texts[ 'edit' ][ 'profileCompareError' ] }}</div>
+                <div *ngIf="failureText">{{ failureText }}</div>
+
+            </div>
+
+            <div class="main-form__btns">
+
+                <!--btn-->
+                <button class="btn"
+                        [disabled]="!editProfileForm.valid"
+                        [class.btn_disabled]="!editProfileForm.valid"
+                        (click)="submit( editProfileForm )"
+                        [dropEffect]="'#2271ca'">
+                    <span class="btn__inner">{{texts[ 'edit' ][ 'submitBtn' ]}}</span>
+                </button>
+                <!--/btn-->
+
+                <button type="button"
+                        class="main-form__link"
+                        routerLink="/profile"
+                        [activeEffect]="'blue'">
+                    {{ texts[ 'cancelBtn' ] }}
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+    <div class="spinner spinner_main" *ngIf="loading" [@FadeInOut]="loading"></div>
+
+</div>
+
+<div class="main__scroll" *ngIf="!viewSize" [@FadeInOut]="">
+
+    <div class="profile profile_edit" *ngIf="loaded">
+
+        <a class="profile__link" routerLink="/profile">
+            {{ texts[ 'edit' ][ 'backBtn' ] }}
+        </a>
+
+        <h1 class="main__title">
+
+            <!--main__title-icon-->
+            <i class="main__title-icon">
+                <svg width="30px" height="30px" viewBox="0 0 30 30">
+                    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                        <g id="edit" fill="#CBCFDA">
+                            <path d="M10.1145596,26.3961987 L20.1145596,26.3961987 L16.7034608,31.8539567 C15.8259349,33.2579982 14.3981815,33.2499937 13.5256583,31.8539567 L10.1145596,26.3961987 Z M10.1145596,2.32416833 C10.1145596,-0.436723819 12.3587548,-2.67486913 15.1145596,-2.67486913 C17.8759833,-2.67486913 20.1145596,-0.434284568 20.1145596,2.32416833 L20.1145596,22.3251309 L10.1145596,22.3251309 L10.1145596,2.32416833 Z" id="Combined-Shape" transform="translate(15.114560, 15.114560) rotate(-315.000000) translate(-15.114560, -15.114560) "></path>
+                        </g>
+                    </g>
+                </svg>
+            </i>
+
+            {{texts[ 'edit' ][ 'title' ]}}
+        </h1>
+
+        <form  class="main-form" novalidate
+               *ngIf="editProfileForm"
+               [formGroup]="editProfileForm"
+               (change)="setDefaultState()">
+
+            <div class="main-form__double-field">
+
+                <fieldset class="main-field">
+
+                    <label for="firstName_mob">
+                        {{texts[ 'edit' ][ 'labels' ][ 'firstName' ]}}
+                    </label>
+
+                    <input id="firstName_mob" type="text"
+                           name="firstName"
+                           placeholder="{{texts[ 'edit' ][ 'labels' ][ 'firstName' ]}}"
+                           formControlName="firstName">
+
+                    <div class="main-field__invalid">
+
+                        <div>
+                            {{texts[ 'filledError' ]}}
+                        </div>
+
+                    </div>
+
+                </fieldset>
+
+                <fieldset class="main-field">
+
+                    <label for="lastName_mob">
+                        {{texts[ 'edit' ][ 'labels' ][ 'lastName' ]}}
+                    </label>
+
+                    <input id="lastName_mob" type="text"
+                           name="lastName"
+                           placeholder="{{texts[ 'edit' ][ 'labels' ][ 'lastName' ]}}"
+                           formControlName="lastName">
+
+                    <div class="main-field__invalid">
+
+                        <div>
+                            {{texts[ 'filledError' ]}}
+                        </div>
+
+                    </div>
+
+                </fieldset>
+
+            </div>
+
+            <fieldset>
+
+                <select-control
+                        [options]="userRoles"
+                        [label]="'Roles'"
+                        [className]="'default-select'"
+                        formControlName="roleId">
+                </select-control>
+
+            </fieldset>
+
+            <fieldset class="main-field">
+
+                <label for="email_mob">
+                    {{texts[ 'edit' ][ 'labels' ][ 'email' ]}}
+                </label>
+
+                <div class="main-field__inner">
+
+                    <input id="email_mob" type="email"
+                           name="email"
+                           placeholder="{{texts[ 'edit' ][ 'labels' ][ 'email' ]}}"
+                           formControlName="email">
+
+                    <div class="main-field__invalid">
+
+                        <div>
+                            {{texts[ 'emailValidationError' ]}}
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </fieldset>
+
+            <fieldset class="main-field">
+
+                <label for="phone_mob">
+                    {{texts[ 'edit' ][ 'labels' ][ 'phone' ]}}
+                </label>
+
+                <div class="main-field__inner">
+
+                    <input id="phone_mob" type="tel"
+                           name="phone"
+                           placeholder="{{texts[ 'edit' ][ 'labels' ][ 'phone' ]}}"
+                           formControlName="phone"
+                           (keypress)="phoneOnly( $event )">
+
+                    <div class="main-field__invalid">
+
+                        <div>
+                            {{texts[ 'filledError' ]}}
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </fieldset>
+
+            <div class="main-form__failure">
+
+                <div *ngIf="!failureText">{{ texts[ 'edit' ][ 'profileCompareError' ] }}</div>
+                <div *ngIf="failureText">{{ failureText }}</div>
+
+            </div>
+
+            <div class="main-form__btns">
+
+                <!--btn-->
+                <button class="btn"
+                        [disabled]="!editProfileForm.valid"
+                        [class.btn_disabled]="!editProfileForm.valid"
+                        (click)="submit( editProfileForm )"
+                        [dropEffect]="'#2271ca'">
+                    <span class="btn__inner">{{texts[ 'edit' ][ 'submitBtn' ]}}</span>
+                </button>
+                <!--/btn-->
+
+                <button type="button"
+                        class="main-form__link"
+                        routerLink="/profile"
+                        [activeEffect]="'blue'">
+                    {{ texts[ 'cancelBtn' ] }}
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+    <div class="spinner spinner_main" *ngIf="loading" [@FadeInOut]="loading"></div>
+
+</div>

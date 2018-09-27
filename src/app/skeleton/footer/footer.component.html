@@ -1,0 +1,29 @@
+<!--footer-->
+<div class="footer" [class.footer_inner]="isHomePage">
+
+    <div *ngIf="!isHomePage && viewSize > 0" time class="time"></div>
+
+    <!--footer__copyrights-->
+    <div class="footer__copyrights">
+        {{texts[ 'copyright' ]}}
+    </div>
+    <!--/footer__copyrights-->
+
+    <!--footer__menu-->
+    <ul class="footer__menu">
+
+        <li *ngFor="let item of texts[ 'menuItems' ]">
+
+            <a href="{{item[ 'path' ]}}">
+
+                {{ item[ 'text' ]}}
+
+            </a>
+
+        </li>
+
+    </ul>
+    <!--/footer__menu-->
+
+</div>
+<!--/footer-->

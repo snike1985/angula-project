@@ -1,0 +1,10 @@
+<svg width="23px" height="24px" viewBox="0 0 23 24">
+    <g id="UI-Kit" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="minus">
+            <g id="-" transform="translate(2.000000, 2.000000)">
+                <rect id="bg" fill="#CBCFDA" x="0" y="0" width="20" height="20" rx="3"></rect>
+                <rect id="Rectangle-2" fill="#FFFFFF" x="4" y="9" width="12" height="3" rx="1.5"></rect>
+            </g>
+        </g>
+    </g>
+</svg>

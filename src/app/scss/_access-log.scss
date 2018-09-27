@@ -1,0 +1,172 @@
+.access-log {
+
+  padding: 30px 30px 20px;
+
+  &-row{
+    display: flex;
+    justify-content: flex-start;
+    align-items: stretch;
+    color: #9ba1b9;
+    font-size: 14px;
+    line-height: 19px;
+    border-bottom: solid 2px #f4f6f9;
+
+    & > div{
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: flex-start;
+      padding: 20px 10px;
+
+      span{
+        max-width: 100%;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      &:nth-child(1){
+        width: 16.2%;
+        padding-left: 35px;
+      }
+      &:nth-child(2){
+        width: 14.1%;
+      }
+      &:nth-child(3){
+        width: 17.7%;
+      }
+      &:nth-child(4){
+        width: 17.1%;
+      }
+      &:nth-child(5){
+        width: 34.3%;
+      }
+
+    }
+
+    &__description{
+
+      dl{
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        width: 100%;
+      }
+
+      dt{
+        margin-right: 5px;
+        white-space: nowrap;
+      }
+
+      dd{
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: calc( 100% - 70px );
+      }
+
+    }
+
+  }
+
+  &__user-name{
+    color: #9ba1b9;
+  }
+
+  &__label{
+    display: inline-flex;
+    height: 20px;
+    padding: 0 10px;
+    border-radius: 10px;
+    color: #fff;
+    font-size: 13px;
+    font-weight: 900;
+    line-height: 20px;
+
+    &_succeeded{
+      background-color: #8cc574;
+    }
+
+    &_failed{
+      background-color: #ee7e85;
+    }
+
+  }
+
+  &__frame{
+    margin-left: 28px;
+    font-size: 16px;
+    line-height: 20px;
+    text-align: left;
+    color: #212c3d;
+
+    dl{
+      display: flex;
+      justify-content: flex-start;
+      align-items: flex-start;
+    }
+
+    dt{
+      width: 87px;
+      margin-right: 22px;
+      color: #9ba1b9;
+      font-weight: 400;
+      white-space: nowrap;
+      text-align: right;
+    }
+
+    dd{
+      width: 380px;
+    }
+
+  }
+
+  &__info{
+    margin-bottom: 10px;
+  }
+
+  &__calendar{
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    margin-bottom: 21px;
+
+    &-item{
+      margin-right: 42px;
+      color: #212c3d;
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 20px;
+
+      h2{
+        color: #9ba1b9;
+        font-weight: 400;
+      }
+
+
+
+    }
+
+  }
+
+  &__person{
+    margin-bottom: 19px;
+    line-height: 20px;
+
+    h2{
+      font-weight: 400;
+    }
+
+  }
+
+  &__login-info{
+    margin-bottom: 30px;
+
+    dd > div{
+      margin-top: 9px;
+    }
+
+  }
+
+}
+

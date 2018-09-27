@@ -1,0 +1,121 @@
+
+.notification {
+  overflow: hidden;
+  position: fixed;
+  z-index: 11;
+  top: 10px;
+  right: 0;
+  width: 330px;
+  //height: calc(100vh - 100px );
+  padding-right: 10px;
+  padding-left: 20px;
+
+  &__item {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    flex-flow: row wrap;
+    width: 100%;
+    height: 70px;
+    border-radius: 5px;
+    box-shadow: 0 3px 10px 0 rgba(0, 0, 0, 0.15);
+    padding: 17px 20px 17px 20%;
+    margin-bottom: 20px;
+    font-size: 14px;
+    color: $main-white-color;
+
+    &_success {
+      background-color: $notification-success-back;
+
+      .notification__title {
+        color: $notification-success-color;
+      }
+    }
+    &_error {
+      background-color: $notification-error-back;
+
+      .notification__title {
+        color: $notification-error-color;
+      }
+    }
+    &_warning {
+      background-color: $notification-warning-back;
+
+      .notification__title {
+        color: $notification-warning-color;
+      }
+    }
+    &_info {
+      background-color: $notification-info-back;
+
+      .notification__title {
+        color: $notification-info-color;
+      }
+    }
+  }
+  &__title {
+
+  }
+  &__status {
+
+  }
+  &__icon {
+    position: absolute;
+    display: inline-block;
+    width: 20%;
+    top: 0;
+    bottom: 0;
+    left: 0;
+
+    i {
+      @include absoluteCenter();
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+
+      svg {
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
+  &__close {
+    overflow: hidden;
+    position: absolute;
+    top: 13px;
+    right: 17px;
+    width: 9px;
+    height: 9px;
+    @include transition( opacity, $animation-time, 0 );
+
+    svg {
+      @include absoluteCenter();
+      width: 166.8%;
+      height: 166.8%;
+
+      path {
+        fill: $main-white-color;
+      }
+    }
+    &:hover {
+      opacity: .7;
+    }
+  }
+}
+
+@media (min-width: $tablet-portrait) {
+
+  .notification {
+    top: 20px;
+    padding-right: 20px;
+    padding-left: 10px;
+  }
+}
+@media (min-width: $tablet-landscape) {
+
+}
+@media (min-width: $desktop) {
+
+}
+

@@ -1,0 +1,56 @@
+@import "../../../../../scss/main-app";
+@import "../../../../../scss/main";
+@import "../../../../../scss/popup-layout";
+
+.payment-methods {
+	padding: 30px 35px 30px;
+
+	&__title {
+		font-family: Lato;
+		font-size: 18px;
+		font-weight: 400;
+		line-height: 1.11;
+		color: #212c3d;
+		margin-bottom: 20px;
+	}
+
+	&__item {
+		margin-bottom: 10px;
+	}
+
+	&__btns {
+		padding-top: 20px;
+
+		.btn {
+			display: inline-block;
+			vertical-align: middle;
+			margin-right: 37px;
+		}
+
+	}
+
+	&__error {
+		display: inline-block;
+		height: 35px;
+		border-radius: 4px;
+		background-color: #ee7e85;
+		font-family: Lato;
+		font-size: 14px;
+		font-weight: bold;
+		line-height: 35px;
+		color: #ffffff;
+		padding: 0 10px;
+	}
+
+	&__cancel {
+		font-family: Lato;
+		font-size: 16px;
+		font-weight: bold;
+		text-align: left;
+		color: #4e9ff8;
+		background: none;
+		border: none;
+		padding: 0;
+	}
+
+}

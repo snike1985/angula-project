@@ -1,0 +1,50 @@
+<div>
+
+  <div class="access-log-row" (click)="open( item )">
+
+    <div class="access-log-row__date">
+
+      <span>{{ data[ 'log_in' ] | date: "dd MMM yyyy" }}</span>
+      <span>{{ data[ 'log_in' ] | date: "hh:mm:ss a" }}</span>
+
+    </div>
+
+    <div class="access-log-row__date">
+
+      <span>{{ data[ 'log_out' ] | date: "dd MMM yyyy" }}</span>
+      <span>{{ data[ 'log_out' ] | date: "hh:mm:ss a" }}</span>
+
+    </div>
+
+    <div class="access-log-row__user">
+
+      <span class="access-log__user-name" [highlight]="searchText"
+            [color]="'#ffff97'"
+            [content]="data[ 'user' ][ 'name' ]"></span>
+      <span>{{ data[ 'access_points' ] }} {{ texts[ 'points' ] }}</span>
+
+    </div>
+
+    <div class="access-log-row__user">
+
+      <span class="access-log__label access-log__label_succeeded" *ngIf="data[ 'login_result' ][ 'status' ]" [class.succeeded]="data[ 'login_result' ][ 'status' ]">{{ texts['succeeded'] }}</span>
+      <span class="access-log__label access-log__label_failed" *ngIf="!data[ 'login_result' ][ 'status' ]" [class.succeeded]="data[ 'login_result' ][ 'status' ]">{{ texts['failed'] }}</span>
+
+    </div>
+
+    <div class="access-log-row__description">
+
+      <dl *ngFor="let item of data['description']">
+        <dt>{{ item[ 'key' ] }}</dt>
+        <dd>
+          <span class="access-log__user-name" [highlight]="searchText"
+                [color]="'#ffff97'"
+                [content]="item[ 'value' ]"></span>
+        </dd>
+      </dl>
+
+    </div>
+
+  </div>
+
+</div>

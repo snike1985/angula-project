@@ -1,0 +1,30 @@
+<div [class.device-types-row]="viewSize >= 3"
+        [class.device-types-row-mobile]="viewSize < 3">
+
+  <div class="device-types-row__name"
+       [highlight]="searchText"
+       [color]="'#ffff97'"
+       [content]="data[ 'code' ]"></div>
+
+  <div class="device-types-row__status">
+
+    <switch-control
+            [disabledState]="false"
+            [formControl]="fc"
+            [niceCheckbox]=""
+            [label]="">
+    </switch-control>
+
+  </div>
+
+  <div class="device-types-row__code device-types-row__column">
+
+    <div class="country-row__title" *ngIf="viewSize < 3">
+      {{ columns[ 2 ][ 'title' ][ language ] }}
+    </div>
+
+    <div [highlight]="searchText"
+         [color]="'#ffff97'"
+         [content]="data[ 'code' ]"></div>
+
+</div>

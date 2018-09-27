@@ -1,0 +1,37 @@
+<div class="popup-layout popup-layout_import">
+
+  <header>
+
+    <h1 class="popup-layout__title">
+
+      {{ texts[ 'title' ] }}
+
+      <div class="popup-layout__sub-title">
+        {{ texts[ 'payment' ][ 0 ] }}<span *ngFor="let method of paymentMethods; let first = first; let last = last;"><span *ngIf="!first && !last">,</span> <span *ngIf="!first && last">{{ texts[ 'payment' ][ 1 ] }}</span> {{ method[ 'name' ] }}</span>
+      </div>
+
+    </h1>
+
+  </header>
+
+  <div class="popup-layout__content">
+
+    <div class="popup-layout__wrap">
+
+      <p class="popup-layout__text">
+        {{ texts[ 'text' ] }}
+      </p>
+
+      <div class="main__btns">
+
+        <button class="btn btn_2" (click)="ok()">{{ texts[ 'btns' ][ 'ok' ] }}</button>
+
+        <button class="main__btns-link" (click)="close()">{{ texts[ 'btns' ][ 'cancel' ] }}</button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
